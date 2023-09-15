@@ -1,6 +1,4 @@
-package ui;
-
-import core.Calc;
+package app;
 
 import java.util.List;
 import java.util.function.BinaryOperator;

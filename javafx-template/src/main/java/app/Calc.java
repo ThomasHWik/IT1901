@@ -1,4 +1,4 @@
-package core;
+package app;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +25,7 @@ public class Calc {
 
     /**
      * Pushes a new operand onto top of the stack.
+     *
      * @param d the new operand
      */
     public void pushOperand(double d) {
@@ -52,6 +53,7 @@ public class Calc {
 
     /**
      * Removes and returns the top operand.
+     *
      * @return the top operand
      * @throws IllegalStateException if the stack is empty
      */
@@ -65,6 +67,7 @@ public class Calc {
     /**
      * Performs the provided operation in the top operand, and
      * replaces it with the result.
+     *
      * @param op the operation to perform
      * @return the result of performing the operation
      * @throws IllegalStateException if the operand stack is empty
@@ -77,6 +80,7 @@ public class Calc {
     /**
      * Performs the provided operation in the two topmost operands, and
      * replaces them with the result.
+     *
      * @param op the operation to perform
      * @return the result of performing the operation
      * @throws IllegalStateException if the operand count is less than two
@@ -98,7 +102,7 @@ public class Calc {
      * @throws IllegalStateException if the operand count is less than two
      */
     public void swap() {
-        // TODO
+        // TODO        
     }
 
     /**
