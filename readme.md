@@ -18,7 +18,7 @@ You can run the test using: mvn test
 * **.idea**: 
 * **docs**: the release documents (release1)
 * **javafx-template/.vscode**: (launc.json, settings.json)
-* **javafx-template/src/main/java/app**: App, controller and ()
+* **javafx-template/src/main/java/app**: App.java, controllers and logic
 * **javafx-template/src/main/java/resources**: fxml files
 * **javafx-template/src/test**: test
 * **javafx-template/target**: 
