@@ -27,7 +27,7 @@ There is a need to register participants, get an overview of who is playing agai
 - Result table
 - Overview of costs
 
-### Importatnt functionality
+### Important functionality
 - Register participants
 - Choose number of courts available / choose reserved
 - Choose tournament format
