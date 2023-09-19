@@ -8,22 +8,12 @@ public class Player {
     private String Name;
     private int Age;
     private int Grade;
-    private ArrayList<Player> HasPlayed= new ArrayList<>();
-
 
  
     public Player(String name, int age, int grade) {
         Name = name;
         Age = age;
         Grade = grade;
-    }
-
-    public void addHasPlayed(Player player){
-        HasPlayed.add(player);
-    }
-
-    public ArrayList<Player> getHasPlayed(){
-        return HasPlayed;
     }
 
     public String getName(){
