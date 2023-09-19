@@ -1,6 +1,10 @@
 package app;
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.jar.Attributes.Name;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,7 +16,7 @@ import javafx.scene.control.TextField;
 
 public class AppControllerPadel {
 
-    //private ArrayList<Players>
+    private ArrayList<Player> playerlist = new ArrayList<>();
 
     @FXML
     private TextField addName, addAge;
@@ -31,6 +35,23 @@ public class AppControllerPadel {
     void AddPlayer(ActionEvent event){
 
         Player player= new Player(addName.getText(), StringToInt(addAge.getText()),2);
+        playerlist.add(player);
+
+        ArrayList<String> list = new ArrayList<>();
+
+        for (int i = 0; i< playerlist.size(); i++) {
+            String Name = playerlist.get(i).getName();
+            list.add(Name);
+        }
+        StringBuilder sb = new StringBuilder();
+        for (String item : list) {
+            sb.append(item).append("\n");
+        }
+        String output = sb.toString();
+        players.setText(output);
+
+        addName.setText("");
+        addAge.setText("");
         
     }
 
