@@ -1,9 +1,5 @@
 package app;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BinaryOperator;
-import java.util.function.UnaryOperator;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,8 +31,6 @@ public class AppControllerPadel {
     void AddPlayer(ActionEvent event){
 
         Player player= new Player(addName.getText(), StringToInt(addAge.getText()),2);
-        
-
         
     }
 
