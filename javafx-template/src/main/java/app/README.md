@@ -14,3 +14,6 @@ In later versions users should be able to create torunaments of the participatin
 
 # User stories
 User stories can be found in the directory [User Stories](/gr2362/userStories.md)
+
+# App screenshots
+A screenshot of player registration can be found [here](/App.png)
