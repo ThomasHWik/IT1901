@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PadelTest {
+
     @Test
     void testPlayer() {
 
@@ -12,11 +13,5 @@ public class PadelTest {
         Assertions.assertTrue(player.getName() =="Jon");
         Assertions.assertTrue(player.getAge() == 23);
         Assertions.assertTrue(player.getGrade() == 2);
-        
     }
-
-    
-
-
-
 }
