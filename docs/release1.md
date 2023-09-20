@@ -4,4 +4,7 @@ For the first release we have setup the project in gitlab and configured the fil
 
 The readme files for both the project #5 and app description #4 have been completed. In addition, we have created user stories #1 and a simple test for the application #7.
 
+## Group work
+The group work has consisted of group meetings as well as individual work. Every group member has been assigned issues to resolve and done so. In addition, the group has met with the teaching assistant for help regarding questions we had about the first deliverable (release 1), and we have used Piazza to ask further questions.
+
 
