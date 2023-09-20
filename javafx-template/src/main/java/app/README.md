@@ -13,7 +13,7 @@ Players register the game results (games won and games lost) for a pairing, and 
 In later versions users should be able to create torunaments of the participating players, where players or teams play against multiple opponents.
 
 # User stories
-User stories can be found in the directory [User Stories](/gr2362/userStories.md)
+User stories can be found [here](/userStories.md)
 
 # App screenshots
 A screenshot of player registration can be found [here](/App.png)
