@@ -30,6 +30,9 @@ public class AppControllerPadel {
     private int StringToInt(String string){
         return Integer.valueOf(string);
     }
+    private String IntToString(int number){
+        return Integer.toString(number);
+    }
 
     @FXML
     void AddPlayer(ActionEvent event){
@@ -41,7 +44,8 @@ public class AppControllerPadel {
 
         for (int i = 0; i< playerlist.size(); i++) {
             String Name = playerlist.get(i).getName();
-            list.add(Name);
+            String age = IntToString(playerlist.get(i).getAge());
+            list.add(Name + ", " + age);
         }
         StringBuilder sb = new StringBuilder();
         for (String item : list) {
