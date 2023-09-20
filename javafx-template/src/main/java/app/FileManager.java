@@ -10,7 +10,7 @@ public class FileManager {
     
     public FileManager() {
         try {
-            bw = new BufferedWriter(new FileWriter("javafx-template\\src\\main\\java\\app\\Players.txt", true));
+            bw = new BufferedWriter(new FileWriter("src\\main\\java\\app\\Players.txt", true));
             bw.write("\nNew Session:\n");
             bw.close();
         }
@@ -20,7 +20,7 @@ public class FileManager {
     }
 
     public void savePlayer(Player player) throws IOException {
-        bw = new BufferedWriter(new FileWriter("javafx-template\\src\\main\\java\\app\\Players.txt", true));
+        bw = new BufferedWriter(new FileWriter("src\\main\\java\\app\\Players.txt", true));
 
         StringBuilder sb = new StringBuilder();
         sb.append(player.getName() + ", ").append(player.getAge() + "\n");
