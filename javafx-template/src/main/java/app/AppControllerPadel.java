@@ -21,15 +21,13 @@ public class AppControllerPadel {
     private TextArea players;
 
     @FXML
-    private Button AddPlayer;
+    private Button AddPlayer, CreateGame;
 
     @FXML
     void AddPlayer(ActionEvent event) throws IOException {
 
-        Player player= new Player(addName.getText(), StringToInt(addAge.getText()),2);
+        Player player= new Player(addName.getText(), StringToInt(addAge.getText()));
         playerlist.add(player);
-
-        fm.savePlayer(player);
 
         ArrayList<String> list = new ArrayList<>();
 
@@ -62,4 +60,12 @@ public class AppControllerPadel {
     private String IntToString(int number) {
         return Integer.toString(number);
     }
+
+    @FXML
+    void CreateGame(ActionEvent event) throws IOException{
+        for (int i = 0; i < playerlist.size(); i++) {
+            fm.savePlayer(playerlist.get(i));
+        }
+    }
+
 }

@@ -4,12 +4,16 @@ public class Player {
 
     private String Name;
     private int Age;
-    private int Grade;
+    private int wins;
 
-    public Player(String name, int age, int grade) {
+    public Player(String name, int age) {
         Name = name;
         Age = age;
-        Grade = grade;
+        wins=0;
+    }
+
+    public void addwins(){
+        wins= wins+1;
     }
 
     public String getName() {
@@ -20,7 +24,5 @@ public class Player {
         return Age;
     }
 
-    public int getGrade() {
-        return Grade;
-    }   
+       
 }
