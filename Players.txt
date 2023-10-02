@@ -15,3 +15,7 @@ solveig, 12
 New Session:
 Frida, 22
 Frida, 22
+
+New Session:
+line, 22
+Vilde, 12

@@ -5,9 +5,13 @@ import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AppControllerPadel {
 
@@ -66,6 +70,9 @@ public class AppControllerPadel {
         for (int i = 0; i < playerlist.size(); i++) {
             fm.savePlayer(playerlist.get(i));
         }
+        Parent root = FXMLLoader.load(getClass().getResource("games.fxml"));
+            Stage stage = (Stage) CreateGame.getScene().getWindow();
+            stage.setScene(new Scene(root));
     }
 
 }
