@@ -3,6 +3,8 @@ package app;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileManager {
 
@@ -27,5 +29,11 @@ public class FileManager {
 
         bw.write(sb.toString());
         bw.close();
+    }
+
+    public List<Player> getListOfPlayers(){
+        
+        List<Player> players = new ArrayList<>();
+        return players;
     }
 }
