@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 public class AppControllerPadel {
 
     private FileManager fm = new FileManager();
+    private AppControllerScoreBoard sbController;
     private ArrayList<Player> playerlist = new ArrayList<>();
 
     @FXML
@@ -52,6 +53,19 @@ public class AppControllerPadel {
         updateGUI();
     }
 
+    @FXML
+    void CreateGame(ActionEvent event) throws IOException {
+        for (Player player : playerlist) {
+            fm.savePlayer(player);
+        }
+
+        sbController.setScorelist(playerlist);
+
+        Parent root = FXMLLoader.load(getClass().getResource("games.fxml"));
+            Stage stage = (Stage) CreateGame.getScene().getWindow();
+            stage.setScene(new Scene(root));
+    }
+
     private void updateGUI() {
         addName.clear();
         addAge.clear();
@@ -64,15 +78,4 @@ public class AppControllerPadel {
     private String IntToString(int number) {
         return Integer.toString(number);
     }
-
-    @FXML
-    void CreateGame(ActionEvent event) throws IOException{
-        for (int i = 0; i < playerlist.size(); i++) {
-            fm.savePlayer(playerlist.get(i));
-        }
-        Parent root = FXMLLoader.load(getClass().getResource("games.fxml"));
-            Stage stage = (Stage) CreateGame.getScene().getWindow();
-            stage.setScene(new Scene(root));
-    }
-
 }
