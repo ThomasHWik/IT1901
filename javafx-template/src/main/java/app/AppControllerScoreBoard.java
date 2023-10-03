@@ -11,16 +11,23 @@ public class AppControllerScoreBoard {
     private PlayerComparator pc;
     private FileManager fm = new FileManager();
     private ArrayList<Player> scorelist;
+    private ArrayList<Player> oldScorelist;
+    private ArrayList<Player> newScorelist;
 
     @FXML
     private TextArea scoreboard;
 
     public void createScoreboard() throws IOException {
-        // fm.saveScoreboard(scorelist);
+        oldScorelist = fm.loadScoreboard();
+
+        scorelist.addAll(oldScorelist);
+        scorelist.sort(pc);
+        newScorelist = (ArrayList<Player>) scorelist.subList(0, 10);
+
+        scoreboard.setText(fm.saveScoreboard(newScorelist));
     }
 
-    public void setScoreboard(ArrayList<Player> playerlist) {
+    public void setScorelist(ArrayList<Player> playerlist) {
         this.scorelist = playerlist;
-        playerlist.sort(pc);
     }
 }
