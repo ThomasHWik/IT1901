@@ -6,7 +6,7 @@ import java.util.List;
 public class CreatePlayerPairs {
     
     private List<Player> playerList = new ArrayList<>();
-    private List<PlayerPair> PlayerPairslist;
+    private List<PlayerPair> PlayerPairslist = new ArrayList<>();
 
     
     
@@ -21,8 +21,7 @@ public class CreatePlayerPairs {
         playerList.add(player);
     }
 
-    private List<PlayerPair> createPlayerPairs(List<Player> players){
-        List<PlayerPair> pairs = new ArrayList<>();
+    private void createPlayerPairs(List<Player> players){
 
         if (playerList.size() % 2 != 0){
             throw new IllegalArgumentException("the number of players must be even");
@@ -32,9 +31,8 @@ public class CreatePlayerPairs {
             Player player1 = players.get(i);
             Player player2 = players.get(i+1);
             PlayerPair pair = new PlayerPair(player1, player2);
-            pairs.add(pair);
+            PlayerPairslist.add(pair);
         }
-        return pairs;
     }
 
     public List<PlayerPair> getPlayerPairs(){
