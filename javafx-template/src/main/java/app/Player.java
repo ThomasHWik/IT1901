@@ -2,27 +2,33 @@ package app;
 
 public class Player {
 
-    private String Name;
-    private int Age;
+    private String name;
+    private int age;
     private int wins;
 
     public Player(String name, int age) {
-        Name = name;
-        Age = age;
-        wins=0;
+        this.name = name;
+        this.age = age;
+        this.wins = 0;
     }
 
-    public void addwins(){
-        wins= wins+1;
+    public void addwins() {
+        wins++;
     }
 
     public String getName() {
-        return Name;
+        return this.name;
     }
 
     public int getAge() {
-        return Age;
+        return this.age;
     }
-
-       
+    
+    public int getWins() {
+        return this.wins;
+    }
+    
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
 }
