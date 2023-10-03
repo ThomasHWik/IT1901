@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 
 public class AppControllerGames {
 
-    private FileManager fileManager = new FileManager();
+    private Getplayerlistoffile reader = new Getplayerlistoffile();
     private List<Player> Player = new ArrayList<>();
     private CreatePlayerPairs pairs = new CreatePlayerPairs(Player);
     private List<PlayerPair> Pairs = new ArrayList<>();
@@ -31,7 +31,7 @@ public class AppControllerGames {
     @FXML
     void test(ActionEvent event) throws FileNotFoundException, IOException{
         List<Player> list=new ArrayList<>();
-        list = fileManager.getListOfPlayers("Players.txt");
+        list = reader.getListOfPlayers("Players.txt");
         pairs = new CreatePlayerPairs(list);
 
         for (int i = 0; i < pairs.getPlayerPairs().size(); i++) {

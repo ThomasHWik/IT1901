@@ -1,40 +1,17 @@
 package app;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileManager {
-
-    private BufferedWriter bw;
+public class Getplayerlistoffile {
     
-    public FileManager() {
-        try {
-            bw = new BufferedWriter(new FileWriter("Players.txt", true));
-            bw.write("\nNew Session:\n");
-            bw.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
-    public void savePlayer(Player player) throws IOException {
-        bw = new BufferedWriter(new FileWriter("Players.txt", true));
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(player.getName() + ", ").append(player.getAge() + "\n");
-
-        bw.write(sb.toString());
-        bw.close();
-    }
-
-    public List<Player> getListOfPlayers( String filePath) throws FileNotFoundException, IOException{
+    public static List<Player> getListOfPlayers(String filePath) throws FileNotFoundException, IOException {
 
         List<Player> playerList = new ArrayList<>();
         boolean newSessionReached = false;
@@ -43,7 +20,9 @@ public class FileManager {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.trim().equalsIgnoreCase("New Session:")) {
+                    // Reset the flag when a new session starts
                     newSessionReached = true;
+                    playerList.clear();
                 } else if (newSessionReached) {
                     String[] parts = line.split(",");
                     if (parts.length == 2) {
@@ -58,6 +37,5 @@ public class FileManager {
 
         return playerList;
     }
-
     
 }
