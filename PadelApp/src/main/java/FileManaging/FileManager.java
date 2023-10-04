@@ -1,4 +1,4 @@
-package app;
+package FileManaging;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,6 +9,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import Logic.Player;
+import Logic.PlayerComparator;
 
 public class FileManager {
 

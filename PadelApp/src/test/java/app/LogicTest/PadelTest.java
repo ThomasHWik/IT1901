@@ -1,7 +1,9 @@
-package app;
+package app.LogicTest;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import Logic.Player;
 
 public class PadelTest {
 
