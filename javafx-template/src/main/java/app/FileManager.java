@@ -12,7 +12,7 @@ import java.util.List;
 public class FileManager {
 
     private BufferedWriter bw;
-    
+
     public FileManager() {
         try {
             bw = new BufferedWriter(new FileWriter("Players.txt", true));
