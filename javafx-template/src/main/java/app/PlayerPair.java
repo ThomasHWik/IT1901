@@ -5,18 +5,18 @@ import java.util.List;
 
 public class PlayerPair {
     
-    private List<Player> playerList = new ArrayList<>();
+    private Player player1;
+    private Player player2;
     
-    public PlayerPair(Player player1, Player player2) {}
-
-    public void addPlayer(Player player) {
-        playerList.add(player);
+    public PlayerPair(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
     }
 
     public List<PlayerPair> createPlayerPairs(List<Player> players) {
         List<PlayerPair> pairs = new ArrayList<>();
 
-        if (playerList.size() % 2 != 0) {
+        if (players.size() % 2 != 0) {
             throw new IllegalArgumentException("the number of players must be even");
         }
 
@@ -28,5 +28,13 @@ public class PlayerPair {
         }
 
         return pairs;
+    }
+
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
     }
 }
