@@ -59,7 +59,7 @@ public class AppControllerPadel {
             fm.savePlayer(player);
         }
 
-        sbController.setScorelist(playerlist);
+        //sbController.setScorelist(playerlist);
 
         Parent root = FXMLLoader.load(getClass().getResource("games.fxml"));
             Stage stage = (Stage) CreateGame.getScene().getWindow();
