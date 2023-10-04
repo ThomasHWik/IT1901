@@ -37,3 +37,23 @@ ll, 12
 er, 12
 
 New Session:
+
+New Session:
+John, 22
+Vilde, 21
+
+New Session:
+
+New Session:
+l, 1
+w, 2
+
+New Session:
+
+New Session:
+
+New Session:
+ll, 22
+ss, 12
+
+New Session:

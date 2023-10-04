@@ -1,4 +1,4 @@
-package app;
+package Logic;
 
 import java.util.Comparator;
 
