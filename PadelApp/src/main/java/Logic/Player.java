@@ -5,6 +5,7 @@ public class Player {
     private String name;
     private int age;
     private int wins;
+    private int tlfNr;
 
     public Player(String name, int age) {
         this.name = name;
@@ -30,5 +31,13 @@ public class Player {
     
     public void setWins(int wins) {
         this.wins = wins;
+    }
+
+    public int getTlfNr() {
+        return this.tlfNr;
+    }
+
+    public void setTlfNr(int tlfNr) {
+        this.tlfNr = tlfNr;
     }
 }

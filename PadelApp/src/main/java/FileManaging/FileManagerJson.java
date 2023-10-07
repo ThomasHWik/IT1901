@@ -1,4 +1,4 @@
-package app;
+package FileManaging;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -6,6 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import Logic.Player;
+import Logic.Scoreboard;
+
+import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class FileManagerJson {
@@ -17,10 +21,6 @@ public class FileManagerJson {
     }
 
     public void savePlayer(Player player, Scoreboard scoreboard) throws IOException, StreamWriteException {
-        //add player to the scoreboard
-
-        //create scoreboard file from scoreboard object
-        
         try {
             om.writeValue(new File("scoreboard.json"), getScoreboard());
         } catch (Exception e) {
@@ -28,7 +28,7 @@ public class FileManagerJson {
         }
     }
 
-    public Scoreboard getScoreboard() throws Exception {
+    public Scoreboard getScoreboard() {
         return null;
     }
     
