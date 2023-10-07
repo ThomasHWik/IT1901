@@ -1,4 +1,4 @@
-package app;
+package Logic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,20 +8,18 @@ public class CreatePlayerPairs {
     private List<Player> playerList = new ArrayList<>();
     private List<PlayerPair> PlayerPairslist = new ArrayList<>();
 
-    
-    
     public CreatePlayerPairs(List<Player> playerlist) {
-        for (int i = 0; i < playerlist.size(); i++) {
-            addPlayer(playerlist.get(i));
+        for (Player player : playerlist) {
+            addPlayer(player);
         }
         createPlayerPairs(playerList);
     }
 
-    public void addPlayer(Player player){
+    public void addPlayer(Player player) {
         playerList.add(player);
     }
 
-    private void createPlayerPairs(List<Player> players){
+    private void createPlayerPairs(List<Player> players) {
 
         if (playerList.size() % 2 != 0){
             throw new IllegalArgumentException("the number of players must be even");
@@ -38,7 +36,4 @@ public class CreatePlayerPairs {
     public List<PlayerPair> getPlayerPairs(){
         return PlayerPairslist;
     }
-
-    
-
 }

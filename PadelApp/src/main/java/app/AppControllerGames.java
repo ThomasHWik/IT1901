@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import FileManaging.Getplayerlistoffile;
+import Logic.CreatePlayerPairs;
+import Logic.Player;
+import Logic.PlayerPair;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +33,7 @@ public class AppControllerGames {
     private TextArea text;
 
     @FXML
-    void test(ActionEvent event) throws FileNotFoundException, IOException{
+    void test(ActionEvent event) throws FileNotFoundException, IOException {
         List<Player> list=new ArrayList<>();
         list = reader.getListOfPlayers("Players.txt");
         pairs = new CreatePlayerPairs(list);
@@ -42,7 +46,7 @@ public class AppControllerGames {
 
         for (int i = 0; i< Pairs.size(); i++) {
             String player1 = Pairs.get(i).getPlayer1().getName();
-            String player2 = Pairs.get(i).getPlayer2().getName();;
+            String player2 = Pairs.get(i).getPlayer2().getName();
             exlist.add(player1 + " vs " + player2);
         }
 
@@ -77,7 +81,7 @@ public class AppControllerGames {
     
 
     @FXML
-    void GoToScore(ActionEvent event) throws IOException{
+    void GoToScore(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("scoreBoard.fxml"));
             Stage stage = (Stage) GoToScore.getScene().getWindow();
             stage.setScene(new Scene(root));

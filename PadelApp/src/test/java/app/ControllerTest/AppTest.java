@@ -1,4 +1,4 @@
-package app;
+package app.ControllerTest;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +11,8 @@ import java.io.IOException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+
+import app.AppControllerPadel;
 
 
 /**
