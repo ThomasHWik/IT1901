@@ -1,10 +1,7 @@
 package FileManaging;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import Logic.Player;
 import Logic.Scoreboard;
@@ -15,20 +12,37 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class FileManagerJson {
 
     private ObjectMapper om;
+    private String filename;
 
-    public FileManagerJson() {
+
+    public FileManagerJson(String filename) {
         om = new ObjectMapper();
+        this.filename = filename;
+
     }
 
-    public void savePlayer(Player player, Scoreboard scoreboard) throws IOException, StreamWriteException {
+    public void saveScoreboard(Scoreboard scoreboard) throws IOException, StreamWriteException {
         try {
-            om.writeValue(new File("scoreboard.json"), getScoreboard());
+            om.writeValue(new File(this.filename+".json"), scoreboard);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public Scoreboard getScoreboard() {
+    static public Scoreboard getScoreboard(String filename) {
+        if (filename == null || filename.isEmpty() || !filename.endsWith(".json")) {
+            return null;
+        }   
+        File file = new File(filename);
+        if (!file.exists()) {
+            return null;
+        }
+        ObjectMapper om = new ObjectMapper();
+        try {
+            return om.readValue(file, Scoreboard.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
     
