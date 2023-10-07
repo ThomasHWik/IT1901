@@ -3,5 +3,7 @@ module app {
     requires javafx.controls;
     requires javafx.fxml;
 
+    exports Logic;
+
     opens app to javafx.graphics, javafx.fxml;
 }
