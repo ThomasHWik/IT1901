@@ -1,6 +1,9 @@
 # Group gr2362 repository 
  
 # Padel App
+
+[Open in Eclipse Che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2362/gr2362?new)
+
 The Padel App is an app that is supposed to organize matches and tournaments, and creates a scoreboard for the results.
 
 # Project setup and build
