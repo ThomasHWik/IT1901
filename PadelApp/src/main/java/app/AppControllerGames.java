@@ -33,6 +33,12 @@ public class AppControllerGames {
     private TextArea text;
 
     @FXML
+    private TableView VS;
+
+    @FXML
+    private TableColumn Player1,Player2;
+
+    @FXML
     void test(ActionEvent event) throws FileNotFoundException, IOException {
         List<Player> list=new ArrayList<>();
         list = reader.getListOfPlayers("Players.txt");
