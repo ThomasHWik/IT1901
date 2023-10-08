@@ -43,9 +43,7 @@ public class PlayerPairTest {
         PlayerPair playerPair = new PlayerPair(player1, player2);
         List<PlayerPair> actualPairs = playerPair.createPlayerPairs(players);
 
-        assertEquals(expectedPairs.size(), actualPairs.size());
-        assertTrue(expectedPairs.containsAll(actualPairs));
-        assertTrue(actualPairs.containsAll(expectedPairs));
+        assertEquals(expectedPairs, actualPairs);
     }
 
     @Test
