@@ -65,3 +65,61 @@ Linda, 22
 Vilde, 12
 
 New Session:
+
+New Session:
+l, 1
+l, 1
+
+New Session:
+k, 2
+k, 2
+
+New Session:
+
+New Session:
+l, 22
+?, 22
+
+New Session:
+l, 2
+l, 3
+
+New Session:
+ll, 11
+kk, 12
+
+New Session:
+ss, 1
+ss, 23
+
+New Session:
+Linda, 22
+Per, 23
+
+New Session:
+
+New Session:
+Vilde, 12
+Menlda, 23
+tangen, 34
+jens, 22
+
+New Session:
+w, 2
+r, 3
+
+New Session:
+l, 2
+f, 3
+
+New Session:
+Matt, 22
+ll, 23
+
+New Session:
+l, 3
+d, 3
+
+New Session:
+l, 2
+d, 3
