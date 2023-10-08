@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Assertions;
 
 public class PlayerTest {
     private Player player;
@@ -24,7 +23,7 @@ public class PlayerTest {
 
     @Test
     void testGetAge() {
-        assertEquals(25, player.getAge())
+        assertEquals(25, player.getAge());
     }
 
     @Test
