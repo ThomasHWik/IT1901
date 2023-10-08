@@ -59,5 +59,17 @@ public class PlayerPairTest {
             playerPair.createPlayerPairs(players);
         });
     }
+
+    @Test
+    void testGetPlayer1() {
+        PlayerPair playerPair = new PlayerPair(player1, player2);
+        assertEquals(player1, playerPair.getPlayer1());
+    }
+
+    @Test
+    void testGetPlayer2() {
+        PlayerPair playerPair = new PlayerPair(player1, player2);
+        assertEquals(player2, playerPair.getPlayer2());
+    }
     
 }
