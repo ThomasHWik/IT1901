@@ -44,7 +44,7 @@ public class PlayerTest {
         player.setWins(5);
         assertEquals(5, player.getWins());
 
-        // Test setting wins to a negative value
+        // Test setting wins to a negative value, should give a win value of 0
         // player.setWins(-1);
         // assertEquals(0, player.getWins());
     }
