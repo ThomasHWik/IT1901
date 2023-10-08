@@ -17,6 +17,11 @@ public class AppControllerScoreBoard {
     @FXML
     private TextArea scoreboard;
 
+    @FXML
+    public void initialize() throws IOException {
+        createScoreboard();
+    }
+
     public void createScoreboard() throws IOException {
         oldScorelist = fm.loadScoreboard();
 

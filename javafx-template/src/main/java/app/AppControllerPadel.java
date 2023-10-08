@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 public class AppControllerPadel {
 
     private FileManager fm = new FileManager();
-    private AppControllerScoreBoard sbController;
+    private AppControllerScoreBoard sbController = new AppControllerScoreBoard();
     private ArrayList<Player> playerlist = new ArrayList<>();
 
     @FXML
