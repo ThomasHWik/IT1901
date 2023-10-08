@@ -13,12 +13,16 @@ import Logic.PlayerPair;
 public class PlayerPairTest {
     private Player player1;
     private Player player2;
+    private Player player3;
+    private Player player4;
 
     @BeforeEach
     void setUp() {
-        // Create a new Player object before each test
+        // Create new players before each test
         player1 = new Player("Lewis", 38);
         player2 = new Player("Lando", 23);
+        player3 = new Player("Logan", 22);
+        player4 = new Player("Daniel", 34);
     }
 
     @Test
@@ -26,11 +30,11 @@ public class PlayerPairTest {
         List<Player> players = new ArrayList<>();
         players.add(player1);
         players.add(player2);
-        players.add(new Player("Logan", 22));
-        players.add(new Player("Daniel", 34));
+        players.add(player3);
+        players.add(player4);
 
         PlayerPair pair1 = new PlayerPair(player1, player2);
-        PlayerPair pair2 = new PlayerPair(players.get(2), players.get(3));
+        PlayerPair pair2 = new PlayerPair(player3, player4);
 
         List<PlayerPair> expectedPairs = new ArrayList<>();
         expectedPairs.add(pair1);
@@ -49,7 +53,7 @@ public class PlayerPairTest {
         List<Player> players = new ArrayList<>();
         players.add(player1);
 
-        // Attempting to create pairs with an odd number of players should throw an exception
+        // Should throw an IllegalArgument Exception when attempting to create pairs from an odd number of players
         assertThrows(IllegalArgumentException.class, () -> {
             PlayerPair playerPair = new PlayerPair(player1, player2);
             playerPair.createPlayerPairs(players);
