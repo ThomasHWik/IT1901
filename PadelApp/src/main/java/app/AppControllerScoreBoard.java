@@ -2,6 +2,7 @@ package app;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import FileManaging.FileManager;
 import Logic.Player;
@@ -13,12 +14,17 @@ public class AppControllerScoreBoard {
 
     private PlayerComparator pc;
     private FileManager fm = new FileManager();
-    private ArrayList<Player> scorelist;
+    private List<Player> scorelist;
     private ArrayList<Player> oldScorelist;
     private ArrayList<Player> newScorelist;
 
     @FXML
     private TextArea scoreboard;
+
+    @FXML
+    public void initialize() throws IOException {
+        createScoreboard();
+    }
 
     public void createScoreboard() throws IOException {
         oldScorelist = fm.loadScoreboard();
@@ -30,7 +36,7 @@ public class AppControllerScoreBoard {
         scoreboard.setText(fm.saveScoreboard(newScorelist));
     }
 
-    public void setScorelist(ArrayList<Player> playerlist) {
+    public void setScorelist(List<Player> playerlist) {
         this.scorelist = playerlist;
     }
 }

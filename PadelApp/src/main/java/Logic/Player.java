@@ -4,8 +4,7 @@ public class Player {
 
     private String name;
     private int age;
-    private int wins;
-    private int tlfNr;
+    private double wins;
 
     public Player(String name, int age) {
         this.name = name;
@@ -33,7 +32,7 @@ public class Player {
     }
 
     public void addwins() {
-        wins++;
+        wins+=1.0;
     }
 
     public String getName() {
@@ -44,12 +43,12 @@ public class Player {
         return this.age;
     }
     
-    public int getWins() {
+    public double getWins() {
         return this.wins;
     }
     
-    public void setWins(int wins) {
-        this.wins = wins;
+    public void setWins(double wins) {
+        this.wins = this.wins + wins;
     }
 
     public int getTlfNr() {
