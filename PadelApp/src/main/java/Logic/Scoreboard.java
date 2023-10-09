@@ -3,8 +3,8 @@ package Logic;
 import java.util.ArrayList;
 
 public class Scoreboard {
-    String filename;
-    ArrayList<Player> scorelist;
+    private String filename;
+    private ArrayList<Player> scorelist;
 
     public Scoreboard() {
         this.filename = "Scoreboard.json";

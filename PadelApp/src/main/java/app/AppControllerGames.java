@@ -28,6 +28,7 @@ public class AppControllerGames {
     private List<Player> Player = new ArrayList<>();
     private CreatePlayerPairs pairs = new CreatePlayerPairs(Player);
     private List<PlayerPair> Pairs = new ArrayList<>();
+    private AppControllerScoreBoard sbController = new AppControllerScoreBoard();
 
     @FXML
     private TextArea text;

@@ -4,7 +4,11 @@ public class Player {
 
     private String name;
     private int age;
+<<<<<<< HEAD
     private int wins;
+=======
+    private double wins;
+>>>>>>> 4bccd6b2d9f77cffa003213b0fce4f018216e5e1
     private int tlfNr;
 
     public Player(String name, int age) {

@@ -20,7 +20,6 @@ import javafx.stage.Stage;
 public class AppControllerPadel {
 
     private FileManager fm = new FileManager();
-    private AppControllerScoreBoard sbController;
     private ArrayList<Player> playerlist = new ArrayList<>();
     
     
