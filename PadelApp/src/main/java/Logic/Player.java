@@ -5,6 +5,7 @@ public class Player {
     private String name;
     private int age;
     private double wins;
+    private int tlfNr;
 
     public Player(String name, int age) {
         this.name = name;
