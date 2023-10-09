@@ -2,7 +2,7 @@
  
 # Padel App
 
-[Open in Eclipse Che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2362/gr2362?new)
+[<img src="https://eclipse.dev/che/docs/_/img/icon-eclipse-che.svg" width = "25"/> Open in Eclipse Che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2362/gr2362?new)
 
 The Padel App is an app that is supposed to organize matches and tournaments, and creates a scoreboard for the results.
 
@@ -21,11 +21,16 @@ You can run the test using: `mvn test`
 
 # The Code Structure
 * **.idea**: 
-* **docs**: the release documents (release1)
-* **javafx-template/.vscode**: (launc.json, settings.json)
-* **javafx-template/src/main/java/app**: App.java, controllers and logic
-* **javafx-template/src/main/java/resources**: fxml files
-* **javafx-template/src/test**: test
-* **javafx-template/target**: 
+* **.vscode**:
+* **docs**: the release documents (release1, release 2)
+* **PadelApp/.idea**:
+* **PadelApp/.vscode**: (launc.json, settings.json)
+* **PadelApp/src/main/java/app**: App.java, App-controllers
+* **PadelApp/src/main/java/FileManaging**: Filehandling
+* **PadelApp/src/main/java/Logic**: Domain logic
+* **PadelApp/src/main/resources**: fxml files
+* **PadelApp/src/test/ControllerTest**: AppTest
+* **PadelApp/src/test/LogicTest**: PadelTest
+* **PadelApp/target**: 
 
 

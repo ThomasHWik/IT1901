@@ -9,7 +9,26 @@ public class Player {
     public Player(String name, int age) {
         this.name = name;
         this.age = age;
-        this.wins = 0.0;
+        this.wins = 0;
+        this.tlfNr = 0;
+    }
+
+    public Player() {
+        this.name = "";
+        this.age = 0;
+        this.wins = 0;
+        this.tlfNr = 0;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Age cannot be negative!");
+        }
+        this.age = age;
     }
 
     public void addwins() {
@@ -30,5 +49,13 @@ public class Player {
     
     public void setWins(double wins) {
         this.wins = this.wins + wins;
+    }
+
+    public int getTlfNr() {
+        return this.tlfNr;
+    }
+
+    public void setTlfNr(int tlfNr) {
+        this.tlfNr = tlfNr;
     }
 }
