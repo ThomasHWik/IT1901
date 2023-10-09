@@ -33,13 +33,13 @@ public class AppControllerGames {
     private TextArea text;
 
     @FXML
-    private Button GoToScore,NewRound,setUp;
+    private Button GoToScore,NewRound;
 
     @FXML
     private ListView<String> Player1, Player2;
 
     @FXML
-    private RadioButton onel,oner,twol,twor,threel,threer,fourl,fourr;
+    private RadioButton onel,oner,twol,twor,threel,threer,fourl,fourr,fivel,fiver,sixl,sixr,sevenl,sevenr,eightl,eightr,ninel,niner,tenl,tenr,elevenl,elevenr;
 
     private ArrayList<RadioButton> radioButtons= new ArrayList<RadioButton>();
 
@@ -52,6 +52,20 @@ public class AppControllerGames {
         radioButtons.add(threer);
         radioButtons.add(fourl);
         radioButtons.add(fourr);
+        radioButtons.add(fivel);
+        radioButtons.add(fiver);
+        radioButtons.add(sixl);
+        radioButtons.add(sixr);
+        radioButtons.add(sevenl);
+        radioButtons.add(sevenr);
+        radioButtons.add(eightl);
+        radioButtons.add(eightr);
+        radioButtons.add(ninel);
+        radioButtons.add(niner);
+        radioButtons.add(tenl);
+        radioButtons.add(tenr);
+        radioButtons.add(elevenl);
+        radioButtons.add(elevenr);
     }
     private void addPlayersToVsLists(){
         ArrayList<String> players1 = new ArrayList<>();
@@ -103,11 +117,6 @@ public class AppControllerGames {
         }
     }
 
-    @FXML
-    void setUp(ActionEvent event) throws FileNotFoundException, IOException{
-        CreateGame();
-    }
-
     public void CreateGame() throws FileNotFoundException, IOException{
         setPairs();
         addRadioBs();
@@ -133,8 +142,10 @@ public class AppControllerGames {
 
     @FXML
     void GoToScore(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("scoreBoard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("scoreBoard.fxml"));
+        Parent root = loader.load();
             Stage stage = (Stage) GoToScore.getScene().getWindow();
             stage.setScene(new Scene(root));
+            AppControllerGames score = (AppControllerGames)loader.getController();
     }
 }

@@ -67,13 +67,12 @@ public class AppControllerPadel {
         }
 
         //sbController.setScorelist(playerlist);
-
-        Parent root = FXMLLoader.load(getClass().getResource("games.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
+        Parent root = loader.load();
             Stage stage = (Stage) CreateGame.getScene().getWindow();
             stage.setScene(new Scene(root));
-            /* FXMLLoader loader= FXMLLoader.load(getClass().getResource("games.fxml"));
             AppControllerGames games = (AppControllerGames)loader.getController();
-            games.test(); */
+            games.CreateGame();
 
             
     }
