@@ -59,33 +59,3 @@ ss, 12
 New Session:
 
 New Session:
-Kjartan, 20
-Harald, 19
-Sindre, 18
-Håvard, 21
-Peter, 20
-Eskil, 19
-
-New Session:
-
-New Session:
-
-New Session:
-Kjartan, 20
-Harald, 19
-Sindre, 18
-Håvard, 21
-
-New Session:
-
-New Session:
-
-New Session:
-Kjartan, 20
-Harald, 19
-Sindre, 18
-Håvard, 21
-
-New Session:
-
-New Session:

@@ -21,11 +21,16 @@ You can run the test using: `mvn test`
 
 # The Code Structure
 * **.idea**: 
-* **docs**: the release documents (release1)
-* **javafx-template/.vscode**: (launc.json, settings.json)
-* **javafx-template/src/main/java/app**: App.java, controllers and logic
-* **javafx-template/src/main/java/resources**: fxml files
-* **javafx-template/src/test**: test
-* **javafx-template/target**: 
+* **.vscode**:
+* **docs**: the release documents (release1, release 2)
+* **PadelApp/.idea**:
+* **PadelApp/.vscode**: (launc.json, settings.json)
+* **PadelApp/src/main/java/app**: App.java, App-controllers
+* **PadelApp/src/main/java/FileManaging**: Filehandling
+* **PadelApp/src/main/java/Logic**: Domain logic
+* **PadelApp/src/main/resources**: fxml files
+* **PadelApp/src/test/ControllerTest**: AppTest
+* **PadelApp/src/test/LogicTest**: PadelTest
+* **PadelApp/target**: 
 
 
