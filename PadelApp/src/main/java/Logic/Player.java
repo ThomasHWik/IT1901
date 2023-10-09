@@ -4,21 +4,16 @@ public class Player {
 
     private String name;
     private int age;
-    private double wins;
+    private int wins;
+    private int tlfNr;
 
     public Player(String name, int age) {
-        this.name = name;
-        this.age = age;
+        setName(name);
+        setAge(age);
         this.wins = 0;
-        this.tlfNr = 0;
+        this. tlfNr= 0;
     }
 
-    public Player() {
-        this.name = "";
-        this.age = 0;
-        this.wins = 0;
-        this.tlfNr = 0;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -47,7 +42,7 @@ public class Player {
         return this.wins;
     }
     
-    public void setWins(double wins) {
+    public void setWins(int wins) {
         this.wins = this.wins + wins;
     }
 
