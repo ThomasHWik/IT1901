@@ -72,7 +72,8 @@ public class FileManager {
     }
 
     public ArrayList<Player> loadScoreboard() throws IOException {
-        br = new BufferedReader(new FileReader("Scoreboard.txt"));
+        File sbFile = new File("Scoreboard.txt");
+        br = new BufferedReader(new FileReader(sbFile));
 
         ArrayList<Player> oldScorelist = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
