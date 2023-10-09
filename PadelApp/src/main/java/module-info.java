@@ -3,7 +3,8 @@ module app {
     requires javafx.controls;
     requires javafx.fxml;
 
-    exports Logic;
+    exports Logic to com.fasterxml.jackson.databind, FileManaging;
+    opens Logic to com.fasterxml.jackson.databind, FileManaging;
 
     opens app to javafx.graphics, javafx.fxml;
 }

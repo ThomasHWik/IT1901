@@ -12,7 +12,7 @@ public class FileManagerJson {
     static public void saveScoreboard(Scoreboard scoreboard) throws IOException, StreamWriteException {
         ObjectMapper om = new ObjectMapper();
         try {
-            om.writeValue(new File(scoreboard.getFilename()+".json"), scoreboard);
+            om.writeValue(new File(scoreboard.getFilename()), scoreboard);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -23,6 +23,7 @@ public class FileManagerJson {
             return null;
         }   
         File file = new File(filename);
+        System.out.println(file.getAbsolutePath());
         if (!file.exists()) {
             return null;
         }

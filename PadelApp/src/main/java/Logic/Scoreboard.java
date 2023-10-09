@@ -5,6 +5,11 @@ import java.util.ArrayList;
 public class Scoreboard {
     String filename;
     ArrayList<Player> scorelist;
+
+    public Scoreboard() {
+        this.filename = "Scoreboard.json";
+        this.scorelist = new ArrayList<Player>();
+    }
     
     public Scoreboard(String filename) {
         if (filename != null && !filename.isEmpty()) {
@@ -15,8 +20,21 @@ public class Scoreboard {
         throw new IllegalArgumentException("Invalid filename!");
     }
 
+    public Scoreboard(String filename, ArrayList<Player> scorelist) {
+        if (filename != null && !filename.isEmpty()) {
+            this.filename = filename;
+            this.scorelist = scorelist;
+            return;
+        }
+        throw new IllegalArgumentException("Invalid filename!");
+    }
+
     public String getFilename() {
         return this.filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
     public void addPlayer(Player player) {
@@ -25,6 +43,10 @@ public class Scoreboard {
 
     public ArrayList<Player> getScorelist() {
         return this.scorelist;
+    }
+
+    public void setScorelist(ArrayList<Player> scorelist) {
+        this.scorelist = scorelist;
     }
 
     public void removePlayer(Player player) {

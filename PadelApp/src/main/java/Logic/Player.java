@@ -11,6 +11,25 @@ public class Player {
         this.name = name;
         this.age = age;
         this.wins = 0;
+        this.tlfNr = 0;
+    }
+
+    public Player() {
+        this.name = "";
+        this.age = 0;
+        this.wins = 0;
+        this.tlfNr = 0;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Age cannot be negative!");
+        }
+        this.age = age;
     }
 
     public void addwins() {

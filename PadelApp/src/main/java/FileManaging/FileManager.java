@@ -12,7 +12,6 @@ import java.util.List;
 
 import Logic.Player;
 import Logic.PlayerComparator;
-import Logic.Scoreboard;
 
 public class FileManager {
 
@@ -39,27 +38,11 @@ public class FileManager {
 
         bw.write(sb.toString());
         bw.close();
-
-        //for json testing
-        Scoreboard scoreboard = new Scoreboard("Scoreboard");
-        scoreboard.addPlayer(player);
-        System.out.println("Saving scoreboard");
-        FileManagerJson.saveScoreboard(scoreboard);
-        // -----------------
-
     }
 
     public String saveScoreboard(ArrayList<Player> scorelist) throws IOException {
         File sbFile = new File("Scoreboard.txt");
         bw = new BufferedWriter(new FileWriter(sbFile));
-
-        //for json testing
-        Scoreboard scoreboard = new Scoreboard("Scoreboard.json");
-        for (Player player : scorelist) {
-            scoreboard.addPlayer(player);
-        }
-        FileManagerJson.saveScoreboard(scoreboard);
-        // -----------------
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < scorelist.size(); i++) {
