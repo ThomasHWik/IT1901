@@ -42,7 +42,11 @@ public class PlayerPairTest {
         PlayerPair playerPair = new PlayerPair(player1, player2);
         List<PlayerPair> actualPairs = playerPair.createPlayerPairs(players);
 
-        assertEquals(expectedPairs, actualPairs);
+        assertEquals(expectedPairs.get(0).getPlayer1(), actualPairs.get(0).getPlayer1());
+        assertEquals(expectedPairs.get(0).getPlayer2(), actualPairs.get(0).getPlayer2());
+
+        assertEquals(expectedPairs.get(1).getPlayer1(), actualPairs.get(1).getPlayer1());
+        assertEquals(expectedPairs.get(1).getPlayer2(), actualPairs.get(1).getPlayer2());
     }
 
     @Test
