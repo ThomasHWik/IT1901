@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.AppControllerGames">
    <children>
-      <Button fx:id="NewRound" layoutX="64.0" layoutY="333.0" mnemonicParsing="false" onAction="#NewRound" text="New Round" />
+      <Button fx:id="setUp" layoutX="29.0" layoutY="36.0" mnemonicParsing="false" onAction="#setUp" text="set up" />
       <ListView fx:id="Player2" layoutX="335.0" layoutY="53.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="251.0" prefWidth="96.0" />
       <Button fx:id="GoToScore" layoutX="465.0" layoutY="333.0" mnemonicParsing="false" onAction="#GoToScore" text="End Games" />
       <ListView fx:id="Player1" layoutX="169.0" layoutY="54.0" prefHeight="251.0" prefWidth="96.0" styleClass="-fx-text-alignment: center;" />
@@ -19,71 +19,72 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <RadioButton layoutX="435.0" layoutY="52.0" mnemonicParsing="false">
+      <RadioButton fx:id="oner" disable="true" layoutX="435.0" layoutY="52.0" mnemonicParsing="false" visible="false">
          <toggleGroup>
             <ToggleGroup fx:id="one" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="436.0" layoutY="76.0" mnemonicParsing="false">
+      <RadioButton fx:id="twor" disable="true" layoutX="436.0" layoutY="76.0" mnemonicParsing="false" visible="false">
          <toggleGroup>
             <ToggleGroup fx:id="two" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="436.0" layoutY="100.0" mnemonicParsing="false">
+      <RadioButton fx:id="threer" disable="true" layoutX="436.0" layoutY="100.0" mnemonicParsing="false" visible="false">
          <toggleGroup>
             <ToggleGroup fx:id="three" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="436.0" layoutY="122.0" mnemonicParsing="false">
+      <RadioButton fx:id="fourr" disable="true" layoutX="436.0" layoutY="122.0" mnemonicParsing="false" visible="false">
          <toggleGroup>
             <ToggleGroup fx:id="four" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="436.0" layoutY="145.0" mnemonicParsing="false">
+      <RadioButton disable="true" layoutX="436.0" layoutY="145.0" mnemonicParsing="false" visible="false">
          <toggleGroup>
             <ToggleGroup fx:id="five" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="436.0" layoutY="168.0" mnemonicParsing="false">
+      <RadioButton disable="true" layoutX="436.0" layoutY="168.0" mnemonicParsing="false" visible="false">
          <toggleGroup>
             <ToggleGroup fx:id="six" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="436.0" layoutY="191.0" mnemonicParsing="false">
+      <RadioButton disable="true" layoutX="436.0" layoutY="191.0" mnemonicParsing="false" visible="false">
          <toggleGroup>
             <ToggleGroup fx:id="seven" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="435.0" layoutY="214.0" mnemonicParsing="false">
+      <RadioButton disable="true" layoutX="435.0" layoutY="214.0" mnemonicParsing="false" visible="false">
          <toggleGroup>
             <ToggleGroup fx:id="eight" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="435.0" layoutY="239.0" mnemonicParsing="false">
+      <RadioButton disable="true" layoutX="435.0" layoutY="239.0" mnemonicParsing="false" visible="false">
          <toggleGroup>
             <ToggleGroup fx:id="nine" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="435.0" layoutY="263.0" mnemonicParsing="false">
+      <RadioButton disable="true" layoutX="435.0" layoutY="263.0" mnemonicParsing="false" visible="false">
          <toggleGroup>
             <ToggleGroup fx:id="ten" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="436.0" layoutY="287.0" mnemonicParsing="false">
+      <RadioButton disable="true" layoutX="436.0" layoutY="287.0" mnemonicParsing="false" visible="false">
          <toggleGroup>
             <ToggleGroup fx:id="eleven" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="146.0" layoutY="53.0" mnemonicParsing="false" toggleGroup="$one" />
-      <RadioButton layoutX="147.0" layoutY="77.0" mnemonicParsing="false" toggleGroup="$two" />
-      <RadioButton layoutX="147.0" layoutY="101.0" mnemonicParsing="false" toggleGroup="$three" />
-      <RadioButton layoutX="147.0" layoutY="123.0" mnemonicParsing="false" toggleGroup="$four" />
-      <RadioButton layoutX="147.0" layoutY="146.0" mnemonicParsing="false" toggleGroup="$five" />
-      <RadioButton layoutX="147.0" layoutY="169.0" mnemonicParsing="false" toggleGroup="$six" />
-      <RadioButton layoutX="147.0" layoutY="192.0" mnemonicParsing="false" toggleGroup="$seven" />
-      <RadioButton layoutX="146.0" layoutY="215.0" mnemonicParsing="false" toggleGroup="$eight" />
-      <RadioButton layoutX="146.0" layoutY="240.0" mnemonicParsing="false" toggleGroup="$nine" />
-      <RadioButton layoutX="146.0" layoutY="264.0" mnemonicParsing="false" toggleGroup="$ten" />
-      <RadioButton layoutX="147.0" layoutY="288.0" mnemonicParsing="false" toggleGroup="$eleven" />
+      <RadioButton fx:id="onel" disable="true" layoutX="146.0" layoutY="53.0" mnemonicParsing="false" toggleGroup="$one" visible="false" />
+      <RadioButton fx:id="twol" disable="true" layoutX="147.0" layoutY="77.0" mnemonicParsing="false" toggleGroup="$two" visible="false" />
+      <RadioButton fx:id="threel" disable="true" layoutX="147.0" layoutY="101.0" mnemonicParsing="false" toggleGroup="$three" visible="false" />
+      <RadioButton fx:id="fourl" disable="true" layoutX="147.0" layoutY="123.0" mnemonicParsing="false" toggleGroup="$four" visible="false" />
+      <RadioButton disable="true" layoutX="147.0" layoutY="146.0" mnemonicParsing="false" toggleGroup="$five" visible="false" />
+      <RadioButton disable="true" layoutX="147.0" layoutY="169.0" mnemonicParsing="false" toggleGroup="$six" visible="false" />
+      <RadioButton disable="true" layoutX="147.0" layoutY="192.0" mnemonicParsing="false" toggleGroup="$seven" visible="false" />
+      <RadioButton disable="true" layoutX="146.0" layoutY="215.0" mnemonicParsing="false" toggleGroup="$eight" visible="false" />
+      <RadioButton disable="true" layoutX="146.0" layoutY="240.0" mnemonicParsing="false" toggleGroup="$nine" visible="false" />
+      <RadioButton disable="true" layoutX="146.0" layoutY="264.0" mnemonicParsing="false" toggleGroup="$ten" visible="false" />
+      <RadioButton disable="true" layoutX="147.0" layoutY="288.0" mnemonicParsing="false" toggleGroup="$eleven" visible="false" />
+      <Button fx:id="NewRound" layoutX="64.0" layoutY="333.0" mnemonicParsing="false" onAction="#NewRound" text="New Round" />
    </children>
 </AnchorPane>

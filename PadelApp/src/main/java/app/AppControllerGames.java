@@ -2,7 +2,6 @@ package app;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
@@ -33,22 +33,34 @@ public class AppControllerGames {
     private TextArea text;
 
     @FXML
-    private Button GoToScore, test, NewRound;
+    private Button GoToScore,NewRound,setUp;
 
     @FXML
     private ListView<String> Player1, Player2;
 
     @FXML
-    void NewRound(ActionEvent event) throws FileNotFoundException, IOException{
-        setPairs();
+    private RadioButton onel,oner,twol,twor,threel,threer,fourl,fourr;
 
+    private ArrayList<RadioButton> radioButtons= new ArrayList<RadioButton>();
+
+    private void addRadioBs(){
+        radioButtons.add(onel);
+        radioButtons.add(oner);
+        radioButtons.add(twol);
+        radioButtons.add(twor);
+        radioButtons.add(threel);
+        radioButtons.add(threer);
+        radioButtons.add(fourl);
+        radioButtons.add(fourr);
+    }
+    private void addPlayersToVsLists(){
         ArrayList<String> players1 = new ArrayList<>();
         ArrayList<String> players2 = new ArrayList<>();
 
         for (int i = 0; i< Pairs.size(); i++) {
-            String player1 = Pairs.get(i).getPlayer1().getName();
+            String player1 = Pairs.get(i).getPlayer1().getName()+" : "+ Pairs.get(i).getPlayer1().getWins();
             players1.add(player1);
-            String player2 = Pairs.get(i).getPlayer2().getName();
+            String player2 = Pairs.get(i).getPlayer2().getName()+" : "+ Pairs.get(i).getPlayer2().getWins();
             players2.add(player2);
 
         }
@@ -58,7 +70,55 @@ public class AppControllerGames {
         Player1.setItems(nr1);
         Player2.setItems(nr2);
 
+    }
 
+    private void addPointsToPlayer(){
+        int radiosize = Pairs.size()*2;
+        for (int i = 0; i < radiosize-1; i+=2) {
+            if (radioButtons.get(i).isSelected() || radioButtons.get(i+1).isSelected()){
+                if(radioButtons.get(i).isSelected()){
+                    Pairs.get(i/2).getPlayer1().addwins();
+                }
+                else{Pairs.get(i/2).getPlayer2().addwins();
+                }
+            }
+            else{
+                Pairs.get(i/2).getPlayer1().setWins(0.5);
+                Pairs.get(i/2).getPlayer2().setWins(0.5);
+            }
+        }
+
+
+    }
+
+    @FXML
+    void NewRound(ActionEvent event) throws FileNotFoundException, IOException{
+        addPointsToPlayer();
+
+        addPlayersToVsLists();
+
+        int radiosize = Pairs.size()*2;
+        for (int i = 0; i < radiosize; i++){
+            radioButtons.get(i).selectedProperty().set(false);
+        }
+    }
+
+    @FXML
+    void setUp(ActionEvent event) throws FileNotFoundException, IOException{
+        CreateGame();
+    }
+
+    public void CreateGame() throws FileNotFoundException, IOException{
+        setPairs();
+        addRadioBs();
+        addPlayersToVsLists();
+
+        //To turn on the right amount of radiobuttons
+        int radiosize = Pairs.size()*2;
+        for (int i = 0; i < radiosize; i++) {
+            radioButtons.get(i).setDisable(false);
+            radioButtons.get(i).setVisible(true);
+        }
     }
 
     private void setPairs() throws FileNotFoundException, IOException{
@@ -70,29 +130,6 @@ public class AppControllerGames {
             Pairs.add(pairs.getPlayerPairs().get(i));
         }
     }
-
-    /* @FXML
-    void test(ActionEvent event) throws FileNotFoundException, IOException {
-        setPairs();
-
-        ArrayList<String> exlist = new ArrayList<>();
-
-        for (int i = 0; i< Pairs.size(); i++) {
-            String player1 = Pairs.get(i).getPlayer1().getName();
-            String player2 = Pairs.get(i).getPlayer2().getName();
-            exlist.add(player1 + " vs " + player2);
-        }
-
-        StringBuilder sb = new StringBuilder();
-        for (String item : exlist) {
-            sb.append(item).append("\n");
-        }
-
-        String output = sb.toString();
-        text.setText(output);
-    } */
-
-    
 
     @FXML
     void GoToScore(ActionEvent event) throws IOException {
