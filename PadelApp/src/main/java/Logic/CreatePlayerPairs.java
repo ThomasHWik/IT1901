@@ -15,7 +15,7 @@ public class CreatePlayerPairs {
         createPlayerPairs(playerList);
     }
 
-    public void addPlayer(Player player) {
+    private void addPlayer(Player player) {
         playerList.add(player);
     }
 

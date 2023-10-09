@@ -1,6 +1,7 @@
 package app;
 
 import java.io.IOException;
+import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
 
 import FileManaging.FileManager;
@@ -8,6 +9,7 @@ import Logic.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.LoadException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,6 +21,9 @@ public class AppControllerPadel {
 
     private FileManager fm = new FileManager();
     private ArrayList<Player> playerlist = new ArrayList<>();
+    
+    
+    
 
     @FXML
     private TextField addName, addAge;
@@ -60,9 +65,15 @@ public class AppControllerPadel {
             fm.savePlayer(player);
         }
 
-        Parent root = FXMLLoader.load(getClass().getResource("games.fxml"));
+        //sbController.setScorelist(playerlist);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
+        Parent root = loader.load();
             Stage stage = (Stage) CreateGame.getScene().getWindow();
             stage.setScene(new Scene(root));
+            AppControllerGames games = (AppControllerGames)loader.getController();
+            games.CreateGame();
+
+            
     }
 
     private void updateGUI() {
