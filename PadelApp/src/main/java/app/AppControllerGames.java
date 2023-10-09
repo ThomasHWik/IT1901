@@ -28,6 +28,7 @@ public class AppControllerGames {
     private List<Player> Player = new ArrayList<>();
     private CreatePlayerPairs pairs = new CreatePlayerPairs(Player);
     private List<PlayerPair> Pairs = new ArrayList<>();
+    private AppControllerScoreBoard sbController = new AppControllerScoreBoard();
 
     @FXML
     private TextArea text;
@@ -82,6 +83,8 @@ public class AppControllerGames {
 
     @FXML
     void GoToScore(ActionEvent event) throws IOException {
+        sbController.setScorelist(Player);
+
         Parent root = FXMLLoader.load(getClass().getResource("scoreBoard.fxml"));
             Stage stage = (Stage) GoToScore.getScene().getWindow();
             stage.setScene(new Scene(root));

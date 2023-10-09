@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 public class AppControllerPadel {
 
     private FileManager fm = new FileManager();
-    private AppControllerScoreBoard sbController = new AppControllerScoreBoard();
     private ArrayList<Player> playerlist = new ArrayList<>();
 
     @FXML
@@ -60,8 +59,6 @@ public class AppControllerPadel {
         for (Player player : playerlist) {
             fm.savePlayer(player);
         }
-
-        //sbController.setScorelist(playerlist);
 
         Parent root = FXMLLoader.load(getClass().getResource("games.fxml"));
             Stage stage = (Stage) CreateGame.getScene().getWindow();

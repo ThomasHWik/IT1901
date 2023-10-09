@@ -73,20 +73,26 @@ public class FileManager {
 
     public ArrayList<Player> loadScoreboard() throws IOException {
         File sbFile = new File("Scoreboard.txt");
-        br = new BufferedReader(new FileReader(sbFile));
-
         ArrayList<Player> oldScorelist = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            String[] playerInfo = br.readLine().split("\t");
-            Player player = new Player(playerInfo[1], 0);
-            player.setWins(Integer.valueOf(playerInfo[2]));
-            oldScorelist.add(player);
+        if (sbFile.createNewFile()) {
+            System.out.println("File created: " + sbFile.getName());
+            return oldScorelist;
         }
+        else {
+            System.out.println("File already exists.");
 
-        br.close();
+            br = new BufferedReader(new FileReader(sbFile));
+            for (int i = 0; i < 10; i++) {
+                String[] playerInfo = br.readLine().split("\t");
+                Player player = new Player(playerInfo[1], 0);
+                player.setWins(Integer.valueOf(playerInfo[2]));
+                oldScorelist.add(player);
+            }
+            br.close();
 
-        oldScorelist.sort(pc);
-        return oldScorelist;
+            oldScorelist.sort(pc);
+            return oldScorelist;
+        }
     }
 
     public List<Player> getListOfPlayers(String filePath) throws FileNotFoundException, IOException {
