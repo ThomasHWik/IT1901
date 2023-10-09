@@ -131,10 +131,15 @@ public class AppControllerGames {
         }
     }
 
+    public void setPlayerList(ArrayList<Player> playerlist){
+        pairs = new CreatePlayerPairs(playerlist);
+
+    }
+
     private void setPairs() throws FileNotFoundException, IOException{
-        List<Player> list=new ArrayList<>();
+        /* List<Player> list=new ArrayList<>();
         list = reader.getListOfPlayers("Players.txt");
-        pairs = new CreatePlayerPairs(list);
+        pairs = new CreatePlayerPairs(list); */
 
         for (int i = 0; i < pairs.getPlayerPairs().size(); i++) {
             Pairs.add(pairs.getPlayerPairs().get(i));
@@ -148,5 +153,6 @@ public class AppControllerGames {
             Stage stage = (Stage) GoToScore.getScene().getWindow();
             stage.setScene(new Scene(root));
             AppControllerGames score = (AppControllerGames)loader.getController();
+            
     }
 }
