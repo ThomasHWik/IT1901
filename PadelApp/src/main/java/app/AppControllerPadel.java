@@ -19,8 +19,7 @@ import javafx.stage.Stage;
 
 public class AppControllerPadel {
 
-    private FileManager fm = new FileManager();
-    private AppControllerScoreBoard sbController;
+    //private FileManager fm = new FileManager();
     private ArrayList<Player> playerlist = new ArrayList<>();
     
     
@@ -62,18 +61,16 @@ public class AppControllerPadel {
 
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
-        for (Player player : playerlist) {
+        /* for (Player player : playerlist) {
             fm.savePlayer(player);
-        }
-
-    
+        } */
         FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
         Parent root = loader.load();
             Stage stage = (Stage) CreateGame.getScene().getWindow();
             stage.setScene(new Scene(root));
             AppControllerGames games = (AppControllerGames)loader.getController();
-            games.CreateGame();
             games.setPlayerList(playerlist);
+            games.CreateGame();
 
             
     }
