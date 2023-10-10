@@ -98,8 +98,8 @@ public class AppControllerGames {
                 }
             }
             else{
-                Pairs.get(i/2).getPlayer1().setWins(0.5);
-                Pairs.get(i/2).getPlayer2().setWins(0.5);
+                Pairs.get(i/2).getPlayer1().setWins(0);
+                Pairs.get(i/2).getPlayer2().setWins(0);
             }
         }
 
