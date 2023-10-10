@@ -20,18 +20,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class AppControllerGames {
 
-    private Getplayerlistoffile reader = new Getplayerlistoffile();
     private List<Player> Player = new ArrayList<>();
     private CreatePlayerPairs pairs = new CreatePlayerPairs(Player);
     private List<PlayerPair> Pairs = new ArrayList<>();
-    private AppControllerScoreBoard sbController = new AppControllerScoreBoard();
+    private int round=1;
 
     @FXML
-    private TextArea text;
+    private TextArea error;
+
+    @FXML
+    private TextField rounds;
 
     @FXML
     private Button GoToScore,NewRound;
@@ -69,6 +72,7 @@ public class AppControllerGames {
         radioButtons.add(elevenr);
     }
     private void addPlayersToVsLists(){
+        //making to seperate list that tells sais the name of teh player and how many pints they have.
         ArrayList<String> players1 = new ArrayList<>();
         ArrayList<String> players2 = new ArrayList<>();
 
@@ -96,25 +100,44 @@ public class AppControllerGames {
                 }
                 else{Pairs.get(i/2).getPlayer2().addwins();
                 }
-            }
-            else{
-                Pairs.get(i/2).getPlayer1().setWins(0);
-                Pairs.get(i/2).getPlayer2().setWins(0);
-            }
+            } 
         }
-
-
     }
 
     @FXML
     void NewRound(ActionEvent event) throws FileNotFoundException, IOException{
-        addPointsToPlayer();
+        if (!allselected()){
+            error.visibleProperty().set(true);
+            error.setText("Not alle games have been selected");
+        }
+        else{
+            error.visibleProperty().set(false);
+            addPointsToPlayer();
+            addPlayersToVsLists();
+            int radiosize = Pairs.size()*2;
+            for (int i = 0; i < radiosize; i++){
+                radioButtons.get(i).selectedProperty().set(false);
+            }
+            updateRound();
+        }
+        
+    }
 
-        addPlayersToVsLists();
-
+    private boolean allselected() {
         int radiosize = Pairs.size()*2;
-        for (int i = 0; i < radiosize; i++){
-            radioButtons.get(i).selectedProperty().set(false);
+        for (int i = 0; i < radiosize-1; i+=2){
+            if (!(radioButtons.get(i).isSelected() || radioButtons.get(i+1).isSelected())){
+                return false;
+            }
+        }
+        return true;
+    }
+    private void updateRound() {
+        round++;
+        rounds.setText(round + " / 5");
+        if (round==5){
+            NewRound.disableProperty().set(true);
+            NewRound.visibleProperty().set(false);
         }
     }
 
@@ -148,11 +171,14 @@ public class AppControllerGames {
 
     @FXML
     void GoToScore(ActionEvent event) throws IOException {
+        addPointsToPlayer();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("scoreBoard.fxml"));
         Parent root = loader.load();
             Stage stage = (Stage) GoToScore.getScene().getWindow();
             stage.setScene(new Scene(root));
-            AppControllerGames score = (AppControllerGames)loader.getController();
+            AppControllerScoreBoard score = (AppControllerScoreBoard)loader.getController();
+            score.setScorelist(Player);
             
     }
 }
