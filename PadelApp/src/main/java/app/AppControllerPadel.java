@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 
 public class AppControllerPadel {
 
-    private FileManager fm = new FileManager();
+    //private FileManager fm = new FileManager();
     private ArrayList<Player> playerlist = new ArrayList<>();
 
     @FXML
@@ -72,22 +72,15 @@ public class AppControllerPadel {
 
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
-        //check if the number of players is even
-        if (playerlist.size()%2 == 1) {
-            error("The number of players must be even!");
-            return;
-        }
-
-        for (Player player : playerlist) {
+        /* for (Player player : playerlist) {
             fm.savePlayer(player);
-        }
-
-        //sbController.setScorelist(playerlist);
+        } */
         FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
         Parent root = loader.load();
             Stage stage = (Stage) CreateGame.getScene().getWindow();
             stage.setScene(new Scene(root));
             AppControllerGames games = (AppControllerGames)loader.getController();
+            games.setPlayerList(playerlist);
             games.CreateGame();
 
             
