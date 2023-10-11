@@ -13,8 +13,8 @@ public class PlayerComparatorTest {
 
     @BeforeEach
     void setUp() {
-        player1 = new Player("Oscar", 22);
-        player2 = new Player("Kevin", 31);
+        player1 = new Player("Oscar", 22, 50505050);
+        player2 = new Player("Kevin", 31, 60606060);
         comparator = new PlayerComparator();
     }
 
