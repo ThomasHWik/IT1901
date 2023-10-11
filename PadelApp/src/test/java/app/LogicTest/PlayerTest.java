@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class PlayerTest {
@@ -13,7 +14,7 @@ public class PlayerTest {
     @BeforeEach
     void setUp() {
         // Create a new Player object before each test
-        player = new Player("Charles", 25);
+        player = new Player("Charles", 25, 12345678);
     }
 
     @Test
@@ -22,8 +23,22 @@ public class PlayerTest {
     }
 
     @Test
+    void testSetName() {
+        player.setName("Fernando");
+        assertEquals("Fernando", player.getName());
+        assertThrows(IllegalArgumentException.class, () -> player.setName(null));
+    }
+
+    @Test
     void testGetAge() {
         assertEquals(25, player.getAge());
+    }
+
+    @Test
+    void testSetAge() {
+        player.setAge(64);
+        assertEquals(64, player.getAge());
+        assertThrows(IllegalArgumentException.class, () -> player.setAge(-1));
     }
 
     @Test
@@ -45,7 +60,26 @@ public class PlayerTest {
         assertEquals(5, player.getWins());
 
         // Test setting wins to a negative value, should give a win value of 0
-        // player.setWins(-1);
-        // assertEquals(0, player.getWins());
+        assertThrows(IllegalArgumentException.class, () -> player.setWins(-1));
+    }
+
+    @Test
+    void testGetWins() {
+        player.setWins(3);
+        assertEquals(3, player.getWins());
+    }
+
+    @Test
+    void testGetTlfNr() {
+        player.setTlfNr(11223344);
+        assertEquals(11223344, player.getTlfNr());
+    }
+
+    @Test
+    void testSetTlfNr() {
+        player.setTlfNr(11223344);
+        assertEquals(11223344, player.getTlfNr());
+
+        assertThrows(IllegalArgumentException.class, () -> player.setTlfNr(333));
     }
 }
