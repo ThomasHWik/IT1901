@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.AppControllerPadel">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.AppControllerPadel">
    <children>
       <Button fx:id="AddPlayer" layoutX="34.0" layoutY="336.0" mnemonicParsing="false" onAction="#AddPlayer" prefHeight="17.0" prefWidth="92.0" text="Add player" />
       <TextField fx:id="addName" layoutX="34.0" layoutY="75.0" prefHeight="25.0" prefWidth="200.0" />
@@ -15,5 +15,6 @@
       <Label layoutX="34.0" layoutY="122.0" prefHeight="17.0" prefWidth="92.0" text="Age" />
       <TextField fx:id="addAge" layoutX="34.0" layoutY="152.0" prefHeight="25.0" prefWidth="200.0" />
       <Button fx:id="CreateGame" layoutX="434.0" layoutY="331.0" mnemonicParsing="false" onAction="#CreateGame" prefHeight="35.0" prefWidth="120.0" text="Creat a game" />
+      <Label fx:id="errorMsg" layoutX="34.0" layoutY="303.0" prefHeight="26.0" prefWidth="234.0" textFill="#f80000" />
    </children>
 </AnchorPane>

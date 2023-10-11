@@ -16,6 +16,9 @@ public class Player {
 
 
     public void setName(String name) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be empty!");
+        }
         this.name = name;
     }
 
@@ -27,7 +30,7 @@ public class Player {
     }
 
     public void addwins() {
-        wins+=1.0;
+        wins+=1;
     }
 
     public String getName() {
@@ -43,6 +46,9 @@ public class Player {
     }
     
     public void setWins(int wins) {
+        if (wins < 0) {
+            throw new IllegalArgumentException("Wins cannot be negative!");
+        }
         this.wins = this.wins + wins;
     }
 
@@ -51,6 +57,9 @@ public class Player {
     }
 
     public void setTlfNr(int tlfNr) {
+        if (NumberManager.getDigits(tlfNr) != 8) {
+            throw new IllegalArgumentException("Phone number must be 8 digits!");
+        }
         this.tlfNr = tlfNr;
     }
 }

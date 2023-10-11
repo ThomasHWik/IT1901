@@ -13,6 +13,7 @@ import javafx.fxml.LoadException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -21,9 +22,6 @@ public class AppControllerPadel {
 
     //private FileManager fm = new FileManager();
     private ArrayList<Player> playerlist = new ArrayList<>();
-    
-    
-    
 
     @FXML
     private TextField addName, addAge;
@@ -34,11 +32,24 @@ public class AppControllerPadel {
     @FXML
     private Button AddPlayer, CreateGame;
 
+    @FXML 
+    private Label errorMsg;
+
     @FXML
     void AddPlayer(ActionEvent event) throws IOException {
-
-        Player player= new Player(addName.getText(), StringToInt(addAge.getText()));
-        playerlist.add(player);
+        //try catch to check if the input is valid
+        try {
+            Player player= new Player(addName.getText(), StringToInt(addAge.getText()));
+            playerlist.add(player);
+            refreshErrorMsg();
+        } catch (Exception e) {
+            if (e instanceof IllegalArgumentException) {
+                error(e.getMessage());
+            } else {
+                error("Invalid input!");
+            }
+            return;
+        }
 
         ArrayList<String> list = new ArrayList<>();
 
@@ -73,6 +84,18 @@ public class AppControllerPadel {
             games.CreateGame();
 
             
+    }
+
+    //handles invalid input and shows the error msg for the user
+    @FXML
+    private void error(String message) {
+        errorMsg.setText(message);
+    }
+
+    //clears error msg
+    @FXML
+    private void refreshErrorMsg() {
+        errorMsg.setText("");
     }
 
     private void updateGUI() {
