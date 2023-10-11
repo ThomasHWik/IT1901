@@ -59,7 +59,7 @@ public class PlayerTest {
         player.setWins(5);
         assertEquals(5, player.getWins());
 
-        // Test setting wins to a negative value, should give a win value of 0
+        // Test setting wins to a negative value, should give an IllegalArgumentException
         assertThrows(IllegalArgumentException.class, () -> player.setWins(-1));
     }
 
@@ -79,7 +79,7 @@ public class PlayerTest {
     void testSetTlfNr() {
         player.setTlfNr(11223344);
         assertEquals(11223344, player.getTlfNr());
-
+        // Should give an IllegalArgumentException when trying to set phone number with wrong format (not 8 digits)
         assertThrows(IllegalArgumentException.class, () -> player.setTlfNr(333));
     }
 }
