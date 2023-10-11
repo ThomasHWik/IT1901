@@ -15,7 +15,7 @@ public class CreatePlayerPairs {
         createPlayerPairs(playerList);
     }
 
-    public void addPlayer(Player player) {
+    private void addPlayer(Player player) {
         playerList.add(player);
     }
 
@@ -23,6 +23,9 @@ public class CreatePlayerPairs {
 
         if (playerList.size() % 2 != 0){
             throw new IllegalArgumentException("the number of players must be even");
+        }
+        if (playerList.size()>22){
+            throw new IllegalArgumentException("There can not be more then 22 players");
         }
 
         for (int i = 0; i < players.size(); i+=2){
