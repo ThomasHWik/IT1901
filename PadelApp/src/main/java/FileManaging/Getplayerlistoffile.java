@@ -28,7 +28,7 @@ public class Getplayerlistoffile {
                     if (parts.length == 2) {
                         String name = parts[0].trim();
                         int number = Integer.parseInt(parts[1].trim());
-                        Player player = new Player(name, number);
+                        Player player = new Player(name, number, 0);
                         playerList.add(player);
                     }
                 }

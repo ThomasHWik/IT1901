@@ -24,7 +24,7 @@ public class AppControllerPadel {
     private ArrayList<Player> playerlist = new ArrayList<>();
 
     @FXML
-    private TextField addName, addAge;
+    private TextField addName, addAge, addTlfNr;
 
     @FXML
     private TextArea players;
@@ -39,7 +39,7 @@ public class AppControllerPadel {
     void AddPlayer(ActionEvent event) throws IOException {
         //try catch to check if the input is valid
         try {
-            Player player= new Player(addName.getText(), StringToInt(addAge.getText()));
+            Player player= new Player(addName.getText(), StringToInt(addAge.getText()), StringToInt(addTlfNr.getText()));
             playerlist.add(player);
             refreshErrorMsg();
         } catch (Exception e) {
@@ -101,6 +101,7 @@ public class AppControllerPadel {
     private void updateGUI() {
         addName.clear();
         addAge.clear();
+        addTlfNr.clear();
     }
 
     private int StringToInt(String string) {
