@@ -7,12 +7,14 @@ public class Player {
     private int wins;
     private int tlfNr;
 
-    public Player(String name, int age) {
+    public Player(String name, int age, int tlfNr) {
         setName(name);
         setAge(age);
-        this.wins = 0;
+        setTlfNr(tlfNr);
         this. tlfNr= 0;
     }
+
+
 
 
     public void setName(String name) {
