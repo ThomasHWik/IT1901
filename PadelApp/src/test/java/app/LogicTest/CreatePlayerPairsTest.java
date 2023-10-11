@@ -21,10 +21,10 @@ public class CreatePlayerPairsTest {
     @BeforeEach
     void setUp() {
         // Create new players before each test
-        player1 = new Player("Lewis", 38);
-        player2 = new Player("Lando", 23);
-        player3 = new Player("Logan", 22);
-        player4 = new Player("Daniel", 34);
+        player1 = new Player("Lewis", 38, 70707070);
+        player2 = new Player("Lando", 23, 80808080);
+        player3 = new Player("Logan", 22, 90909090);
+        player4 = new Player("Daniel", 34, 10101010);
 
         // Add players to a list and initialize createPlayerPairs
         players = new ArrayList<>();

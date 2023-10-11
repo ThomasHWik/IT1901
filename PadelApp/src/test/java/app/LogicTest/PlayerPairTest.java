@@ -18,10 +18,10 @@ public class PlayerPairTest {
     @BeforeEach
     void setUp() {
         // Create new players before each test
-        player1 = new Player("Lewis", 38);
-        player2 = new Player("Lando", 23);
-        player3 = new Player("Logan", 22);
-        player4 = new Player("Daniel", 34);
+        player1 = new Player("Lewis", 38, 10101010);
+        player2 = new Player("Lando", 23, 20202020);
+        player3 = new Player("Logan", 22, 30303030);
+        player4 = new Player("Daniel", 34, 40404040);
     }
 
     @Test
