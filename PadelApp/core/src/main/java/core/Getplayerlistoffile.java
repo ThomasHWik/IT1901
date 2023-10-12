@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import core.Player;
-
 public class Getplayerlistoffile {
     
     public static List<Player> getListOfPlayers(String filePath) throws FileNotFoundException, IOException {
@@ -28,7 +26,7 @@ public class Getplayerlistoffile {
                     if (parts.length == 2) {
                         String name = parts[0].trim();
                         int number = Integer.parseInt(parts[1].trim());
-                        Player player = new Player(name, number, 0);
+                        Player player = new Player(name, number);
                         playerList.add(player);
                     }
                 }

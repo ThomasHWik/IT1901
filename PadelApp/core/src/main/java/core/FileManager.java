@@ -10,9 +10,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import core.Player;
-import core.PlayerComparator;
-
 public class FileManager {
 
     private BufferedWriter bw;
@@ -84,7 +81,7 @@ public class FileManager {
             br = new BufferedReader(new FileReader(sbFile));
             for (int i = 0; i < 10; i++) {
                 String[] playerInfo = br.readLine().split("\t");
-                Player player = new Player(playerInfo[1], 0, 0);
+                Player player = new Player(playerInfo[1], 0);
                 player.setWins(Integer.valueOf(playerInfo[2]));
                 oldScorelist.add(player);
             }
@@ -110,7 +107,7 @@ public class FileManager {
                     if (parts.length == 2) {
                         String name = parts[0].trim();
                         int number = Integer.parseInt(parts[1].trim());
-                        Player player = new Player(name, number, 0);
+                        Player player = new Player(name, number);
                         playerList.add(player);
                     }
                 }

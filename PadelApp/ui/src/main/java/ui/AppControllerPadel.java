@@ -1,12 +1,14 @@
 package ui;
 
 import java.io.IOException;
+import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
 
 import core.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.LoadException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,10 +19,11 @@ import javafx.stage.Stage;
 
 public class AppControllerPadel {
 
+    //private FileManager fm = new FileManager();
     private ArrayList<Player> playerlist = new ArrayList<>();
 
     @FXML
-    private TextField addName, addAge, addTlfNr;
+    private TextField addName, addAge;
 
     @FXML
     private TextArea players;
@@ -35,7 +38,7 @@ public class AppControllerPadel {
     void AddPlayer(ActionEvent event) throws IOException {
         //try catch to check if the input is valid
         try {
-            Player player= new Player(addName.getText(), StringToInt(addAge.getText()), StringToInt(addTlfNr.getText()));
+            Player player= new Player(addName.getText(), StringToInt(addAge.getText()));
             playerlist.add(player);
             refreshErrorMsg();
         } catch (Exception e) {
@@ -97,7 +100,6 @@ public class AppControllerPadel {
     private void updateGUI() {
         addName.clear();
         addAge.clear();
-        addTlfNr.clear();
     }
 
     private int StringToInt(String string) {

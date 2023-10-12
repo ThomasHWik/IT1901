@@ -4,39 +4,50 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import FileManaging.FileManager;
+import core.FileManagerJson;
+import core.Leaderboard;
 import core.Player;
-import core.PlayerComparator;
+import core.Scoreboard;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.ListView;
 
 public class AppControllerScoreBoard {
 
-    private PlayerComparator pc;
-    private FileManager fm = new FileManager();
-    private List<Player> scorelist;
-    private ArrayList<Player> oldScorelist;
-    private ArrayList<Player> newScorelist;
+    private Leaderboard leaderboard;
+    private Scoreboard scoreboard;
 
     @FXML
-    private TextArea scoreboard;
+    ListView<String> name;
+
+    @FXML
+    ListView<Integer> wins;
 
     @FXML
     public void initialize() throws IOException {
-        createScoreboard();
+        leaderboard = FileManagerJson.getLeaderboard();
+        if (leaderboard == null) {
+            leaderboard = new Leaderboard();
+        }
+        createLeaderboard();
+        populateTable();
     }
 
-    public void createScoreboard() throws IOException {
-        oldScorelist = fm.loadScoreboard();
-
-        scorelist.addAll(oldScorelist);
-        scorelist.sort(pc);
-        newScorelist = (ArrayList<Player>) scorelist.subList(0, 10);
-
-        scoreboard.setText(fm.saveScoreboard(newScorelist));
+    public void createLeaderboard() throws IOException {
+        leaderboard.addScoreboard(FileManagerJson.getScoreboard("currentgame"));
+        leaderboard.sortLeaderboard();
     }
 
-    public void setScorelist(List<Player> playerlist) {
-        this.scorelist = playerlist;
+    public void setScoreboard(List<Player> playerlist) {
+        scoreboard = new Scoreboard((ArrayList<Player>) playerlist);
+    }
+
+    private void populateTable() {
+        name.getItems().clear();
+        wins.getItems().clear();
+        for (Player player : leaderboard.getTopPlayers(10)) {
+            name.getItems().add(player.getName());
+            wins.getItems().add(player.getWins());
+        }
     }
 }
