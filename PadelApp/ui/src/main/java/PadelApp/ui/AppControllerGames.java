@@ -178,11 +178,9 @@ public class AppControllerGames {
         FileManagerJson.saveScoreboard(new Scoreboard("currentgame",(ArrayList<Player>)Player));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("scoreBoard.fxml"));
+
         Parent root = loader.load();
             Stage stage = (Stage) GoToScore.getScene().getWindow();
             stage.setScene(new Scene(root));
-            AppControllerScoreBoard score = (AppControllerScoreBoard)loader.getController();
-            score.setScoreboard(Player);
-            
     }
 }

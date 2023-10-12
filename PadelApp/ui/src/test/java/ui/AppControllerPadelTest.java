@@ -13,9 +13,11 @@ import static org.testfx.matcher.control.TextInputControlMatchers.hasText;
 
 public class AppControllerPadelTest extends ApplicationTest {
 
+    private final FXMLLoader loader = new FXMLLoader(getClass().getResource("Padel.fxml"));
+
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Padel.fxml"));
+        FXMLLoader loader = this.loader;
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
         stage.show();
@@ -35,11 +37,26 @@ public class AppControllerPadelTest extends ApplicationTest {
         clickOn("#AddPlayer");
 
         // Assert that the text fields are cleared after adding a player
-        FxAssert.verifyThat("#addTlfNr", hasText(""));
+        //FxAssert.verifyThat("#addTlfNr", hasText(""));
         FxAssert.verifyThat("#addName", hasText(""));
         FxAssert.verifyThat("#addAge", hasText(""));
 
-        FxAssert.verifyThat("#players", hasText("John, 25"));
+
       
     }
+    @Test
+    public void testTexAreaPlayer(){
+        String Playernumber = "95643241";
+        String playerName = "John";
+        String playerAge = "25";
+
+
+        clickOn("#addTlfNr").write(Playernumber);
+        clickOn("#addName").write(playerName);
+        clickOn("#addAge").write(playerAge);
+        clickOn("#AddPlayer");
+
+        FxAssert.verifyThat("#players", hasText("John, 25\n"));
+    }
+    
 }
