@@ -1,4 +1,4 @@
-package core;
+package Logic;
 
 public class Player {
 
@@ -7,14 +7,19 @@ public class Player {
     private int wins;
     private int tlfNr;
 
-    public Player(String name, int age, int tlfNr) {
-        setName(name);
-        setAge(age);
-        setTlfNr(tlfNr);
-        this. tlfNr= 0;
+    public Player() {
+        this.name = "";
+        this.age = 0;
+        this.wins = 0;
+        this.tlfNr = 11111111;
     }
 
-
+    public Player(String name, int age) {
+        setName(name);
+        setAge(age);
+        this.wins = 0;
+        this. tlfNr= 11111111;
+    }
 
 
     public void setName(String name) {
@@ -33,6 +38,10 @@ public class Player {
 
     public void addwins() {
         wins+=1;
+    }
+
+    public void addWins(int wins) {
+        this.wins += wins;
     }
 
     public String getName() {

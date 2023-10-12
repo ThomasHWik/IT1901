@@ -1,4 +1,4 @@
-package core;
+package FileManaging;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import core.Player;
+import Logic.Player;
 
 public class Getplayerlistoffile {
     
@@ -28,7 +28,7 @@ public class Getplayerlistoffile {
                     if (parts.length == 2) {
                         String name = parts[0].trim();
                         int number = Integer.parseInt(parts[1].trim());
-                        Player player = new Player(name, number, 0);
+                        Player player = new Player(name, number);
                         playerList.add(player);
                     }
                 }

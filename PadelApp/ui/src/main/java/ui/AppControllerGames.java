@@ -1,14 +1,16 @@
-package ui;
+package app;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import core.CreatePlayerPairs;
-import core.Player;
-import core.PlayerPair;
+import FileManaging.FileManagerJson;
+import FileManaging.Getplayerlistoffile;
+import Logic.CreatePlayerPairs;
+import Logic.Player;
+import Logic.PlayerPair;
+import Logic.Scoreboard;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,7 +27,7 @@ import javafx.stage.Stage;
 
 public class AppControllerGames {
 
-    private List<core.Player> Player = new ArrayList<>();
+    private List<Player> Player = new ArrayList<>();
     private CreatePlayerPairs pairs = new CreatePlayerPairs(Player);
     private List<PlayerPair> Pairs = new ArrayList<>();
     private int round=1;
@@ -72,7 +74,7 @@ public class AppControllerGames {
         radioButtons.add(elevenr);
     }
     private void addPlayersToVsLists(){
-        //making to separate list that tells sais the name of teh player and how many pints they have.
+        //making to seperate list that tells sais the name of teh player and how many pints they have.
         ArrayList<String> players1 = new ArrayList<>();
         ArrayList<String> players2 = new ArrayList<>();
 
@@ -173,12 +175,19 @@ public class AppControllerGames {
     void GoToScore(ActionEvent event) throws IOException {
         addPointsToPlayer();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ui/scoreBoard.fxml"));
+        for (int i = 0; i < Pairs.size(); i++) {
+            Player.add(Pairs.get(i).getPlayer1());
+            Player.add(Pairs.get(i).getPlayer2());
+        }
+
+        FileManagerJson.saveScoreboard(new Scoreboard("currentgame",(ArrayList<Player>)Player));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("scoreBoard.fxml"));
         Parent root = loader.load();
             Stage stage = (Stage) GoToScore.getScene().getWindow();
             stage.setScene(new Scene(root));
             AppControllerScoreBoard score = (AppControllerScoreBoard)loader.getController();
-            score.setScorelist(Player);
+            score.setScoreboard(Player);
             
     }
 }

@@ -1,9 +1,10 @@
-package core;
+package FileManaging;
 
 import java.io.File;
 import java.io.IOException;
 
-import core.Scoreboard;
+import Logic.Leaderboard;
+import Logic.Scoreboard;
 
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,13 +24,27 @@ public class FileManagerJson {
             return null;
         }   
         File file = new File(filename);
-        System.out.println(file.getAbsolutePath());
         if (!file.exists()) {
             return null;
         }
         ObjectMapper om = new ObjectMapper();
         try {
             return om.readValue(file, Scoreboard.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    static public Leaderboard getLeaderboard() {
+        String filename = "Leaderboard.json";
+        File file = new File(filename);
+        if (!file.exists()) {
+            return null;
+        }
+        ObjectMapper om = new ObjectMapper();
+        try {
+            return om.readValue(file, Leaderboard.class);
         } catch (Exception e) {
             e.printStackTrace();
         }

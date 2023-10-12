@@ -1,10 +1,10 @@
-package core;
+package Logic;
 
 import java.util.ArrayList;
 
 public class Scoreboard {
-    private String filename;
-    private ArrayList<Player> scorelist;
+    protected String filename;
+    protected ArrayList<Player> scorelist;
 
     public Scoreboard() {
         this.filename = "Scoreboard.json";
@@ -20,6 +20,10 @@ public class Scoreboard {
         throw new IllegalArgumentException("Invalid filename!");
     }
 
+    public Scoreboard(ArrayList<Player> scorelist) {
+        this.scorelist = scorelist;
+    }
+    
     public Scoreboard(String filename, ArrayList<Player> scorelist) {
         if (filename != null && !filename.isEmpty()) {
             this.filename = filename;

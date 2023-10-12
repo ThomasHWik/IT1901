@@ -1,4 +1,4 @@
-package core;
+package Logic;
 
 public class NumberManager {
     public static int getDigits(int number) {
