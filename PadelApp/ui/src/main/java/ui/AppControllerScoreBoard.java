@@ -8,7 +8,6 @@ import core.FileManagerJson;
 import core.Leaderboard;
 import core.Player;
 import core.Scoreboard;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
@@ -46,6 +45,7 @@ public class AppControllerScoreBoard {
         name.getItems().clear();
         wins.getItems().clear();
         for (Player player : leaderboard.getTopPlayers(10)) {
+            System.out.println(player.getName());
             name.getItems().add(player.getName());
             wins.getItems().add(player.getWins());
         }
