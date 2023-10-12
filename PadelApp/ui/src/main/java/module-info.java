@@ -3,7 +3,7 @@ module PadelApp.ui {
     requires javafx.base;
     requires javafx.controls;
     requires javafx.fxml;
-    requires javafx.graphics;
+    requires transitive javafx.graphics;
 
     exports PadelApp.ui;
 
