@@ -6,11 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="modules-ui" />
+        <module name="modules-core" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="javafx-template" target="17" />
-      <module name="PadelApp" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>

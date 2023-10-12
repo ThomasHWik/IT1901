@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AppControllerGames">
+   <children>
+      <ListView fx:id="Player2" layoutX="335.0" layoutY="53.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="251.0" prefWidth="96.0" />
+      <Button fx:id="GoToScore" layoutX="475.0" layoutY="333.0" mnemonicParsing="false" onAction="#GoToScore" text="End Games" />
+      <ListView fx:id="Player1" layoutX="169.0" layoutY="54.0" prefHeight="251.0" prefWidth="96.0" styleClass="-fx-text-alignment: center;" />
+      <Label layoutX="284.0" layoutY="169.0" prefHeight="33.0" prefWidth="37.0" text="VS">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="oner" disable="true" layoutX="435.0" layoutY="52.0" mnemonicParsing="false" visible="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="one" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="twor" disable="true" layoutX="436.0" layoutY="76.0" mnemonicParsing="false" visible="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="two" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="threer" disable="true" layoutX="436.0" layoutY="100.0" mnemonicParsing="false" visible="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="three" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="fourr" disable="true" layoutX="436.0" layoutY="122.0" mnemonicParsing="false" visible="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="four" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="fiver" disable="true" layoutX="436.0" layoutY="145.0" mnemonicParsing="false" visible="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="five" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="sixr" disable="true" layoutX="436.0" layoutY="168.0" mnemonicParsing="false" visible="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="six" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="sevenr" disable="true" layoutX="436.0" layoutY="191.0" mnemonicParsing="false" visible="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="seven" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="eightr" disable="true" layoutX="435.0" layoutY="214.0" mnemonicParsing="false" visible="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="eight" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="niner" disable="true" layoutX="435.0" layoutY="239.0" mnemonicParsing="false" visible="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="nine" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="tenr" disable="true" layoutX="435.0" layoutY="263.0" mnemonicParsing="false" visible="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="ten" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="elevenr" disable="true" layoutX="436.0" layoutY="287.0" mnemonicParsing="false" visible="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="eleven" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="onel" disable="true" layoutX="146.0" layoutY="53.0" mnemonicParsing="false" toggleGroup="$one" visible="false" />
+      <RadioButton fx:id="twol" disable="true" layoutX="147.0" layoutY="77.0" mnemonicParsing="false" toggleGroup="$two" visible="false" />
+      <RadioButton fx:id="threel" disable="true" layoutX="147.0" layoutY="101.0" mnemonicParsing="false" toggleGroup="$three" visible="false" />
+      <RadioButton fx:id="fourl" disable="true" layoutX="147.0" layoutY="123.0" mnemonicParsing="false" toggleGroup="$four" visible="false" />
+      <RadioButton fx:id="fivel" disable="true" layoutX="147.0" layoutY="146.0" mnemonicParsing="false" toggleGroup="$five" visible="false" />
+      <RadioButton fx:id="sixl" disable="true" layoutX="147.0" layoutY="169.0" mnemonicParsing="false" toggleGroup="$six" visible="false" />
+      <RadioButton fx:id="sevenl" disable="true" layoutX="147.0" layoutY="192.0" mnemonicParsing="false" toggleGroup="$seven" visible="false" />
+      <RadioButton fx:id="eightl" disable="true" layoutX="146.0" layoutY="215.0" mnemonicParsing="false" toggleGroup="$eight" visible="false" />
+      <RadioButton fx:id="ninel" disable="true" layoutX="146.0" layoutY="240.0" mnemonicParsing="false" toggleGroup="$nine" visible="false" />
+      <RadioButton fx:id="tenl" disable="true" layoutX="146.0" layoutY="264.0" mnemonicParsing="false" toggleGroup="$ten" visible="false" />
+      <RadioButton fx:id="elevenl" disable="true" layoutX="147.0" layoutY="288.0" mnemonicParsing="false" toggleGroup="$eleven" visible="false" />
+      <Button fx:id="NewRound" layoutX="42.0" layoutY="333.0" mnemonicParsing="false" onAction="#NewRound" text="New Round" />
+      <TextField fx:id="rounds" editable="false" layoutX="42.0" layoutY="281.0" prefHeight="25.0" prefWidth="82.0" text=" 1 / 5" />
+      <TextArea fx:id="error" editable="false" layoutX="169.0" layoutY="313.0" prefHeight="48.0" prefWidth="263.0" visible="false" />
+   </children>
+</AnchorPane>
