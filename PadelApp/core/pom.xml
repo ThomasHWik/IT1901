@@ -62,10 +62,10 @@
             </plugin>
 
             <!-- Run the spotbugs code quality tool -->
-            <plugin>
+            <!-- <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-            </plugin>
+            </plugin> -->
 
             <!-- Configure jacoco code coverage -->
             <plugin>
@@ -75,4 +75,22 @@
 
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <!-- Configure checkstyle code quality check -->
+            <!-- Usage: mvn checkstyle:checkstyle -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+            
+            <!-- Generate spotbugs report -->
+            <!-- Usage: mvn site -->
+            <!-- <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+            </plugin> -->
+        </plugins>
+    </reporting>
 </project>

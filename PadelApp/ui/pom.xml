@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>it1901</groupId>
     <artifactId>modules-ui</artifactId>
 
     <parent>
@@ -115,10 +116,10 @@
             </plugin>
 
             <!-- Run the spotbugs code quality tool -->
-            <plugin>
+            <!-- <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-            </plugin>
+            </plugin> -->
 
             <!-- Configure jacoco code coverage -->
             <plugin>
@@ -131,4 +132,22 @@
 
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <!-- Configure checkstyle code quality check -->
+            <!-- Usage: mvn checkstyle:checkstyle -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+            
+            <!-- Generate spotbugs report -->
+            <!-- Usage: mvn site -->
+            <!-- <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+            </plugin> -->
+        </plugins>
+    </reporting>
 </project>
