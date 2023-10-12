@@ -1,4 +1,4 @@
-package PadelApp.ui;
+package ui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
