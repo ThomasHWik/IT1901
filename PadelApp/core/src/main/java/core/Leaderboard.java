@@ -1,11 +1,9 @@
-package Logic;
+package core;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.core.exc.StreamWriteException;
-
-import FileManaging.FileManagerJson;
 
 public class Leaderboard extends Scoreboard{
     public Leaderboard() {

@@ -1,10 +1,7 @@
-package FileManaging;
+package core;
 
 import java.io.File;
 import java.io.IOException;
-
-import Logic.Leaderboard;
-import Logic.Scoreboard;
 
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.ObjectMapper;

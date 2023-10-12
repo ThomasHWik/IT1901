@@ -1,13 +1,13 @@
-package app;
+package ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import FileManaging.FileManagerJson;
-import Logic.Leaderboard;
-import Logic.Player;
-import Logic.Scoreboard;
+import core.FileManagerJson;
+import core.Leaderboard;
+import core.Player;
+import core.Scoreboard;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;

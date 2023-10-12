@@ -1,4 +1,4 @@
-package Logic;
+package core;
 
 import java.util.ArrayList;
 
@@ -59,7 +59,7 @@ public class Scoreboard {
 
     public String saveScoreboard() {
         try {
-            FileManaging.FileManagerJson.saveScoreboard(this);
+            FileManagerJson.saveScoreboard(this);
             return this.filename;
         } catch (Exception e) {
             e.printStackTrace();

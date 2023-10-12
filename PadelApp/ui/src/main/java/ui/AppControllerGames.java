@@ -1,16 +1,16 @@
-package app;
+package ui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import FileManaging.FileManagerJson;
-import FileManaging.Getplayerlistoffile;
-import Logic.CreatePlayerPairs;
-import Logic.Player;
-import Logic.PlayerPair;
-import Logic.Scoreboard;
+import core.FileManagerJson;
+import core.Getplayerlistoffile;
+import core.CreatePlayerPairs;
+import core.Player;
+import core.PlayerPair;
+import core.Scoreboard;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

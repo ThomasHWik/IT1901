@@ -1,11 +1,10 @@
-package app;
+package ui;
 
 import java.io.IOException;
 import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
 
-import FileManaging.FileManager;
-import Logic.Player;
+import core.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
