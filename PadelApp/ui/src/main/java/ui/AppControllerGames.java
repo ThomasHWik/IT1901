@@ -110,7 +110,7 @@ public class AppControllerGames {
     void NewRound(ActionEvent event) throws FileNotFoundException, IOException{
         if (!allselected()){
             error.visibleProperty().set(true);
-            error.setText("Not alle games have been selected");
+            error.setText("Not all games have been selected");
         }
         else{
             error.visibleProperty().set(false);
@@ -162,9 +162,6 @@ public class AppControllerGames {
     }
 
     private void setPairs() throws FileNotFoundException, IOException{
-        /* List<Player> list=new ArrayList<>();
-        list = reader.getListOfPlayers("Players.txt");
-        pairs = new CreatePlayerPairs(list); */
 
         for (int i = 0; i < pairs.getPlayerPairs().size(); i++) {
             Pairs.add(pairs.getPlayerPairs().get(i));

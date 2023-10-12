@@ -19,7 +19,6 @@ import javafx.stage.Stage;
 
 public class AppControllerPadel {
 
-    //private FileManager fm = new FileManager();
     private ArrayList<Player> playerlist = new ArrayList<>();
 
     @FXML
@@ -71,9 +70,7 @@ public class AppControllerPadel {
 
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
-        /* for (Player player : playerlist) {
-            fm.savePlayer(player);
-        } */
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
         Parent root = loader.load();
             Stage stage = (Stage) CreateGame.getScene().getWindow();
