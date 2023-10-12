@@ -1,4 +1,4 @@
-package core;
+package PadelApp.json;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import PadelApp.core.Player;
 
 public class Getplayerlistoffile {
     

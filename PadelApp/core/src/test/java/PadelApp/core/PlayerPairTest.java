@@ -1,13 +1,15 @@
-package core;
+package PadelApp.core;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import PadelApp.core.PlayerPair;
+
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import core.Player;
-import core.PlayerPair;
+import PadelApp.core.Player;
 
 public class PlayerPairTest {
     private Player player1;

@@ -1,5 +1,6 @@
-package core;
+package PadelApp.core;
 
+import PadelApp.json.FileManager;
 import java.util.ArrayList;
 
 public class Scoreboard {

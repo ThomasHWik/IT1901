@@ -1,13 +1,13 @@
-package ui;
+package PadelApp.ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import core.FileManagerJson;
-import core.Leaderboard;
-import core.Player;
-import core.Scoreboard;
+import PadelApp.json.FileManagerJson;
+import PadelApp.core.Leaderboard;
+import PadelApp.core.Player;
+import PadelApp.core.Scoreboard;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;

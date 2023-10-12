@@ -1,10 +1,12 @@
-package core;
+package PadelApp.json;
 
 import java.io.File;
 import java.io.IOException;
 
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import PadelApp.core.Scoreboard;
+import PadelApp.core.Leaderboard;
 
 public class FileManagerJson {
     static public void saveScoreboard(Scoreboard scoreboard) throws IOException, StreamWriteException {

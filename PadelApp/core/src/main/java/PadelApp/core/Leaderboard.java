@@ -1,7 +1,8 @@
-package core;
+package PadelApp.core;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import PadelApp.json.FileManagerJson;
 
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 

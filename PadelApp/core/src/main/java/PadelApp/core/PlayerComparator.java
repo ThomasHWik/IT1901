@@ -1,4 +1,4 @@
-package core;
+package PadelApp.core;
 
 import java.util.Comparator;
 

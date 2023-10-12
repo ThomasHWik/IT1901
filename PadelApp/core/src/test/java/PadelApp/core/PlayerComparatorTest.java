@@ -1,10 +1,12 @@
-package core;
+package PadelApp.core;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import PadelApp.core.PlayerComparator;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import core.Player;
-import core.PlayerComparator;
+import PadelApp.core.Player;
 
 public class PlayerComparatorTest {
     private Player player1;

@@ -1,10 +1,10 @@
-package ui;
+package PadelApp.ui;
 
 import java.io.IOException;
 import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
 
-import core.Player;
+import PadelApp.core.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

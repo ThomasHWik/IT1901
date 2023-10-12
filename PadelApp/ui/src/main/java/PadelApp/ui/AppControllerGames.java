@@ -1,16 +1,14 @@
-package ui;
+package PadelApp.ui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import core.FileManagerJson;
-import core.Getplayerlistoffile;
-import core.CreatePlayerPairs;
-import core.Player;
-import core.PlayerPair;
-import core.Scoreboard;
+import PadelApp.core.CreatePlayerPairs;
+import PadelApp.core.Player;
+import PadelApp.core.PlayerPair;
+import PadelApp.core.Scoreboard;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
