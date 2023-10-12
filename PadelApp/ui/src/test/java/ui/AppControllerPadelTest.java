@@ -42,9 +42,4 @@ public class AppControllerPadelTest extends ApplicationTest {
         FxAssert.verifyThat("#players", hasText("John, 25"));
       
     }
-
-    @Test
-    public void testCreateGame() {
-        // Your test logic for the CreateGame method goes here
-    }
 }
