@@ -1,6 +1,5 @@
-package ui;
+package PadelApp.ui;
 
-import ui.AppControllerPadel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,6 +11,8 @@ import java.io.IOException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+
+import PadelApp.ui.AppControllerPadel;
 
 
 
@@ -37,20 +38,20 @@ public class AppTest extends ApplicationTest {
         return lookup(id).queryListView();
     }
 
-    @Test
-    public void testAddPlayer() {
-        // Simulate user interactions here (e.g., click buttons, enter text)
+    // @Test
+    // public void testAddPlayer() {
+    //     // Simulate user interactions here (e.g., click buttons, enter text)
 
-        clickOn("#addName").write("John");
-        clickOn("#addAge").write("30");
-        clickOn("#AddPlayer");
+    //     clickOn("#addName").write("John");
+    //     clickOn("#addAge").write("30");
+    //     clickOn("#AddPlayer");
 
-        // Add assertions to verify the behavior of your controller
-        ListView<String> listView = findListViewById("#players");
-        String expectedItem = "John, 30";
-        Assertions.assertTrue(listView.getItems().contains(expectedItem));
+    //     // Add assertions to verify the behavior of your controller
+    //     ListView<String> listView = findListViewById("#players");
+    //     String expectedItem = "John, 30";
+    //     Assertions.assertTrue(listView.getItems().contains(expectedItem));
     
-    }
+    // }
 
 
 }

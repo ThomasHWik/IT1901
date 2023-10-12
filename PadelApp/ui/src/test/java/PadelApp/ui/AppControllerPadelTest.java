@@ -1,6 +1,5 @@
-package ui;
+package PadelApp.ui;
 
-import ui.AppControllerPadel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -9,11 +8,13 @@ import org.testfx.api.FxAssert;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
 
+import PadelApp.ui.AppControllerPadel;
+
 import static org.testfx.matcher.control.TextInputControlMatchers.hasText;
 
 public class AppControllerPadelTest extends ApplicationTest {
 
-    private final FXMLLoader loader = new FXMLLoader(getClass().getResource("Padel.fxml"));
+    private final FXMLLoader loader = new FXMLLoader(getClass().getResource("padel.fxml"));
 
     @Override
     public void start(Stage stage) throws Exception {

@@ -1,5 +1,4 @@
 package PadelApp.core;
-import PadelApp.core.Player;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
