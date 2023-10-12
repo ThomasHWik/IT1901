@@ -1,0 +1,36 @@
+@startuml PackageDiagram
+
+title Package diagram
+!define List java.util.List !define ArrayList java.util.ArrayList
+
+component core {
+    package java.core
+    package java.core.json
+}
+
+
+component jackson {
+}
+
+
+
+java.core.json ..> jackson
+
+component ui {
+    package java.ui
+}
+java.ui ..> java.core
+
+
+component javafx {
+    component fxml {
+
+    }
+}
+ui ..> javafx
+ui ..> fxml
+
+ui ..> java.core.json
+ui ..> java.core
+
+@enduml
