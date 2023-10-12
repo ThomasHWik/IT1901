@@ -8,7 +8,6 @@ import PadelApp.json.FileManagerJson;
 import PadelApp.core.Leaderboard;
 import PadelApp.core.Player;
 import PadelApp.core.Scoreboard;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 

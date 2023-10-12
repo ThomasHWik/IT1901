@@ -5,10 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.testfx.api.FxAssert;
-import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
-
-import PadelApp.ui.AppControllerPadel;
 
 import static org.testfx.matcher.control.TextInputControlMatchers.hasText;
 

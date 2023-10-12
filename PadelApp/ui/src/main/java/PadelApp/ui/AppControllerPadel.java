@@ -1,14 +1,12 @@
 package PadelApp.ui;
 
 import java.io.IOException;
-import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
 
 import PadelApp.core.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.LoadException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
