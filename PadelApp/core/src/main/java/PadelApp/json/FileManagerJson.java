@@ -35,8 +35,7 @@ public class FileManagerJson {
         return null;
     }
 
-    static public Leaderboard getLeaderboard() {
-        String filename = "Leaderboard.json";
+    static public Leaderboard getLeaderboard(String filename) {
         File file = new File(filename);
         if (!file.exists()) {
             return null;
