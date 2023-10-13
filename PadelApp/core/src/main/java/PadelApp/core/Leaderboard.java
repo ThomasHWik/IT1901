@@ -19,12 +19,17 @@ public class Leaderboard extends Scoreboard{
     //checks if player is already in the leaderboard, if not, adds it (tlfNr is the unique identifier)
     public void addScoreboard(Scoreboard scoreboard) throws StreamWriteException, IOException {
         for (Player playerScoreboard : scoreboard.getScorelist()) {
+            boolean found = false;
             for (Player playerLeaderboard : this.scorelist) {
                 if (playerScoreboard.getTlfNr() == playerLeaderboard.getTlfNr()) {
                     playerLeaderboard.addWins(playerScoreboard.getWins());
+                    found = true;
+                    break;
                 }
             }
-            this.scorelist.add(playerScoreboard);
+            if (!found) {
+                this.scorelist.add(playerScoreboard);
+            }
         }
         FileManagerJson.saveScoreboard((Scoreboard) this);
     }
