@@ -48,4 +48,6 @@ There is a need to register participants and get an overview of who is playing a
 - Adjust costs, e.g. by reducing the amount of matches per participant
 
 # App screenshots
-A screenshot of player registration can be found [here](/App.png)
+A screenshot of player registration can be found [here](/App1.png)
+A screenshot of list of paired players and the result of 5 rounds can be found [here](/App2.png)
+A screenshot of scoreboard can be found [here](/App3.png)
