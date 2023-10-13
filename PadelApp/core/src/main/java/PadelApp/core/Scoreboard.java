@@ -23,13 +23,19 @@ public class Scoreboard {
     }
 
     public Scoreboard(ArrayList<Player> scorelist) {
-        this.scorelist = scorelist;
+        this.scorelist = new ArrayList<Player>();
+        for (Player player : scorelist) {
+                this.scorelist.add(player);
+            }
     }
     
     public Scoreboard(String filename, ArrayList<Player> scorelist) {
+        this.scorelist = new ArrayList<Player>();
         if (filename != null && !filename.isEmpty()) {
             this.filename = filename;
-            this.scorelist = scorelist;
+            for (Player player : scorelist) {
+                this.scorelist.add(player);
+            }
             return;
         }
         throw new IllegalArgumentException("Invalid filename!");
@@ -48,11 +54,18 @@ public class Scoreboard {
     }
 
     public ArrayList<Player> getScorelist() {
-        return this.scorelist;
+        ArrayList<Player> scorelist = new ArrayList<>();
+        for (Player player : this.scorelist) {
+            scorelist.add(player);
+        }
+        return scorelist;
     }
 
     public void setScorelist(ArrayList<Player> scorelist) {
-        this.scorelist = scorelist;
+        this.scorelist = new ArrayList<>();
+        for (Player player : scorelist) {
+            this.scorelist.add(player);
+        }
     }
 
     public void removePlayer(Player player) {
