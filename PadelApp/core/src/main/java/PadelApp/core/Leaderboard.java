@@ -8,7 +8,7 @@ import com.fasterxml.jackson.core.exc.StreamWriteException;
 
 public class Leaderboard extends Scoreboard{
     public Leaderboard() {
-        super("Leaderboard.json");
+        super("Leaderboard");
     }
 
     public Leaderboard(String filename) {
@@ -31,10 +31,10 @@ public class Leaderboard extends Scoreboard{
                 }
             }
             if (!found) {
-                this.getScorelist().add(playerScoreboard);
+                Player player = new Player(playerScoreboard.getName(), playerScoreboard.getAge(), playerScoreboard.getWins(), playerScoreboard.getTlfNr());
+                this.addPlayer(player);
             }
         }
-        FileManagerJson.saveScoreboard((Scoreboard) this);
     }
 
     public ArrayList<Player> getTopPlayers(int n) {
