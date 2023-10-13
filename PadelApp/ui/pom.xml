@@ -105,7 +105,7 @@
                 <!-- Default configuration for running -->
                 <!-- Usage: mvn javafx:run -->
                 <configuration>
-                    <mainClass>PadelApp.ui/ui.App</mainClass>
+                    <mainClass>PadelApp.ui/PadelApp.ui.App</mainClass>
                 </configuration>
             </plugin>
 
