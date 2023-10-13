@@ -4,8 +4,8 @@ title Package diagram
 !define List java.util.List !define ArrayList java.util.ArrayList
 
 component core {
-    package java.core
-    package java.core.json
+    package PadelApp.core
+    package PadelApp.json
 }
 
 
@@ -13,13 +13,12 @@ component jackson {
 }
 
 
-
-java.core.json ..> jackson
+PadelApp.json ..> jackson
 
 component ui {
-    package java.ui
+    package PadelApp.ui
 }
-java.ui ..> java.core
+PadelApp.ui ..> PadelApp.core
 
 
 component javafx {
@@ -30,7 +29,7 @@ component javafx {
 ui ..> javafx
 ui ..> fxml
 
-ui ..> java.core.json
-ui ..> java.core
+PadelApp.ui ..> PadelApp.json
+
 
 @enduml
