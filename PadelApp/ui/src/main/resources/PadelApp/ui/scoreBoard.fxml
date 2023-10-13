@@ -13,7 +13,7 @@
    <children>
       <HBox alignment="CENTER" prefHeight="131.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="123.0" prefWidth="647.0" style="-fx-background-color: #DDDDDD;" text="TOP 10 Scoreboard" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="123.0" prefWidth="647.0" style="-fx-background-color: #DDDDDD;" text="TOP 10 Leaderboard" textAlignment="CENTER">
                <font>
                   <Font size="32.0" />
                </font>
