@@ -18,7 +18,7 @@ Necessary maven-version: maven 3.9.4
 
 To build, run: `mvn install`
 
-You can run the app using: `mvn javafx:run`
+You can run the app from ui using: `mvn javafx:run`
 
 You can run the test using: `mvn test`
 
