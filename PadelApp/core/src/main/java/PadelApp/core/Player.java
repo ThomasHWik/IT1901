@@ -28,6 +28,12 @@ public class Player {
         this.wins = 0;
     }
 
+    public Player(String name, int age, int wins, int tlfNr) {
+        setName(name);
+        setAge(age);
+        setWins(wins);
+        setTlfNr(tlfNr);
+    }
 
     public void setName(String name) {
         if (name == null || name.isEmpty()) {
