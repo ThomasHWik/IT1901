@@ -1,6 +1,5 @@
 package PadelApp.core;
 
-import PadelApp.json.FileManager;
 import PadelApp.json.FileManagerJson;
 
 import java.util.ArrayList;
