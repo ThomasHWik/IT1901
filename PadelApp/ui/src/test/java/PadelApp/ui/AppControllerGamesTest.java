@@ -6,23 +6,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import PadelApp.core.Scoreboard;
 import PadelApp.json.FileManagerJson;
 import PadelApp.core.Player;
 import org.junit.jupiter.api.Test;
-import org.testfx.api.FxAssert;
 import org.testfx.framework.junit5.ApplicationTest;
-import static org.testfx.matcher.control.TextInputControlMatchers.hasText;
 
 public class AppControllerGamesTest extends ApplicationTest {
-    private AppControllerPadelTest PadelController;
-    private Parent root;
     public ArrayList<Player> playerList;
     private Button CreateGame;
 
