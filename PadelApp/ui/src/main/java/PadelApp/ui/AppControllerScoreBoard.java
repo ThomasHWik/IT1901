@@ -24,7 +24,7 @@ public class AppControllerScoreBoard {
 
     @FXML
     public void initialize() throws IOException {
-        leaderboard = FileManagerJson.getLeaderboard();
+        leaderboard = FileManagerJson.getLeaderboard("Leaderboard.json");
         if (leaderboard == null) {
             leaderboard = new Leaderboard();
         }
