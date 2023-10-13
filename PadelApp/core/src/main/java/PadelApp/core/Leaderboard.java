@@ -11,6 +11,10 @@ public class Leaderboard extends Scoreboard{
         super("Leaderboard.json");
     }
 
+    public Leaderboard(String filename) {
+        super(filename);
+    }
+
     public void sortLeaderboard(){
         this.getScorelist().sort(new PlayerComparator());
     }
