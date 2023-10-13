@@ -8,19 +8,18 @@ import com.fasterxml.jackson.core.exc.StreamWriteException;
 
 public class Leaderboard extends Scoreboard{
     public Leaderboard() {
-        this.filename = "Leaderboard.json";
-        this.scorelist = new ArrayList<Player>();
+        super("Leaderboard.json");
     }
 
     public void sortLeaderboard(){
-        this.scorelist.sort(new PlayerComparator());
+        this.getScorelist().sort(new PlayerComparator());
     }
 
     //checks if player is already in the leaderboard, if not, adds it (tlfNr is the unique identifier)
     public void addScoreboard(Scoreboard scoreboard) throws StreamWriteException, IOException {
         for (Player playerScoreboard : scoreboard.getScorelist()) {
             boolean found = false;
-            for (Player playerLeaderboard : this.scorelist) {
+            for (Player playerLeaderboard : this.getScorelist()) {
                 if (playerScoreboard.getTlfNr() == playerLeaderboard.getTlfNr()) {
                     playerLeaderboard.addWins(playerScoreboard.getWins());
                     found = true;
@@ -28,7 +27,7 @@ public class Leaderboard extends Scoreboard{
                 }
             }
             if (!found) {
-                this.scorelist.add(playerScoreboard);
+                this.getScorelist().add(playerScoreboard);
             }
         }
         FileManagerJson.saveScoreboard((Scoreboard) this);
@@ -36,12 +35,12 @@ public class Leaderboard extends Scoreboard{
 
     public ArrayList<Player> getTopPlayers(int n) {
         sortLeaderboard();
-        if (this.scorelist.size() < n) {
-            n = this.scorelist.size();
+        if (this.getScorelist().size() < n) {
+            n = this.getScorelist().size();
         }
         ArrayList<Player> topPlayers = new ArrayList<Player>();
         for (int i = 0; i < n; i++) {
-            topPlayers.add(this.scorelist.get(i));
+            topPlayers.add(this.getScorelist().get(i));
         }
         return topPlayers;
     }

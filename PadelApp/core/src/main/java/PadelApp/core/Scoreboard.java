@@ -6,8 +6,8 @@ import PadelApp.json.FileManagerJson;
 import java.util.ArrayList;
 
 public class Scoreboard {
-    protected String filename;
-    protected ArrayList<Player> scorelist;
+    private String filename;
+    private ArrayList<Player> scorelist;
 
     public Scoreboard() {
         this.filename = "Scoreboard.json";
