@@ -41,9 +41,10 @@ You can see our package diagram below:
 * **docs**: the release documents (release1, release 2)
 * **PadelApp/.idea**:
 * **PadelApp/.vscode**: (launc.json, settings.json)
-* **PadelApp/core/src/main/java/core**: domain logic and filehandling
+* **PadelApp/core/src/main/java/PadelApp/core**: domain logic
+* **PadelApp/core/src/main/java/PadelApp/json**: filehandling
 * **PadelApp/core/src/test**: tests for domain logic
-* **PadelApp/ui/src/main/java/ui**: App and controllers
+* **PadelApp/ui/src/main/java/PadelApp/ui**: App and controllers
 * **PadelApp/ui/src/main/resources**: fxml files
 * **PadelApp/ui/src/test**: App and controller test
  
