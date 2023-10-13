@@ -31,6 +31,11 @@ We use three code quality analysis tools to make sure our code is up to standard
 
 All three generate HTML reports with pointers to what can be improved.
 
+To generate checkstyle and spotbugs run: 'mvn site'
+To generate JaCoCo run: 'mvn test'
+
+You can find the html files under target/site in the core and ui module, and open them by copying the path and paste into a web browser. 
+
 # Diagram
 You can see our package diagram below:
 
