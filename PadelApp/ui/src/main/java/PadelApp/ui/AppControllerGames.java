@@ -9,7 +9,9 @@ import PadelApp.json.FileManagerJson;
 import PadelApp.core.CreatePlayerPairs;
 import PadelApp.core.Player;
 import PadelApp.core.PlayerPair;
+import PadelApp.core.RoundSelector;
 import PadelApp.core.Scoreboard;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,7 +31,10 @@ public class AppControllerGames {
     private List<Player> Player = new ArrayList<>();
     private CreatePlayerPairs pairs = new CreatePlayerPairs(Player);
     private List<PlayerPair> Pairs = new ArrayList<>();
-    private int round=1;
+    private RoundSelector roundSelector = new RoundSelector(0);
+    private int chosenRounds = roundSelector.getNumberOfRounds();
+    private int round = 0;
+    
 
     @FXML
     private TextArea error;
@@ -47,6 +52,12 @@ public class AppControllerGames {
     private RadioButton onel,oner,twol,twor,threel,threer,fourl,fourr,fivel,fiver,sixl,sixr,sevenl,sevenr,eightl,eightr,ninel,niner,tenl,tenr,elevenl,elevenr;
 
     private ArrayList<RadioButton> radioButtons= new ArrayList<RadioButton>();
+
+    @FXML
+    private TextField InputRounds;
+
+    @FXML
+    private Button SetRounds;
 
     private void addRadioBs(){
         radioButtons.add(onel);
@@ -73,7 +84,7 @@ public class AppControllerGames {
         radioButtons.add(elevenr);
     }
     private void addPlayersToVsLists(){
-        //making to seperate list that tells sais the name of teh player and how many pints they have.
+        //making two seperate list that tells sais the name of the player and how many pints they have.
         ArrayList<String> players1 = new ArrayList<>();
         ArrayList<String> players2 = new ArrayList<>();
 
@@ -133,10 +144,36 @@ public class AppControllerGames {
         }
         return true;
     }
+
+    @FXML
+    void roundSelector(ActionEvent event) throws IOException{
+        
+        try {
+            error.visibleProperty().set(false);
+            int chosenRounds = Integer.parseInt(InputRounds.getText());
+            roundSelector.setNumberOfRounds(chosenRounds);
+            this.chosenRounds = chosenRounds;
+            
+            updateRound();
+            
+        } catch (NumberFormatException e){
+            
+            error.setText("Invalid input");
+            error.visibleProperty().set(true);
+
+        } catch (IllegalArgumentException e) {
+            error.setText("Rounds must be between 1-10");
+            error.visibleProperty().set(true);
+        }    
+
+    }
+
+   
+
     private void updateRound() {
         round++;
-        rounds.setText(round + " / 5");
-        if (round==5){
+        rounds.setText(round + " /"+chosenRounds);
+        if (round==chosenRounds){
             NewRound.disableProperty().set(true);
             NewRound.visibleProperty().set(false);
         }

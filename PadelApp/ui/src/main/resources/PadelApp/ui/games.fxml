@@ -87,7 +87,10 @@
       <RadioButton fx:id="tenl" disable="true" layoutX="146.0" layoutY="264.0" mnemonicParsing="false" toggleGroup="$ten" visible="false" />
       <RadioButton fx:id="elevenl" disable="true" layoutX="147.0" layoutY="288.0" mnemonicParsing="false" toggleGroup="$eleven" visible="false" />
       <Button fx:id="NewRound" layoutX="42.0" layoutY="333.0" mnemonicParsing="false" onAction="#NewRound" text="New Round" />
-      <TextField fx:id="rounds" editable="false" layoutX="42.0" layoutY="281.0" prefHeight="25.0" prefWidth="82.0" text=" 1 / 5" />
+      <TextField fx:id="rounds" editable="false" layoutX="42.0" layoutY="281.0" prefHeight="25.0" prefWidth="82.0" text="" />
       <TextArea fx:id="error" editable="false" layoutX="169.0" layoutY="313.0" prefHeight="48.0" prefWidth="263.0" visible="false" />
+      <TextField fx:id="NumberOfRounds" layoutX="24.0" layoutY="157.0" prefHeight="25.0" prefWidth="131.0" text="Number of rounds:" />
+      <TextField fx:id="InputRounds" layoutX="31.0" layoutY="190.0" prefHeight="25.0" prefWidth="62.0" />
+      <Button fx:id="SetRounds" layoutX="100.0" layoutY="190.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="48.0" text="OK" onAction="#roundSelector" />
    </children>
 </AnchorPane>

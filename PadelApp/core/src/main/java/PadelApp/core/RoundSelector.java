@@ -13,6 +13,9 @@ public class RoundSelector {
     }
 
     public void setNumberOfRounds(int numberOfRounds) {
+        if (numberOfRounds < 1 || numberOfRounds > 10){
+            throw new IllegalArgumentException("Not valid input!");
+        }
         this.numberOfRounds = numberOfRounds;
     }
    
