@@ -22,6 +22,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 
 public class AppControllerGames {
@@ -41,39 +42,25 @@ public class AppControllerGames {
     private Button GoToScore,NewRound;
 
     @FXML
-    private ListView<String> Player1, Player2;
+    private ToggleButton oneOne,oneTwo,twoOne,twoTwo;
 
-    @FXML
-    private RadioButton onel,oner,twol,twor,threel,threer,fourl,fourr,fivel,fiver,sixl,sixr,sevenl,sevenr,eightl,eightr,ninel,niner,tenl,tenr,elevenl,elevenr;
+    private ArrayList<ToggleButton> toggleButtons= new ArrayList<ToggleButton>();
 
-    private ArrayList<RadioButton> radioButtons= new ArrayList<RadioButton>();
-
-    private void addRadioBs(){
-        radioButtons.add(onel);
-        radioButtons.add(oner);
-        radioButtons.add(twol);
-        radioButtons.add(twor);
-        radioButtons.add(threel);
-        radioButtons.add(threer);
-        radioButtons.add(fourl);
-        radioButtons.add(fourr);
-        radioButtons.add(fivel);
-        radioButtons.add(fiver);
-        radioButtons.add(sixl);
-        radioButtons.add(sixr);
-        radioButtons.add(sevenl);
-        radioButtons.add(sevenr);
-        radioButtons.add(eightl);
-        radioButtons.add(eightr);
-        radioButtons.add(ninel);
-        radioButtons.add(niner);
-        radioButtons.add(tenl);
-        radioButtons.add(tenr);
-        radioButtons.add(elevenl);
-        radioButtons.add(elevenr);
+    private void addToggleBs(){
+        toggleButtons.add(oneOne);
+        toggleButtons.add(oneTwo);
+        toggleButtons.add(twoOne);
+        toggleButtons.add(twoTwo);
+        
     }
-    private void addPlayersToVsLists(){
-        //making to seperate list that tells sais the name of teh player and how many pints they have.
+
+    private void addPlayersToCourts(){
+
+        
+        oneOne.setAccessibleText(value);
+    }
+   /*  private void addPlayersToVsLists(){
+        //making to seperate list that tells sais the name of the player and how many points they have.
         ArrayList<String> players1 = new ArrayList<>();
         ArrayList<String> players2 = new ArrayList<>();
 
@@ -90,7 +77,7 @@ public class AppControllerGames {
         Player1.setItems(nr1);
         Player2.setItems(nr2);
 
-    }
+    } */
 
     private void addPointsToPlayer(){
         int radiosize = Pairs.size()*2;
@@ -144,8 +131,8 @@ public class AppControllerGames {
 
     public void CreateGame() throws FileNotFoundException, IOException{
         setPairs();
-        addRadioBs();
-        addPlayersToVsLists();
+        addToggleBs();
+        addPlayersToCourts();
 
         //To turn on the right amount of radiobuttons
         int radiosize = Pairs.size()*2;
