@@ -10,6 +10,7 @@ import PadelApp.core.CreatePlayerPairs;
 import PadelApp.core.Player;
 import PadelApp.core.PlayerPair;
 import PadelApp.core.Scoreboard;
+import PadelApp.core.gameSetup;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,10 +31,11 @@ public class AppControllerGames {
     private List<Player> Player = new ArrayList<>();
     private CreatePlayerPairs pairs = new CreatePlayerPairs(Player);
     private List<PlayerPair> Pairs = new ArrayList<>();
+    private gameSetup courts= new gameSetup(1,Pairs);
     private int round=1;
 
     @FXML
-    private TextArea error;
+    private TextArea error,one, two, three,four,five,six,seven,eight,nine,ten;
 
     @FXML
     private TextField rounds;
@@ -42,22 +44,44 @@ public class AppControllerGames {
     private Button GoToScore,NewRound;
 
     @FXML
-    private ToggleButton oneOne,oneTwo,twoOne,twoTwo;
+    private ToggleButton oneOne,oneTwo,twoOne,twoTwo,threeOne1,threeOne2,threeTwo1,threeTwo2,fourOne,fourTwo;
 
     private ArrayList<ToggleButton> toggleButtons= new ArrayList<ToggleButton>();
+    private ArrayList<TextArea> courtplace= new ArrayList<TextArea>();
 
     private void addToggleBs(){
         toggleButtons.add(oneOne);
         toggleButtons.add(oneTwo);
         toggleButtons.add(twoOne);
         toggleButtons.add(twoTwo);
-        
+        toggleButtons.add(threeOne1);
+        toggleButtons.add(threeOne2);
+        toggleButtons.add(threeTwo1);
+        toggleButtons.add(threeTwo2);
+        toggleButtons.add(fourOne);
+        toggleButtons.add(fourTwo);  
+    }
+
+    private void addcourtplace(){
+        courtplace.add(one);
+        courtplace.add(two);
+        courtplace.add(three);
+        courtplace.add(four);
+        courtplace.add(five);
+        courtplace.add(six);
+        courtplace.add(seven);
+        courtplace.add(eight);
+        courtplace.add(nine);
+        courtplace.add(ten);
     }
 
     private void addPlayersToCourts(){
+        for (int i = 0; i < toggleButtons.size(); i+=2) {
+            toggleButtons.get(i).setAccessibleText(Pairs.get(i/2).getPlayer1().getName());
+            toggleButtons.get(i+1).setAccessibleText(Pairs.get(i).getPlayer2().getName());
 
-        
-        oneOne.setAccessibleText(value);
+            
+        }
     }
    /*  private void addPlayersToVsLists(){
         //making to seperate list that tells sais the name of the player and how many points they have.
