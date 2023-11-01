@@ -31,11 +31,11 @@ public class AppControllerGames {
     private List<Player> Player = new ArrayList<>();
     private CreatePlayerPairs pairs = new CreatePlayerPairs(Player);
     private List<PlayerPair> Pairs = new ArrayList<>();
-    private gameSetup courts= new gameSetup(1,Pairs);
+    private gameSetup courts= new gameSetup(0,Pairs);
     private int round=1;
 
     @FXML
-    private TextArea error,one, two, three,four,five,six,seven,eight,nine,ten;
+    private TextArea error,one,two,three,four,five,six,seven,eight,nine,ten;
 
     @FXML
     private TextField rounds;
@@ -77,10 +77,8 @@ public class AppControllerGames {
 
     private void addPlayersToCourts(){
         for (int i = 0; i < toggleButtons.size(); i+=2) {
-            toggleButtons.get(i).setAccessibleText(Pairs.get(i/2).getPlayer1().getName());
-            toggleButtons.get(i+1).setAccessibleText(Pairs.get(i).getPlayer2().getName());
-
-            
+            toggleButtons.get(i).setText(Pairs.get(i/2).getPlayer1().getName());
+            toggleButtons.get(i+1).setText(Pairs.get(i/2).getPlayer2().getName());   
         }
     }
    /*  private void addPlayersToVsLists(){
@@ -103,7 +101,7 @@ public class AppControllerGames {
 
     } */
 
-    private void addPointsToPlayer(){
+   /*  private void addPointsToPlayer(){
         int radiosize = Pairs.size()*2;
         for (int i = 0; i < radiosize-1; i+=2) {
             if (radioButtons.get(i).isSelected() || radioButtons.get(i+1).isSelected()){
@@ -114,11 +112,11 @@ public class AppControllerGames {
                 }
             } 
         }
-    }
+    } */
 
-    @FXML
+   @FXML
     void NewRound(ActionEvent event) throws FileNotFoundException, IOException{
-        if (!allselected()){
+       /*  if (!allselected()){
             error.visibleProperty().set(true);
             error.setText("Not all games have been selected");
         }
@@ -131,11 +129,11 @@ public class AppControllerGames {
                 radioButtons.get(i).selectedProperty().set(false);
             }
             updateRound();
-        }
+        } */
         
     }
 
-    private boolean allselected() {
+    /* private boolean allselected() {
         int radiosize = Pairs.size()*2;
         for (int i = 0; i < radiosize-1; i+=2){
             if (!(radioButtons.get(i).isSelected() || radioButtons.get(i+1).isSelected())){
@@ -143,7 +141,7 @@ public class AppControllerGames {
             }
         }
         return true;
-    }
+    } */
     private void updateRound() {
         round++;
         rounds.setText(round + " / 5");
@@ -159,12 +157,12 @@ public class AppControllerGames {
         addPlayersToCourts();
 
         //To turn on the right amount of radiobuttons
-        int radiosize = Pairs.size()*2;
+        /* int radiosize = Pairs.size()*2;
         for (int i = 0; i < radiosize; i++) {
             radioButtons.get(i).setDisable(false);
             radioButtons.get(i).setVisible(true);
-        }
-    }
+        } */
+    } 
 
     public void setPlayerList(ArrayList<Player> playerlist){
         pairs = new CreatePlayerPairs(playerlist);
@@ -180,7 +178,7 @@ public class AppControllerGames {
 
     @FXML
     void GoToScore(ActionEvent event) throws IOException {
-        addPointsToPlayer();
+        //addPointsToPlayer();
 
         for (int i = 0; i < Pairs.size(); i++) {
             Player.add(Pairs.get(i).getPlayer1());

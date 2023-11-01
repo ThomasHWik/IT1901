@@ -66,8 +66,10 @@ public class AppControllerPadel {
         updateGUI();
     }
 
+    
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
+
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
         Parent root = loader.load();
@@ -76,6 +78,8 @@ public class AppControllerPadel {
             AppControllerGames games = (AppControllerGames)loader.getController();
             games.setPlayerList(playerlist);
             games.CreateGame();
+            
+            
 
             
     }
