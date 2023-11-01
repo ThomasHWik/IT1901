@@ -1,8 +1,7 @@
 package PadelApp.core;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import PadelApp.json.FileManagerJson;
+import java.util.List;
 
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 
@@ -37,15 +36,13 @@ public class Leaderboard extends Scoreboard{
         }
     }
 
-    public ArrayList<Player> getTopPlayers(int n) {
-        sortLeaderboard();
-        if (this.getScorelist().size() < n) {
-            n = this.getScorelist().size();
-        }
-        ArrayList<Player> topPlayers = new ArrayList<Player>();
-        for (int i = 0; i < n; i++) {
-            topPlayers.add(this.getScorelist().get(i));
-        }
-        return topPlayers;
+    public List<Player> getTopPlayers(int n) {
+        PlayerComparator pc = new PlayerComparator();
+        List<Player> lbList = this.getScorelist().stream()
+                                                 .sorted(pc)
+                                                 .limit(n)
+                                                 .toList();
+
+        return lbList;
     }
 }

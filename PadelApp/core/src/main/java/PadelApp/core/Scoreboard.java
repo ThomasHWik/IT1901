@@ -25,8 +25,8 @@ public class Scoreboard {
     public Scoreboard(ArrayList<Player> scorelist) {
         this.scorelist = new ArrayList<Player>();
         for (Player player : scorelist) {
-                this.scorelist.add(player);
-            }
+            this.scorelist.add(player);
+        }
     }
     
     public Scoreboard(String filename, ArrayList<Player> scorelist) {

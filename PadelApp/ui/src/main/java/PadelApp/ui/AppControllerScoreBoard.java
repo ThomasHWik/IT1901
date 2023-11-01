@@ -1,20 +1,16 @@
 package PadelApp.ui;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import PadelApp.json.FileManagerJson;
 import PadelApp.core.Leaderboard;
 import PadelApp.core.Player;
-import PadelApp.core.Scoreboard;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
 public class AppControllerScoreBoard {
 
     private Leaderboard leaderboard;
-    private Scoreboard scoreboard;
 
     @FXML
     ListView<String> name;
@@ -36,10 +32,6 @@ public class AppControllerScoreBoard {
         leaderboard.addScoreboard(FileManagerJson.getScoreboard("currentgame"));
         leaderboard.sortLeaderboard();
         FileManagerJson.saveScoreboard(leaderboard);
-    }
-
-    public void setScoreboard(List<Player> playerlist) {
-        scoreboard = new Scoreboard((ArrayList<Player>) playerlist);
     }
 
     private void populateTable() {
