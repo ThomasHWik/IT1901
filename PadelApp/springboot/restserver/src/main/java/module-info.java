@@ -7,7 +7,7 @@ module PadelApp.springboot.restserver {
     requires spring.context;
     requires spring.boot.autoconfigure;
 
-    requires todolist.core;
+    requires PadelApp.core;
 
     opens PadelApp.springboot.restserver to spring.beans, spring.context, spring.web;
 }
