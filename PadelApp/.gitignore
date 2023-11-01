@@ -8,3 +8,6 @@ org.eclipse.*.prefs
 
 #ignore Mac hidden files
 .DS_Store
+
+#ignore .idea
+.idea/
