@@ -11,3 +11,7 @@ org.eclipse.*.prefs
 
 #ignore .idea
 .idea/
+
+#ignore test leaderboards
+LeaderboardTest.json
+ScoreboardTest.json
