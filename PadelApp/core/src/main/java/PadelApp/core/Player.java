@@ -81,8 +81,8 @@ public class Player {
     }
 
     public void setTlfNr(int tlfNr) {
-        if (NumberManager.getDigits(tlfNr) != 8) {
-            throw new IllegalArgumentException("Phone number must be 8 digits!");
+        if (NumberManager.getDigits(tlfNr) != 8 || (NumberManager.getFirstDigit(tlfNr) != 9 && NumberManager.getFirstDigit(tlfNr) != 4)){
+            throw new IllegalArgumentException("Phone must be valid");
         }
         this.tlfNr = tlfNr;
     }
