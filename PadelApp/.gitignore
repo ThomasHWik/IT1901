@@ -7,7 +7,7 @@ target/
 org.eclipse.*.prefs
 
 #ignore Mac hidden files
-.DS_Store
+*.DS_Store
 
 #ignore .idea
 .idea/
@@ -17,4 +17,4 @@ LeaderboardTest.json
 ScoreboardTest.json
 
 #ignore all .txt (temp files)
-.txt
+*.txt
