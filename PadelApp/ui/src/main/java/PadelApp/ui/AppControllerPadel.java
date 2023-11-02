@@ -29,7 +29,8 @@ public class AppControllerPadel {
     private Button AddPlayer, CreateGame;
 
     @FXML 
-    private Label errorMsg;
+    private Label errorMsg, errorCreateGamesMsg;
+
 
     @FXML
     void AddPlayer(ActionEvent event) throws IOException {
@@ -69,8 +70,11 @@ public class AppControllerPadel {
     
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
-
-        
+        refreshErrorCreateGamesMsg();
+        if (playerlist.size() % 2 != 0){
+            errorCreateGames("Must be even number of players");
+            return;
+        }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
         Parent root = loader.load();
             Stage stage = (Stage) CreateGame.getScene().getWindow();
@@ -80,6 +84,7 @@ public class AppControllerPadel {
             games.CreateGame();
             
     }
+   
 
     //handles invalid input and shows the error msg for the user
     @FXML
@@ -91,6 +96,16 @@ public class AppControllerPadel {
     @FXML
     private void refreshErrorMsg() {
         errorMsg.setText("");
+    }
+
+    @FXML
+    private void errorCreateGames(String message){
+        errorCreateGamesMsg.setText(message);
+    }
+
+    @FXML
+    private void refreshErrorCreateGamesMsg(){
+        errorCreateGamesMsg.setText("");
     }
 
     private void updateGUI() {
