@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
@@ -40,43 +41,53 @@ public class AppControllerGames {
     private Button GoToScore,NewRound;
 
     @FXML
-    private ToggleButton oneOne,oneTwo,twoOne,twoTwo,threeOne1,threeOne2,threeTwo1,threeTwo2,fourOne,fourTwo;
+    private ToggleButton oneOne,oneTwo,twoOne,twoTwo,threeOne1,threeOne2,threeTwo1,threeTwo2,fourOne,fourTwo,fiveOne1,fiveOne2,fiveTwo1,fiveTwo2,sixOne,sixTwo,sevenOne,sevenTwo;
+
+    @FXML
+    private Label Court1,Court2,Court3,Court4,Court5,Court6,Court7; 
 
     private ArrayList<ToggleButton> toggleButtons= new ArrayList<ToggleButton>();
 
     private void addToggleBs(){
-        toggleButtons.add(oneOne);
-        toggleButtons.add(oneTwo);
-        toggleButtons.add(twoOne);
-        toggleButtons.add(twoTwo);
-        toggleButtons.add(threeOne1);
-        toggleButtons.add(threeOne2);
-        toggleButtons.add(threeTwo1);
-        toggleButtons.add(threeTwo2);
-        toggleButtons.add(fourOne);
-        toggleButtons.add(fourTwo);  
-    }
-
-
-   /*  private void addPlayersToVsLists(){
-        //making to seperate list that tells sais the name of the player and how many points they have.
-        ArrayList<String> players1 = new ArrayList<>();
-        ArrayList<String> players2 = new ArrayList<>();
-
-        for (int i = 0; i< Pairs.size(); i++) {
-            String player1 = Pairs.get(i).getPlayer1().getName()+" : "+ Pairs.get(i).getPlayer1().getWins();
-            players1.add(player1);
-            String player2 = Pairs.get(i).getPlayer2().getName()+" : "+ Pairs.get(i).getPlayer2().getWins();
-            players2.add(player2);
-
+        if (courts.getDouble()==0){
+            toggleButtons.add(oneOne);
+            toggleButtons.add(oneTwo);
+            toggleButtons.add(twoOne);
+            toggleButtons.add(twoTwo);
+            toggleButtons.add(sixOne);
+            toggleButtons.add(sixTwo);
+            toggleButtons.add(sevenOne);
+            toggleButtons.add(sevenTwo);
+            toggleButtons.add(fourOne);
+            toggleButtons.add(fourTwo);  
         }
-        ObservableList<String> nr1 = FXCollections.observableArrayList(players1);
-        ObservableList<String> nr2 = FXCollections.observableArrayList(players2);
+        if (courts.getDouble()==1){
+            toggleButtons.add(threeOne1);
+            toggleButtons.add(threeTwo1);
+            toggleButtons.add(threeOne2);
+            toggleButtons.add(threeTwo2);
+            toggleButtons.add(oneOne);
+            toggleButtons.add(oneTwo);
+            toggleButtons.add(twoOne);
+            toggleButtons.add(twoTwo);
+            toggleButtons.add(fourOne);
+            toggleButtons.add(fourTwo); 
+        }
+        if(courts.getDouble()==2){
+            toggleButtons.add(fiveOne1);
+            toggleButtons.add(fiveTwo1);
+            toggleButtons.add(fiveOne2);
+            toggleButtons.add(fiveTwo2);
+            toggleButtons.add(threeOne1);
+            toggleButtons.add(threeTwo1);
+            toggleButtons.add(threeOne2);
+            toggleButtons.add(threeTwo2);
+            toggleButtons.add(fourOne);
+            toggleButtons.add(fourTwo); 
+            
+        }
 
-        Player1.setItems(nr1);
-        Player2.setItems(nr2);
-
-    } */
+    }
 
    private void addPointsToPlayer(){
         int togglesize = Pairs.size()*2;
@@ -106,6 +117,7 @@ public class AppControllerGames {
             for (int i = 0; i < togglesize; i++){
                 toggleButtons.get(i).selectedProperty().set(false);
             }
+
             updateRound();
         }
         
@@ -143,24 +155,34 @@ public class AppControllerGames {
 
     public void CreateGame() throws FileNotFoundException, IOException{
         setPairs();
-        addToggleBs();
+        createCourts();
+        addPlayersToCourts();
+    } 
 
+    private void createCourts(){
+        if (Pairs.size()>=2){
+            courts = new gameSetup(1, Pairs);
+        }
+        else{
+            courts= new gameSetup(0, Pairs);
+        }
+        addToggleBs();
         //To turn on the right amount of togglebuttons
         int togglesize = Pairs.size()*2;
         for (int i = 0; i < togglesize; i++) {
             toggleButtons.get(i).setDisable(false);
             toggleButtons.get(i).setVisible(true);
         }
-
-        addPlayersToCourts();
-    } 
-
-    private void createCourts(){
-        courts= 
+        if (oneOne.isVisible()){Court1.visibleProperty().set(true);}
+        if (twoTwo.isVisible()){Court2.visibleProperty().set(true);}
+        if (threeOne1.isVisible()){Court3.visibleProperty().set(true);}
+        if (fourOne.isVisible()){Court4.visibleProperty().set(true);}
+        if (fiveOne1.isVisible()){Court5.visibleProperty().set(true);} 
     }
 
     private void addPlayersToCourts(){
-        for (int i = 0; i < toggleButtons.size(); i+=2) {
+        int togglesize = Pairs.size()*2;
+        for (int i = 0; i < togglesize; i+=2) {
             toggleButtons.get(i).setText(Pairs.get(i/2).getPlayer1().getName() +" : "+ Pairs.get(i/2).getPlayer1().getWins());
             toggleButtons.get(i+1).setText(Pairs.get(i/2).getPlayer2().getName()+" : "+ Pairs.get(i/2).getPlayer2().getWins());   
         }
