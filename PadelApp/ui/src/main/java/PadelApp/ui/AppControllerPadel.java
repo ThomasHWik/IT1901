@@ -67,6 +67,7 @@ public class AppControllerPadel {
         updateGUI();
     }
 
+    
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
         refreshErrorCreateGamesMsg();
@@ -81,7 +82,6 @@ public class AppControllerPadel {
             AppControllerGames games = (AppControllerGames)loader.getController();
             games.setPlayerList(playerlist);
             games.CreateGame();
-
             
     }
    
