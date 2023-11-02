@@ -79,9 +79,6 @@ public class AppControllerPadel {
             games.setPlayerList(playerlist);
             games.CreateGame();
             
-            
-
-            
     }
 
     //handles invalid input and shows the error msg for the user

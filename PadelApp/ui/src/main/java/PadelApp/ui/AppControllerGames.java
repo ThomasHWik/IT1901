@@ -11,16 +11,12 @@ import PadelApp.core.Player;
 import PadelApp.core.PlayerPair;
 import PadelApp.core.Scoreboard;
 import PadelApp.core.gameSetup;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
@@ -35,7 +31,7 @@ public class AppControllerGames {
     private int round=1;
 
     @FXML
-    private TextArea error,one,two,three,four,five,six,seven,eight,nine,ten;
+    private TextArea error;
 
     @FXML
     private TextField rounds;
@@ -47,7 +43,6 @@ public class AppControllerGames {
     private ToggleButton oneOne,oneTwo,twoOne,twoTwo,threeOne1,threeOne2,threeTwo1,threeTwo2,fourOne,fourTwo;
 
     private ArrayList<ToggleButton> toggleButtons= new ArrayList<ToggleButton>();
-    private ArrayList<TextArea> courtplace= new ArrayList<TextArea>();
 
     private void addToggleBs(){
         toggleButtons.add(oneOne);
@@ -62,25 +57,7 @@ public class AppControllerGames {
         toggleButtons.add(fourTwo);  
     }
 
-    private void addcourtplace(){
-        courtplace.add(one);
-        courtplace.add(two);
-        courtplace.add(three);
-        courtplace.add(four);
-        courtplace.add(five);
-        courtplace.add(six);
-        courtplace.add(seven);
-        courtplace.add(eight);
-        courtplace.add(nine);
-        courtplace.add(ten);
-    }
 
-    private void addPlayersToCourts(){
-        for (int i = 0; i < toggleButtons.size(); i+=2) {
-            toggleButtons.get(i).setText(Pairs.get(i/2).getPlayer1().getName());
-            toggleButtons.get(i+1).setText(Pairs.get(i/2).getPlayer2().getName());   
-        }
-    }
    /*  private void addPlayersToVsLists(){
         //making to seperate list that tells sais the name of the player and how many points they have.
         ArrayList<String> players1 = new ArrayList<>();
@@ -101,47 +78,60 @@ public class AppControllerGames {
 
     } */
 
-   /*  private void addPointsToPlayer(){
-        int radiosize = Pairs.size()*2;
-        for (int i = 0; i < radiosize-1; i+=2) {
-            if (radioButtons.get(i).isSelected() || radioButtons.get(i+1).isSelected()){
-                if(radioButtons.get(i).isSelected()){
+   private void addPointsToPlayer(){
+        int togglesize = Pairs.size()*2;
+        for (int i = 0; i < togglesize-1; i+=2) {
+            if (toggleButtons.get(i).isSelected() || toggleButtons.get(i+1).isSelected()){
+                if(toggleButtons.get(i).isSelected()){
                     Pairs.get(i/2).getPlayer1().addwins();
                 }
-                else{Pairs.get(i/2).getPlayer2().addwins();
+                else{
+                    Pairs.get(i/2).getPlayer2().addwins();
                 }
             } 
         }
-    } */
+    } 
 
    @FXML
     void NewRound(ActionEvent event) throws FileNotFoundException, IOException{
-       /*  if (!allselected()){
+        if (!allselected()){
             error.visibleProperty().set(true);
             error.setText("Not all games have been selected");
         }
         else{
             error.visibleProperty().set(false);
             addPointsToPlayer();
-            addPlayersToVsLists();
-            int radiosize = Pairs.size()*2;
-            for (int i = 0; i < radiosize; i++){
-                radioButtons.get(i).selectedProperty().set(false);
+            addPlayersToCourts();
+            int togglesize = Pairs.size()*2;
+            for (int i = 0; i < togglesize; i++){
+                toggleButtons.get(i).selectedProperty().set(false);
             }
             updateRound();
-        } */
+        }
         
     }
+    @FXML
+    void pairOne(ActionEvent event){
+        threeOne1.selectedProperty().set(true);
+        threeOne2.selectedProperty().set(true);
+    }
+    @FXML
+    void pairTwo(ActionEvent event){
+        threeTwo1.selectedProperty().set(true);
+        threeTwo2.selectedProperty().set(true);
+    }
 
-    /* private boolean allselected() {
-        int radiosize = Pairs.size()*2;
-        for (int i = 0; i < radiosize-1; i+=2){
-            if (!(radioButtons.get(i).isSelected() || radioButtons.get(i+1).isSelected())){
+
+    private boolean allselected() {
+        int togglesize = Pairs.size()*2;
+        for (int i = 0; i < togglesize-1; i+=2){
+            if (!(toggleButtons.get(i).isSelected() || toggleButtons.get(i+1).isSelected())){
                 return false;
             }
         }
         return true;
-    } */
+    } 
+
     private void updateRound() {
         round++;
         rounds.setText(round + " / 5");
@@ -154,15 +144,27 @@ public class AppControllerGames {
     public void CreateGame() throws FileNotFoundException, IOException{
         setPairs();
         addToggleBs();
-        addPlayersToCourts();
 
-        //To turn on the right amount of radiobuttons
-        /* int radiosize = Pairs.size()*2;
-        for (int i = 0; i < radiosize; i++) {
-            radioButtons.get(i).setDisable(false);
-            radioButtons.get(i).setVisible(true);
-        } */
+        //To turn on the right amount of togglebuttons
+        int togglesize = Pairs.size()*2;
+        for (int i = 0; i < togglesize; i++) {
+            toggleButtons.get(i).setDisable(false);
+            toggleButtons.get(i).setVisible(true);
+        }
+
+        addPlayersToCourts();
     } 
+
+    private void createCourts(){
+        courts= 
+    }
+
+    private void addPlayersToCourts(){
+        for (int i = 0; i < toggleButtons.size(); i+=2) {
+            toggleButtons.get(i).setText(Pairs.get(i/2).getPlayer1().getName() +" : "+ Pairs.get(i/2).getPlayer1().getWins());
+            toggleButtons.get(i+1).setText(Pairs.get(i/2).getPlayer2().getName()+" : "+ Pairs.get(i/2).getPlayer2().getWins());   
+        }
+    }
 
     public void setPlayerList(ArrayList<Player> playerlist){
         pairs = new CreatePlayerPairs(playerlist);
@@ -178,7 +180,7 @@ public class AppControllerGames {
 
     @FXML
     void GoToScore(ActionEvent event) throws IOException {
-        //addPointsToPlayer();
+        addPointsToPlayer();
 
         for (int i = 0; i < Pairs.size(); i++) {
             Player.add(Pairs.get(i).getPlayer1());
