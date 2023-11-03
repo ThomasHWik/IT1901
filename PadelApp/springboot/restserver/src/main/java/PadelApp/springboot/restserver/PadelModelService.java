@@ -31,6 +31,7 @@ public class PadelModelService {
         Leaderboard leaderboard = FileManagerJson.getLeaderboard("Leaderboard.json");
         try {
             leaderboard.addScoreboard(scoreboard);
+            FileManagerJson.saveScoreboard(leaderboard);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
