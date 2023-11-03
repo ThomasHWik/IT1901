@@ -47,11 +47,12 @@ public class PadelModelController {
     public ResponseEntity<String> testServer(){
         Leaderboard leaderboard = new Leaderboard();
         leaderboard.addPlayer(new Player("Thomas",19,2,99999999));
+        leaderboard.addPlayer(new Player("Kacper", 20, 3, 44444444));
 
         ObjectMapper om = new ObjectMapper();
 
         try {
-            return new ResponseEntity<>(om.writeValueAsString(leaderboard), HttpStatus.OK);
+            return new ResponseEntity<>(FileManagerJson.getJsonString(leaderboard), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed json serialization", HttpStatus.INTERNAL_SERVER_ERROR);
         }
