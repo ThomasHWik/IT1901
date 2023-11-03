@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import PadelApp.core.Leaderboard;
+import PadelApp.core.Player;
 import PadelApp.core.Scoreboard;
+import PadelApp.json.FileManagerJson;
 
 @RestController
 @RequestMapping("/api/padel")
@@ -40,6 +42,8 @@ public class PadelModelController {
 
     @GetMapping("/test")
     public ResponseEntity<String> testServer(){
-        return new ResponseEntity<>("Request received", HttpStatus.OK);
+        Leaderboard leaderboard = new Leaderboard();
+        leaderboard.addPlayer(new Player("Thomas",19,2,999999999));
+        return new ResponseEntity<>(FileManagerJson.getJsonString(leaderboard), HttpStatus.OK);
     }
 }
