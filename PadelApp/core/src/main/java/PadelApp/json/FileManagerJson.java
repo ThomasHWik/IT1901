@@ -57,8 +57,13 @@ public class FileManagerJson {
      * @throws JsonProcessingException when the serialization fails
      */
 
-    static public String getJsonString(Scoreboard scoreboard) throws JsonProcessingException {
+    static public String getJsonString(Scoreboard scoreboard) {
         ObjectMapper om = new ObjectMapper();
-        return om.writeValueAsString(scoreboard);
+        try {
+            return om.writeValueAsString(scoreboard);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 }
