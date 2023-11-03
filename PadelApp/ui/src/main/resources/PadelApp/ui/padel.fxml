@@ -15,8 +15,10 @@
       <Label layoutX="34.0" layoutY="208.0" prefHeight="17.0" prefWidth="92.0" text="Age" />
       <TextField fx:id="addAge" layoutX="34.0" layoutY="233.0" prefHeight="25.0" prefWidth="200.0" />
       <Button fx:id="CreateGame" layoutX="434.0" layoutY="331.0" mnemonicParsing="false" onAction="#CreateGame" prefHeight="35.0" prefWidth="120.0" text="Creat a game" />
-      <Label fx:id="errorMsg" layoutX="34.0" layoutY="303.0" prefHeight="26.0" prefWidth="234.0" textFill="#f80000" />
+      <Label fx:id="errorMsg" layoutX="34.0" layoutY="294.0" prefHeight="26.0" prefWidth="234.0" textFill="#f80000" />
       <TextField fx:id="addTlfNr" layoutX="34.0" layoutY="113.0" prefHeight="25.0" prefWidth="200.0" />
       <Label layoutX="34.0" layoutY="86.0" prefHeight="17.0" prefWidth="92.0" text="Mobilnummer" />
+      <TextField fx:id="InputRounds" layoutX="370.0" layoutY="336.0" prefHeight="26.0" prefWidth="50.0" />
+      <TextField fx:id="NumberOfRounds" layoutX="234.0" layoutY="336.0" prefHeight="26.0" prefWidth="128.0" text="Number of rounds:" />
    </children>
 </AnchorPane>

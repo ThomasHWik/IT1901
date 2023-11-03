@@ -24,6 +24,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+
 import javafx.stage.Stage;
 
 public class AppControllerGames {
@@ -58,6 +59,8 @@ public class AppControllerGames {
 
     @FXML
     private Button SetRounds;
+
+   
 
     private void addRadioBs(){
         radioButtons.add(onel);
@@ -136,6 +139,7 @@ public class AppControllerGames {
     }
 
     private boolean allselected() {
+        
         int radiosize = Pairs.size()*2;
         for (int i = 0; i < radiosize-1; i+=2){
             if (!(radioButtons.get(i).isSelected() || radioButtons.get(i+1).isSelected())){
@@ -145,26 +149,13 @@ public class AppControllerGames {
         return true;
     }
 
-    @FXML
-    void roundSelector(ActionEvent event) throws IOException{
-        
-        try {
-            error.visibleProperty().set(false);
-            int chosenRounds = Integer.parseInt(InputRounds.getText());
-            roundSelector.setNumberOfRounds(chosenRounds);
-            this.chosenRounds = chosenRounds;
-            
-            updateRound();
-            
-        } catch (NumberFormatException e){
-            
-            error.setText("Invalid input");
-            error.visibleProperty().set(true);
-
-        } catch (IllegalArgumentException e) {
-            error.setText("Rounds must be between 1-10");
-            error.visibleProperty().set(true);
-        }    
+    public int roundSelector(int chosenRounds) throws IOException{
+       
+        roundSelector.setNumberOfRounds(chosenRounds);
+        this.chosenRounds = chosenRounds;    
+        updateRound();
+         
+        return chosenRounds;
 
     }
 

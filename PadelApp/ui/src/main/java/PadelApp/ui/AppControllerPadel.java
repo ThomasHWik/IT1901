@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import PadelApp.core.Player;
+import PadelApp.core.RoundSelector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,7 @@ public class AppControllerPadel {
     private ArrayList<Player> playerlist = new ArrayList<>();
 
     @FXML
-    private TextField addName, addAge, addTlfNr;
+    private TextField addName, addAge, addTlfNr, InputRounds;
 
     @FXML
     private TextArea players;
@@ -68,14 +69,26 @@ public class AppControllerPadel {
 
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
+        //Legg inn slik at runder blir oppdatert når man trykker creategame
+        try {
+            errorMsg.visibleProperty().set(false);
+            int chosenRounds = Integer.parseInt(InputRounds.getText());
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
-        Parent root = loader.load();
-            Stage stage = (Stage) CreateGame.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            AppControllerGames games = (AppControllerGames)loader.getController();
-            games.setPlayerList(playerlist);
-            games.CreateGame();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
+            Parent root = loader.load();
+                Stage stage = (Stage) CreateGame.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                AppControllerGames games = (AppControllerGames)loader.getController();
+                games.setPlayerList(playerlist);
+                games.CreateGame();
+                games.roundSelector(chosenRounds);
+            
+        } catch (IllegalArgumentException e){
+            
+            errorMsg.setText("Invalid input! Choose between 1-10 games");
+            errorMsg.visibleProperty().set(true);
+        }
+       
 
             
     }
