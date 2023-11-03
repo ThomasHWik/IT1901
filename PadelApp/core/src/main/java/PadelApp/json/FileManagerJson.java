@@ -59,7 +59,7 @@ public class FileManagerJson {
      * @throws JsonProcessingException when the serialization fails
      */
 
-    static public String getJsonString(Leaderboard scoreboard) {
+    static public String getJsonString(Scoreboard scoreboard) {
         ObjectMapper om = new ObjectMapper();
         try {
             return om.writeValueAsString(scoreboard);
