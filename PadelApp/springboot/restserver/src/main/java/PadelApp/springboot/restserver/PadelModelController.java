@@ -39,4 +39,9 @@ public class PadelModelController {
             return new ResponseEntity<>("Error receiving and processing scoreboard", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/test")
+    public ResponseEntity<String> testServer(){
+        return new ResponseEntity<>("Request received", HttpStatus.OK);
+    }
 }
