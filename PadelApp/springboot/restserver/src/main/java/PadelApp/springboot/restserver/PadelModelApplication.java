@@ -14,8 +14,8 @@ import PadelApp.json.FileManagerJson;
 public class PadelModelApplication {
 
   @Bean
-  public Module objectMapperModule() {
-    
+  public ObjectMapper objectMapperModule() {
+    return new ObjectMapper();
   }
 
   public static void main(String[] args) {
