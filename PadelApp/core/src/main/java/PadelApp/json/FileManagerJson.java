@@ -3,6 +3,7 @@ package PadelApp.json;
 import java.io.File;
 import java.io.IOException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import PadelApp.core.Scoreboard;
@@ -47,5 +48,17 @@ public class FileManagerJson {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * 
+     * @param scoreboard object to serialize as json
+     * @return json string of the serialized object
+     * @throws JsonProcessingException when the serialization fails
+     */
+
+    static public String getJsonString(Scoreboard scoreboard) throws JsonProcessingException {
+        ObjectMapper om = new ObjectMapper();
+        return om.writeValueAsString(scoreboard);
     }
 }
