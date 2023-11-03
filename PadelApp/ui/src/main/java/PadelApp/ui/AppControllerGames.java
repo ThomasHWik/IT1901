@@ -10,18 +10,17 @@ import PadelApp.core.CreatePlayerPairs;
 import PadelApp.core.Player;
 import PadelApp.core.PlayerPair;
 import PadelApp.core.Scoreboard;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import PadelApp.core.gameSetup;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 
 public class AppControllerGames {
@@ -29,6 +28,7 @@ public class AppControllerGames {
     private List<Player> Player = new ArrayList<>();
     private CreatePlayerPairs pairs = new CreatePlayerPairs(Player);
     private List<PlayerPair> Pairs = new ArrayList<>();
+    private gameSetup courts= new gameSetup(0,Pairs);
     private int round=1;
 
     @FXML
@@ -41,71 +41,69 @@ public class AppControllerGames {
     private Button GoToScore,NewRound;
 
     @FXML
-    private ListView<String> Player1, Player2;
+    private ToggleButton oneOne,oneTwo,twoOne,twoTwo,threeOne1,threeOne2,threeTwo1,threeTwo2,fourOne,fourTwo,fiveOne1,fiveOne2,fiveTwo1,fiveTwo2,sixOne,sixTwo,sevenOne,sevenTwo;
 
     @FXML
-    private RadioButton onel,oner,twol,twor,threel,threer,fourl,fourr,fivel,fiver,sixl,sixr,sevenl,sevenr,eightl,eightr,ninel,niner,tenl,tenr,elevenl,elevenr;
+    private Label Court1,Court2,Court3,Court4,Court5,Court6,Court7; 
 
-    private ArrayList<RadioButton> radioButtons= new ArrayList<RadioButton>();
+    private ArrayList<ToggleButton> toggleButtons= new ArrayList<ToggleButton>();
 
-    private void addRadioBs(){
-        radioButtons.add(onel);
-        radioButtons.add(oner);
-        radioButtons.add(twol);
-        radioButtons.add(twor);
-        radioButtons.add(threel);
-        radioButtons.add(threer);
-        radioButtons.add(fourl);
-        radioButtons.add(fourr);
-        radioButtons.add(fivel);
-        radioButtons.add(fiver);
-        radioButtons.add(sixl);
-        radioButtons.add(sixr);
-        radioButtons.add(sevenl);
-        radioButtons.add(sevenr);
-        radioButtons.add(eightl);
-        radioButtons.add(eightr);
-        radioButtons.add(ninel);
-        radioButtons.add(niner);
-        radioButtons.add(tenl);
-        radioButtons.add(tenr);
-        radioButtons.add(elevenl);
-        radioButtons.add(elevenr);
-    }
-    private void addPlayersToVsLists(){
-        //making to seperate list that tells sais the name of teh player and how many pints they have.
-        ArrayList<String> players1 = new ArrayList<>();
-        ArrayList<String> players2 = new ArrayList<>();
-
-        for (int i = 0; i< Pairs.size(); i++) {
-            String player1 = Pairs.get(i).getPlayer1().getName()+" : "+ Pairs.get(i).getPlayer1().getWins();
-            players1.add(player1);
-            String player2 = Pairs.get(i).getPlayer2().getName()+" : "+ Pairs.get(i).getPlayer2().getWins();
-            players2.add(player2);
-
+    private void addToggleBs(){
+        if (courts.getDouble()==0){
+            toggleButtons.add(oneOne);
+            toggleButtons.add(oneTwo);
+            toggleButtons.add(twoOne);
+            toggleButtons.add(twoTwo);
+            toggleButtons.add(sixOne);
+            toggleButtons.add(sixTwo);
+            toggleButtons.add(sevenOne);
+            toggleButtons.add(sevenTwo);
+            toggleButtons.add(fourOne);
+            toggleButtons.add(fourTwo);  
         }
-        ObservableList<String> nr1 = FXCollections.observableArrayList(players1);
-        ObservableList<String> nr2 = FXCollections.observableArrayList(players2);
-
-        Player1.setItems(nr1);
-        Player2.setItems(nr2);
+        if (courts.getDouble()==1){
+            toggleButtons.add(threeOne1);
+            toggleButtons.add(threeTwo1);
+            toggleButtons.add(threeOne2);
+            toggleButtons.add(threeTwo2);
+            toggleButtons.add(oneOne);
+            toggleButtons.add(oneTwo);
+            toggleButtons.add(twoOne);
+            toggleButtons.add(twoTwo);
+            toggleButtons.add(fourOne);
+            toggleButtons.add(fourTwo); 
+        }
+        if(courts.getDouble()==2){
+            toggleButtons.add(fiveOne1);
+            toggleButtons.add(fiveTwo1);
+            toggleButtons.add(fiveOne2);
+            toggleButtons.add(fiveTwo2);
+            toggleButtons.add(threeOne1);
+            toggleButtons.add(threeTwo1);
+            toggleButtons.add(threeOne2);
+            toggleButtons.add(threeTwo2);
+            toggleButtons.add(fourOne);
+            toggleButtons.add(fourTwo); 
+            
+        }
 
     }
 
-    private void addPointsToPlayer(){
-        int radiosize = Pairs.size()*2;
-        for (int i = 0; i < radiosize-1; i+=2) {
-            if (radioButtons.get(i).isSelected() || radioButtons.get(i+1).isSelected()){
-                if(radioButtons.get(i).isSelected()){
+   private void addPointsToPlayer(){
+        int togglesize = Pairs.size()*2;
+        for (int i = 0; i < togglesize-1; i+=2) {
+            if (toggleButtons.get(i).isSelected() || toggleButtons.get(i+1).isSelected()){
+                if(toggleButtons.get(i).isSelected()){
                     Pairs.get(i/2).getPlayer1().addwins();
                 }
-                else{Pairs.get(i/2).getPlayer2().addwins();
+                else{
+                    Pairs.get(i/2).getPlayer2().addwins();
                 }
             } 
         }
-    }
+    } 
 
-    @FXML
+   @FXML
     void NewRound(ActionEvent event) throws FileNotFoundException, IOException{
         if (!allselected()){
             error.visibleProperty().set(true);
@@ -114,25 +112,38 @@ public class AppControllerGames {
         else{
             error.visibleProperty().set(false);
             addPointsToPlayer();
-            addPlayersToVsLists();
-            int radiosize = Pairs.size()*2;
-            for (int i = 0; i < radiosize; i++){
-                radioButtons.get(i).selectedProperty().set(false);
+            addPlayersToCourts();
+            int togglesize = Pairs.size()*2;
+            for (int i = 0; i < togglesize; i++){
+                toggleButtons.get(i).selectedProperty().set(false);
             }
+
             updateRound();
         }
         
     }
+    @FXML
+    void pairOne(ActionEvent event){
+        threeOne1.selectedProperty().set(true);
+        threeOne2.selectedProperty().set(true);
+    }
+    @FXML
+    void pairTwo(ActionEvent event){
+        threeTwo1.selectedProperty().set(true);
+        threeTwo2.selectedProperty().set(true);
+    }
+
 
     private boolean allselected() {
-        int radiosize = Pairs.size()*2;
-        for (int i = 0; i < radiosize-1; i+=2){
-            if (!(radioButtons.get(i).isSelected() || radioButtons.get(i+1).isSelected())){
+        int togglesize = Pairs.size()*2;
+        for (int i = 0; i < togglesize-1; i+=2){
+            if (!(toggleButtons.get(i).isSelected() || toggleButtons.get(i+1).isSelected())){
                 return false;
             }
         }
         return true;
-    }
+    } 
+
     private void updateRound() {
         round++;
         rounds.setText(round + " / 5");
@@ -144,14 +155,36 @@ public class AppControllerGames {
 
     public void CreateGame() throws FileNotFoundException, IOException{
         setPairs();
-        addRadioBs();
-        addPlayersToVsLists();
+        createCourts();
+        addPlayersToCourts();
+    } 
 
-        //To turn on the right amount of radiobuttons
-        int radiosize = Pairs.size()*2;
-        for (int i = 0; i < radiosize; i++) {
-            radioButtons.get(i).setDisable(false);
-            radioButtons.get(i).setVisible(true);
+    private void createCourts(){
+        if (Pairs.size()>=2){
+            courts = new gameSetup(1, Pairs);
+        }
+        else{
+            courts= new gameSetup(0, Pairs);
+        }
+        addToggleBs();
+        //To turn on the right amount of togglebuttons
+        int togglesize = Pairs.size()*2;
+        for (int i = 0; i < togglesize; i++) {
+            toggleButtons.get(i).setDisable(false);
+            toggleButtons.get(i).setVisible(true);
+        }
+        if (oneOne.isVisible()){Court1.visibleProperty().set(true);}
+        if (twoTwo.isVisible()){Court2.visibleProperty().set(true);}
+        if (threeOne1.isVisible()){Court3.visibleProperty().set(true);}
+        if (fourOne.isVisible()){Court4.visibleProperty().set(true);}
+        if (fiveOne1.isVisible()){Court5.visibleProperty().set(true);} 
+    }
+
+    private void addPlayersToCourts(){
+        int togglesize = Pairs.size()*2;
+        for (int i = 0; i < togglesize; i+=2) {
+            toggleButtons.get(i).setText(Pairs.get(i/2).getPlayer1().getName() +" : "+ Pairs.get(i/2).getPlayer1().getWins());
+            toggleButtons.get(i+1).setText(Pairs.get(i/2).getPlayer2().getName()+" : "+ Pairs.get(i/2).getPlayer2().getWins());   
         }
     }
 
