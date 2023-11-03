@@ -8,10 +8,8 @@ import PadelApp.core.Leaderboard;
 import PadelApp.core.Scoreboard;
 
 @RestController
-@RequestMapping(PadelModelController.PADEL_MODEL_SERVICE_PATH)
+@RequestMapping("/api/padel")
 public class PadelModelController {
-
-    public static final String PADEL_MODEL_SERVICE_PATH = "padel";
     private final PadelModelService padelModelService;
 
     @Autowired
