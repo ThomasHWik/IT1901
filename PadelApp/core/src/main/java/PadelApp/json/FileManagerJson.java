@@ -2,14 +2,15 @@ package PadelApp.json;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import PadelApp.core.Scoreboard;
 import PadelApp.core.Leaderboard;
+import PadelApp.core.RemoteLeaderboardAccess;
 
 public class FileManagerJson {
     static public void saveScoreboard(Scoreboard scoreboard) throws IOException, StreamWriteException {
@@ -19,6 +20,10 @@ public class FileManagerJson {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        //send to rest server
+        RemoteLeaderboardAccess restClient = new RemoteLeaderboardAccess(URI.create("http://localhost:8080/api/padel"));
+        restClient.sendScoreboard(scoreboard);
     }
 
     static public Scoreboard getScoreboard(String filename) {
