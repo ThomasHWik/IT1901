@@ -5,3 +5,16 @@ target/
 .project
 .classpath
 org.eclipse.*.prefs
+
+#ignore Mac hidden files
+*.DS_Store
+
+#ignore .idea
+.idea/
+
+#ignore test leaderboards
+LeaderboardTest.json
+ScoreboardTest.json
+
+#ignore all .txt (temp files)
+*.txt
