@@ -20,7 +20,6 @@ public class AppControllerGamesTest extends ApplicationTest {
     public ArrayList<Player> playerList;
     private Button CreateGame;
 
-
     private final FXMLLoader loader = new FXMLLoader(getClass().getResource("padel.fxml"));
 
     @Override
@@ -32,14 +31,14 @@ public class AppControllerGamesTest extends ApplicationTest {
     }
 
     void CreateGame(ActionEvent event) throws IOException {
-        
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
         Parent root = loader.load();
-            Stage stage = (Stage) CreateGame.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            AppControllerGames games = (AppControllerGames)loader.getController();
-            games.setPlayerList(playerList);
-            games.CreateGame();
+        Stage stage = (Stage) CreateGame.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        AppControllerGames games = (AppControllerGames) loader.getController();
+        games.setPlayerList(playerList);
+        games.CreateGame();
     }
 
     public void AddPlayers() {
@@ -56,7 +55,7 @@ public class AppControllerGamesTest extends ApplicationTest {
 
         String player2Name = "Tom";
         String player2Age = "21";
-        String Player2number = "12345678";
+        String Player2number = "45464748";
 
         // Locate the text fields and button by their fx:id
         clickOn("#addTlfNr").write(Player2number);
@@ -66,7 +65,7 @@ public class AppControllerGamesTest extends ApplicationTest {
 
         String player3Name = "Tim";
         String player3Age = "19";
-        String Player3number = "87654321";
+        String Player3number = "99989796";
 
         // Locate the text fields and button by their fx:id
         clickOn("#addTlfNr").write(Player3number);
@@ -76,7 +75,7 @@ public class AppControllerGamesTest extends ApplicationTest {
 
         String player4Name = "Ron";
         String player4Age = "25";
-        String Player4number = "18273645";
+        String Player4number = "49484746";
 
         // Locate the text fields and button by their fx:id
         clickOn("#addTlfNr").write(Player4number);
@@ -86,7 +85,7 @@ public class AppControllerGamesTest extends ApplicationTest {
         clickOn("#CreateGame");
 
     }
-    
+
     @Test
     public void testAddPointstoPlayer() {
         AddPlayers();
@@ -110,8 +109,7 @@ public class AppControllerGamesTest extends ApplicationTest {
         assertTrue(playerList.get(1).getWins() == 2);
         assertTrue(playerList.get(2).getWins() == 1);
         assertTrue(playerList.get(3).getWins() == 2);
-        
+
     }
 
-    
 }
