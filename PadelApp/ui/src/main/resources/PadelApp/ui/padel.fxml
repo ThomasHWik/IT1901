@@ -20,5 +20,7 @@
       <Label layoutX="34.0" layoutY="86.0" prefHeight="17.0" prefWidth="92.0" text="Mobilnummer" />
       <TextField fx:id="InputRounds" layoutX="370.0" layoutY="336.0" prefHeight="26.0" prefWidth="50.0" />
       <TextField fx:id="NumberOfRounds" layoutX="234.0" layoutY="336.0" prefHeight="26.0" prefWidth="128.0" text="Number of rounds:" />
+
+      <Label fx:id="errorCreateGamesMsg" layoutX="362.0" layoutY="366.0" prefHeight="26.0" prefWidth="234.0" textFill="#f80000" />
    </children>
 </AnchorPane>

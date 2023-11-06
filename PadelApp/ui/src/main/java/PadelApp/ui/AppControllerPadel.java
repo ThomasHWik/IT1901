@@ -72,9 +72,7 @@ public class AppControllerPadel {
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
 
-
-
-
+        int chosenRounds = Integer.parseInt(InputRounds.getText());
         
         refreshErrorCreateGamesMsg();
         if (playerlist.size() % 2 != 0){

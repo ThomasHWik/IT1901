@@ -11,6 +11,7 @@ import PadelApp.core.Player;
 import PadelApp.core.PlayerPair;
 import PadelApp.core.RoundSelector;
 import PadelApp.core.Scoreboard;
+import PadelApp.core.gameSetup;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
