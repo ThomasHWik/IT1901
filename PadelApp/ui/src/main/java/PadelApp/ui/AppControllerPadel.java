@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import PadelApp.core.Player;
+import PadelApp.core.RoundSelector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,7 @@ public class AppControllerPadel {
     private ArrayList<Player> playerlist = new ArrayList<>();
 
     @FXML
-    private TextField addName, addAge, addTlfNr;
+    private TextField addName, addAge, addTlfNr, InputRounds;
 
     @FXML
     private TextArea players;
@@ -87,6 +88,7 @@ public class AppControllerPadel {
             AppControllerGames games = (AppControllerGames)loader.getController();
             games.setPlayerList(playerlist);
             games.CreateGame();
+            games.roundSelector(chosenRounds);
             
     }
    

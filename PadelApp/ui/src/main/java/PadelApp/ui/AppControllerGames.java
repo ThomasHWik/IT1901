@@ -9,8 +9,11 @@ import PadelApp.json.FileManagerJson;
 import PadelApp.core.CreatePlayerPairs;
 import PadelApp.core.Player;
 import PadelApp.core.PlayerPair;
+import PadelApp.core.RoundSelector;
 import PadelApp.core.Scoreboard;
-import PadelApp.core.gameSetup;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,8 +31,10 @@ public class AppControllerGames {
     private List<Player> Player = new ArrayList<>();
     private CreatePlayerPairs pairs = new CreatePlayerPairs(Player);
     private List<PlayerPair> Pairs = new ArrayList<>();
+    private RoundSelector roundSelector = new RoundSelector(0);
+    private int chosenRounds = roundSelector.getNumberOfRounds();
+    private int round = 0;
     
-    private int round=1;
 
 
     private gameSetup courts= new gameSetup(0,Pairs);
@@ -153,12 +158,24 @@ public class AppControllerGames {
             }
         }
         return true;
-    } 
+    }
+
+    public int roundSelector(int chosenRounds) throws IOException{
+       
+        roundSelector.setNumberOfRounds(chosenRounds);
+        this.chosenRounds = chosenRounds;    
+        updateRound();
+         
+        return chosenRounds;
+
+    }
+
+   
 
     private void updateRound() {
         round++;
-        rounds.setText(round + " / 5");
-        if (round==5){
+        rounds.setText(round + " /"+chosenRounds);
+        if (round==chosenRounds){
             NewRound.disableProperty().set(true);
             NewRound.visibleProperty().set(false);
         }
