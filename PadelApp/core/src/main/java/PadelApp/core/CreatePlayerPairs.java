@@ -22,10 +22,10 @@ public class CreatePlayerPairs {
     private void createPlayerPairs(List<Player> players) {
 
         if (playerList.size() % 2 != 0){
-            throw new IllegalArgumentException("the number of players must be even");
+            throw new IllegalArgumentException("The number of players must be even");
         }
-        if (playerList.size()>22){
-            throw new IllegalArgumentException("There can not be more then 22 players");
+        if (playerList.size()>10){
+            throw new IllegalArgumentException("There can not be more then 10 players");
         }
 
         for (int i = 0; i < players.size(); i+=2){
@@ -36,7 +36,34 @@ public class CreatePlayerPairs {
         }
     }
 
+    public void remakePlayersOrder(){
+        //changeing the order of the players so that the playersPairs will be different
+        Player p = playerList.get(0);
+        playerList.remove(0);
+        playerList.add(p);
+
+        PlayerPairslist= new ArrayList<>();
+        createPlayerPairs(playerList);
+        //So that the players will not play at the same court 
+        for (int i = 0; i < PlayerPairslist.size()/2; i++) {
+            PlayerPair pair = PlayerPairslist.get(0);
+            PlayerPairslist.remove(i);
+            PlayerPairslist.add(pair); 
+        }
+    }
+
     public List<PlayerPair> getPlayerPairs(){
         return PlayerPairslist;
     }
+
+    public List<Player> getPlayerlist(){
+        return playerList;
+    }
+
+    @Override
+    public String toString() {
+        return "CreatePlayerPairs [PlayerPairslist=" + PlayerPairslist + ", playerList=" + playerList + "]";
+    }
+
+    
 }
