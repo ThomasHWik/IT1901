@@ -70,9 +70,6 @@ public class AppControllerPadel {
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
 
-            
-            
-        
         int chosenRounds = Integer.parseInt(InputRounds.getText());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
         Parent root = loader.load();
@@ -82,10 +79,6 @@ public class AppControllerPadel {
             games.setPlayerList(playerlist);
             games.CreateGame();
             games.roundSelector(chosenRounds);
-            
-        
-       
-
             
     }
 
