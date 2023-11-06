@@ -8,6 +8,7 @@ public class Scoreboard {
     private String filename;
     private ArrayList<Player> scorelist;
 
+
     public Scoreboard() {
         this.filename = "Scoreboard.json";
         this.scorelist = new ArrayList<Player>();
