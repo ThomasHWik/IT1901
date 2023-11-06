@@ -9,6 +9,8 @@ import java.io.IOException;
 
 @Service
 public class PadelModelService {
+    private String currentFilename = "Leaderboard";
+
     public boolean saveLeaderboard(Leaderboard leaderboard) {
         try {
             FileManagerJson.saveScoreboard(leaderboard);
@@ -23,19 +25,28 @@ public class PadelModelService {
         return FileManagerJson.getScoreboard(filename);
     }
 
-    public Leaderboard getLeaderboard(String filename) {
-        return FileManagerJson.getLeaderboard(filename);
+    public Leaderboard getLeaderboard() {
+        return FileManagerJson.getLeaderboard(currentFilename);
     }
 
     public boolean addToLeaderboard(Scoreboard scoreboard) {
-        Leaderboard leaderboard = FileManagerJson.getLeaderboard("Leaderboard.json");
+        Leaderboard leaderboard = FileManagerJson.getLeaderboard(currentFilename);
         try {
+            if (leaderboard != null) {
             leaderboard.addScoreboard(scoreboard);
-            FileManagerJson.saveScoreboard(leaderboard);
+            } else {
+            leaderboard = (Leaderboard) scoreboard;
+            }
+            saveLeaderboard(leaderboard);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
         return true;
+    }
+
+    public void initialize() {
+        Leaderboard leaderboard = new Leaderboard();
+        saveLeaderboard(leaderboard);
     }
 }
