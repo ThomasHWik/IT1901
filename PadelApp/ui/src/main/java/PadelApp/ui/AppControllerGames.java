@@ -28,9 +28,11 @@ public class AppControllerGames {
     private List<Player> Player = new ArrayList<>();
     private CreatePlayerPairs pairs = new CreatePlayerPairs(Player);
     private List<PlayerPair> Pairs = new ArrayList<>();
-    private gameSetup courts= new gameSetup(0,Pairs);
+    
     private int round=1;
 
+
+    private gameSetup courts= new gameSetup(0,Pairs);
     @FXML
     private TextArea error;
 
@@ -83,7 +85,8 @@ public class AppControllerGames {
             toggleButtons.add(threeOne2);
             toggleButtons.add(threeTwo2);
             toggleButtons.add(fourOne);
-            toggleButtons.add(fourTwo);    
+            toggleButtons.add(fourTwo); 
+            
         }
 
     }
@@ -119,7 +122,7 @@ public class AppControllerGames {
             }
 
             updateRound();
-            
+        
         }
         
     }
@@ -205,16 +208,18 @@ public class AppControllerGames {
     }
 
     private void setPairs() {
-        Pairs = pairs.getPlayerPairs();
+            Pairs = pairs.getPlayerPairs();
     }
 
     @FXML
     void GoToScore(ActionEvent event) throws IOException {
         addPointsToPlayer();
-        Player = pairs.getPlayerlist();
-    
+Player = pairs.getPlayerlist();
+        
         FileManagerJson.saveScoreboard(new Scoreboard("currentgame",(ArrayList<Player>)Player));
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("scoreBoard.fxml"));
+
         Parent root = loader.load();
             Stage stage = (Stage) GoToScore.getScene().getWindow();
             stage.setScene(new Scene(root));

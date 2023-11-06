@@ -70,6 +70,11 @@ public class AppControllerPadel {
     
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
+
+
+
+
+        
         refreshErrorCreateGamesMsg();
         if (playerlist.size() % 2 != 0){
             errorCreateGames("Must be even number of players");

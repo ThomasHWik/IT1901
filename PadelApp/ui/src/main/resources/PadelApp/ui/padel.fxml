@@ -18,6 +18,9 @@
       <Label fx:id="errorMsg" layoutX="34.0" layoutY="303.0" prefHeight="26.0" prefWidth="234.0" textFill="#f80000" />
       <TextField fx:id="addTlfNr" layoutX="34.0" layoutY="113.0" prefHeight="25.0" prefWidth="200.0" />
       <Label layoutX="34.0" layoutY="86.0" prefHeight="17.0" prefWidth="92.0" text="Mobilnummer" />
+
+
+      
       <Label fx:id="errorCreateGamesMsg" layoutX="362.0" layoutY="366.0" prefHeight="26.0" prefWidth="234.0" textFill="#f80000" />
    </children>
 </AnchorPane>
