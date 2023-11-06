@@ -24,7 +24,7 @@ public class PadelModelController {
 
     @GetMapping("/leaderboard")
     public ResponseEntity<Leaderboard> getLeaderboard() {
-        Leaderboard leaderboard = padelModelService.getLeaderboard("Leaderboard");
+        Leaderboard leaderboard = padelModelService.getLeaderboard();
         if (leaderboard != null) {
             return new ResponseEntity<>(leaderboard, HttpStatus.OK);
         } else {
@@ -36,6 +36,7 @@ public class PadelModelController {
     public ResponseEntity<String> receiveScoreboard(@RequestBody Scoreboard scoreboard) {
         try {
             padelModelService.addToLeaderboard(scoreboard);
+            System.out.println("processed scoreboard");
             return new ResponseEntity<>("Scoreboard received and processed successfully", HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,11 +53,15 @@ public class PadelModelController {
         ObjectMapper om = new ObjectMapper();
 
         try {
-            return new ResponseEntity<>(FileManagerJson.getJsonString(leaderboard), HttpStatus.OK);
+            return new ResponseEntity<>(om.writeValueAsString(leaderboard), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed json serialization", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
 
-        
+    @GetMapping("/initialize")
+    public ResponseEntity<String> initialize() {
+        padelModelService.initialize();
+        return new ResponseEntity<>("Tried initializing", HttpStatus.OK);
     }
 }
