@@ -12,7 +12,7 @@
    <children>
       <Button fx:id="GoToScore" layoutX="475.0" layoutY="333.0" mnemonicParsing="false" onAction="#GoToScore" text="End Games" />
       <Button fx:id="NewRound" layoutX="42.0" layoutY="333.0" mnemonicParsing="false" onAction="#NewRound" text="New Round" />
-      <TextField fx:id="rounds" editable="false" layoutX="42.0" layoutY="281.0" prefHeight="25.0" prefWidth="82.0" text=" 1 / 5" />
+      <TextField fx:id="rounds" editable="false" layoutX="42.0" layoutY="281.0" prefHeight="25.0" prefWidth="82.0" text="" />
       <TextArea fx:id="error" editable="false" layoutX="169.0" layoutY="313.0" prefHeight="48.0" prefWidth="263.0" visible="false" />
       <ToggleButton fx:id="oneOne" disable="true" layoutX="44.0" layoutY="69.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="109.0" textAlignment="CENTER" visible="false" wrapText="true">
          <toggleGroup>

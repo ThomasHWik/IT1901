@@ -9,8 +9,12 @@ import PadelApp.json.FileManagerJson;
 import PadelApp.core.CreatePlayerPairs;
 import PadelApp.core.Player;
 import PadelApp.core.PlayerPair;
+import PadelApp.core.RoundSelector;
 import PadelApp.core.Scoreboard;
 import PadelApp.core.gameSetup;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,9 +32,13 @@ public class AppControllerGames {
     private List<Player> Player = new ArrayList<>();
     private CreatePlayerPairs pairs = new CreatePlayerPairs(Player);
     private List<PlayerPair> Pairs = new ArrayList<>();
-    private gameSetup courts= new gameSetup(0,Pairs);
-    private int round=1;
+    private RoundSelector roundSelector = new RoundSelector(0);
+    private int chosenRounds = roundSelector.getNumberOfRounds();
+    private int round = 0;
+    
 
+
+    private gameSetup courts= new gameSetup(0,Pairs);
     @FXML
     private TextArea error;
 
@@ -83,7 +91,8 @@ public class AppControllerGames {
             toggleButtons.add(threeOne2);
             toggleButtons.add(threeTwo2);
             toggleButtons.add(fourOne);
-            toggleButtons.add(fourTwo);    
+            toggleButtons.add(fourTwo); 
+            
         }
 
     }
@@ -119,7 +128,7 @@ public class AppControllerGames {
             }
 
             updateRound();
-            
+        
         }
         
     }
@@ -150,12 +159,24 @@ public class AppControllerGames {
             }
         }
         return true;
-    } 
+    }
+
+    public int roundSelector(int chosenRounds) throws IOException{
+       
+        roundSelector.setNumberOfRounds(chosenRounds);
+        this.chosenRounds = chosenRounds;    
+        updateRound();
+         
+        return chosenRounds;
+
+    }
+
+   
 
     private void updateRound() {
         round++;
-        rounds.setText(round + " / 5");
-        if (round==5){
+        rounds.setText(round + " /"+chosenRounds);
+        if (round==chosenRounds){
             NewRound.disableProperty().set(true);
             NewRound.visibleProperty().set(false);
         }
@@ -205,16 +226,18 @@ public class AppControllerGames {
     }
 
     private void setPairs() {
-        Pairs = pairs.getPlayerPairs();
+            Pairs = pairs.getPlayerPairs();
     }
 
     @FXML
     void GoToScore(ActionEvent event) throws IOException {
         addPointsToPlayer();
-        Player = pairs.getPlayerlist();
-    
+Player = pairs.getPlayerlist();
+        
         FileManagerJson.saveScoreboard(new Scoreboard("currentgame",(ArrayList<Player>)Player));
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("scoreBoard.fxml"));
+
         Parent root = loader.load();
             Stage stage = (Stage) GoToScore.getScene().getWindow();
             stage.setScene(new Scene(root));
