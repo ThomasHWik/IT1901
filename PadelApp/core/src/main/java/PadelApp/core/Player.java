@@ -86,4 +86,11 @@ public class Player {
         }
         this.tlfNr = tlfNr;
     }
+
+    @Override
+    public String toString() {
+        return "Player [name=" + name + ", wins=" + wins + "]";
+    }
+
+    
 }
