@@ -8,6 +8,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import PadelApp.core.Scoreboard;
 import PadelApp.core.Leaderboard;
 
+
+/**
+ * Class with static methods for reading and writing JSON files.
+ */
 public class FileManagerJson {
     /**
      * Saves the given scoreboard object to a JSON file.
