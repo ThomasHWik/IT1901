@@ -7,6 +7,7 @@ import java.util.List;
 import PadelApp.json.FileManagerJson;
 import PadelApp.core.Leaderboard;
 import PadelApp.core.Player;
+import PadelApp.core.RemoteLeaderboardAccess;
 import PadelApp.core.Scoreboard;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -21,6 +22,7 @@ public class AppControllerScoreBoard {
 
     private Leaderboard leaderboard;
     private Scoreboard scoreboard;
+    private RemoteLeaderboardAccess restApi;
 
     @FXML
     private ListView<String> lbName, sbName;
@@ -29,30 +31,26 @@ public class AppControllerScoreBoard {
     private ListView<Integer> lbWins, sbWins;
 
     /**
-     * Initializes the AppControllerScoreBoard by loading the leaderboard from a JSON file using FileManagerJson.getLeaderboard method.
+     * Initializes the AppControllerScoreBoard by loading the leaderboard from the REST API
      * If the leaderboard is null, a new Leaderboard object is created.
      * Calls createLeaderboard method to create the leaderboard UI and populateTable method to populate the table with data.
      * @throws IOException if there is an error reading the JSON file.
      */
     @FXML
     public void initialize() throws IOException {
-        leaderboard = FileManagerJson.getLeaderboard("Leaderboard");
-        if (leaderboard == null) {
-            leaderboard = new Leaderboard();
-        }
-        createLeaderboard();
+        this.leaderboard = this.restApi.getLeaderboard();
+        this.scoreboard = FileManagerJson.getScoreboard("currentgame");
         populateLeaderboard();
         populateScoreboard();
     }
 
     /**
-     * Adds the current game's scoreboard to the leaderboard, sorts it, and saves it to a file.
-     * @throws IOException if there is an error reading or writing the file.
+     * Adds the current game's scoreboard to the leaderboard
+     * and retrieves the updated leaderboard from REST API
      */
-    public void createLeaderboard() throws IOException {
-        leaderboard.addScoreboard(scoreboard);
-        leaderboard.sortLeaderboard();
-        FileManagerJson.saveScoreboard(leaderboard);
+    public void createLeaderboard() {
+        this.restApi.sendScoreboard(scoreboard);
+        this.leaderboard = this.restApi.getLeaderboard();
     }
 
     /**
