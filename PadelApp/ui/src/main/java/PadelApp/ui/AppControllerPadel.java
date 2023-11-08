@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import PadelApp.core.Player;
+import PadelApp.core.RoundSelector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,7 @@ public class AppControllerPadel {
     private ArrayList<Player> playerlist = new ArrayList<>();
 
     @FXML
-    private TextField addName, addAge, addTlfNr;
+    private TextField addName, addAge, addTlfNr, InputRounds;
 
     @FXML
     private TextArea players;
@@ -29,7 +30,8 @@ public class AppControllerPadel {
     private Button AddPlayer, CreateGame;
 
     @FXML 
-    private Label errorMsg;
+    private Label errorMsg, errorCreateGamesMsg;
+
 
     @FXML
     void AddPlayer(ActionEvent event) throws IOException {
@@ -66,9 +68,17 @@ public class AppControllerPadel {
         updateGUI();
     }
 
+    
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
+
+        int chosenRounds = Integer.parseInt(InputRounds.getText());
         
+        refreshErrorCreateGamesMsg();
+        if (playerlist.size() % 2 != 0){
+            errorCreateGames("Must be even number of players");
+            return;
+        }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
         Parent root = loader.load();
             Stage stage = (Stage) CreateGame.getScene().getWindow();
@@ -76,9 +86,10 @@ public class AppControllerPadel {
             AppControllerGames games = (AppControllerGames)loader.getController();
             games.setPlayerList(playerlist);
             games.CreateGame();
-
+            games.roundSelector(chosenRounds);
             
     }
+   
 
     //handles invalid input and shows the error msg for the user
     @FXML
@@ -90,6 +101,16 @@ public class AppControllerPadel {
     @FXML
     private void refreshErrorMsg() {
         errorMsg.setText("");
+    }
+
+    @FXML
+    private void errorCreateGames(String message){
+        errorCreateGamesMsg.setText(message);
+    }
+
+    @FXML
+    private void refreshErrorCreateGamesMsg(){
+        errorCreateGamesMsg.setText("");
     }
 
     private void updateGUI() {

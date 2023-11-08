@@ -18,4 +18,11 @@ public class NumberManager {
         }
         return digits;
     }
+
+    public static int getFirstDigit(int number) {
+        while (number > 9) {
+            number /= 10;
+        }
+        return number;
+    }
 }
