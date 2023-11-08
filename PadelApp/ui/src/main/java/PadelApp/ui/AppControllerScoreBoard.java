@@ -24,6 +24,7 @@ public class AppControllerScoreBoard {
     @FXML
     public void initialize() throws IOException {
         leaderboard = FileManagerJson.getLeaderboard("Leaderboard");
+        scoreboard = FileManagerJson.getLeaderboard("currentgame");
         if (leaderboard == null) {
             leaderboard = new Leaderboard();
         }
@@ -54,9 +55,5 @@ public class AppControllerScoreBoard {
             sbName.getItems().add(player.getName());
             sbWins.getItems().add(player.getWins());
         }
-    }
-
-    public void setScoreboard(ArrayList<Player> players) {
-        this.scoreboard = new Scoreboard(players);
     }
 }
