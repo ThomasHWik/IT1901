@@ -33,7 +33,6 @@ public class ScoreboardTest {
 
     @Test
     void testSetFilename() {
-        String oldFilename = scoreboard.getFilename();
         scoreboard.setFilename("test2");
         assertEquals("test2", scoreboard.getFilename());
     }
