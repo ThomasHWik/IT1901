@@ -2,6 +2,7 @@ package PadelApp.ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import PadelApp.json.FileManagerJson;
 import PadelApp.core.Leaderboard;
@@ -67,9 +68,9 @@ public class AppControllerScoreBoard {
      * Populates the table with the top 10 players in the leaderboard.
      * Clears the name and wins items before adding the new data.
      */
-    private void populateTable() {
-        name.getItems().clear();
-        wins.getItems().clear();
+    private void populateLeaderboard() {
+        lbName.getItems().clear();
+        lbWins.getItems().clear();
         for (Player player : leaderboard.getTopPlayers(10)) {
             lbName.getItems().add(player.getName());
             lbWins.getItems().add(player.getWins());
