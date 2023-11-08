@@ -1,6 +1,7 @@
 package PadelApp.ui;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,6 @@ public class AppControllerScoreBoard {
     private Leaderboard leaderboard;
     private Scoreboard scoreboard;
     private RemoteLeaderboardAccess restApi;
-
     @FXML
     private ListView<String> lbName, sbName;
 
@@ -38,6 +38,11 @@ public class AppControllerScoreBoard {
      */
     @FXML
     public void initialize() throws IOException {
+        try {
+            this.restApi = new RemoteLeaderboardAccess(new URI("http://localhost:8080/api/padel"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         this.leaderboard = this.restApi.getLeaderboard();
         this.scoreboard = FileManagerJson.getScoreboard("currentgame");
         populateLeaderboard();
