@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 /**
  * The Scoreboard class represents a scoreboard for a PadelApp game. It contains a filename and an ArrayList of Player objects.
+ * The class provides methods to set and get the filename and the ArrayList of Player objects.
+ * It also provides methods to add and remove players from the scoreboard, and to save the scoreboard to a JSON file.
+ * @param filename the name of the file to be used for storing the scoreboard data
+ * @param scorelist the list of players in the scoreboard
  */
 public class Scoreboard {
     private String filename;
