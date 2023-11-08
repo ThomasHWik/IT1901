@@ -3,6 +3,7 @@ package PadelApp.core;
 import PadelApp.json.FileManagerJson;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Scoreboard {
     private String filename;
@@ -80,5 +81,15 @@ public class Scoreboard {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<Player> getTopPlayers(int n) {
+        PlayerComparator pc = new PlayerComparator();
+        List<Player> lbList = this.getScorelist().stream()
+                                                 .sorted(pc)
+                                                 .limit(n)
+                                                 .toList();
+
+        return lbList;
     }
 }

@@ -35,14 +35,4 @@ public class Leaderboard extends Scoreboard{
             }
         }
     }
-
-    public List<Player> getTopPlayers(int n) {
-        PlayerComparator pc = new PlayerComparator();
-        List<Player> lbList = this.getScorelist().stream()
-                                                 .sorted(pc)
-                                                 .limit(n)
-                                                 .toList();
-
-        return lbList;
-    }
 }
