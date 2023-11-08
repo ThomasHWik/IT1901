@@ -3,6 +3,7 @@ package PadelApp.core;
 import PadelApp.json.FileManagerJson;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The Scoreboard class represents a scoreboard for a PadelApp game. It contains a filename and an ArrayList of Player objects.
@@ -57,8 +58,8 @@ public class Scoreboard {
     public Scoreboard(ArrayList<Player> scorelist) {
         this.scorelist = new ArrayList<Player>();
         for (Player player : scorelist) {
-                this.scorelist.add(player);
-            }
+            this.scorelist.add(player);
+        }
     }
     
     /**
@@ -154,5 +155,15 @@ public class Scoreboard {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<Player> getTopPlayers(int n) {
+        PlayerComparator pc = new PlayerComparator();
+        List<Player> lbList = this.getScorelist().stream()
+                                                 .sorted(pc)
+                                                 .limit(n)
+                                                 .toList();
+
+        return lbList;
     }
 }

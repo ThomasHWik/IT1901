@@ -13,7 +13,7 @@ public class PlayerTest {
     @BeforeEach
     void setUp() {
         // Create a new Player object before each test
-        player = new Player("Charles", 25, 12345678);
+        player = new Player("Charles", 25, 98765432);
     }
 
     @Test
@@ -70,14 +70,14 @@ public class PlayerTest {
 
     @Test
     void testGetTlfNr() {
-        player.setTlfNr(11223344);
-        assertEquals(11223344, player.getTlfNr());
+        player.setTlfNr(44332211);
+        assertEquals(44332211, player.getTlfNr());
     }
 
     @Test
     void testSetTlfNr() {
-        player.setTlfNr(11223344);
-        assertEquals(11223344, player.getTlfNr());
+        player.setTlfNr(44332211);
+        assertEquals(44332211, player.getTlfNr());
         // Should give an IllegalArgumentException when trying to set phone number with wrong format (not 8 digits)
         assertThrows(IllegalArgumentException.class, () -> player.setTlfNr(333));
     }

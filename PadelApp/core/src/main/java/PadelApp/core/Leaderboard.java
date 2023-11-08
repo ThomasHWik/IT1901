@@ -1,8 +1,7 @@
 package PadelApp.core;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import PadelApp.json.FileManagerJson;
+import java.util.List;
 
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 
@@ -52,7 +51,6 @@ public class Leaderboard extends Scoreboard{
             }
         }
     }
-
     /**
      * Returns an ArrayList of the top n players in the leaderboard.
      * If the leaderboard has less than n players, it returns an ArrayList of all the players in the leaderboard.

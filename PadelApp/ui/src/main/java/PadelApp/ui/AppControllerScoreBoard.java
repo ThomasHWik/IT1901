@@ -2,7 +2,6 @@ package PadelApp.ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import PadelApp.json.FileManagerJson;
 import PadelApp.core.Leaderboard;
@@ -23,10 +22,10 @@ public class AppControllerScoreBoard {
     private Scoreboard scoreboard;
 
     @FXML
-    ListView<String> name;
+    private ListView<String> lbName, sbName;
 
     @FXML
-    ListView<Integer> wins;
+    private ListView<Integer> lbWins, sbWins;
 
     /**
      * Initializes the AppControllerScoreBoard by loading the leaderboard from a JSON file using FileManagerJson.getLeaderboard method.
@@ -41,7 +40,8 @@ public class AppControllerScoreBoard {
             leaderboard = new Leaderboard();
         }
         createLeaderboard();
-        populateTable();
+        populateLeaderboard();
+        populateScoreboard();
     }
 
     /**
@@ -49,7 +49,7 @@ public class AppControllerScoreBoard {
      * @throws IOException if there is an error reading or writing the file.
      */
     public void createLeaderboard() throws IOException {
-        leaderboard.addScoreboard(FileManagerJson.getScoreboard("currentgame"));
+        leaderboard.addScoreboard(scoreboard);
         leaderboard.sortLeaderboard();
         FileManagerJson.saveScoreboard(leaderboard);
     }
@@ -71,8 +71,21 @@ public class AppControllerScoreBoard {
         name.getItems().clear();
         wins.getItems().clear();
         for (Player player : leaderboard.getTopPlayers(10)) {
-            name.getItems().add(player.getName());
-            wins.getItems().add(player.getWins());
+            lbName.getItems().add(player.getName());
+            lbWins.getItems().add(player.getWins());
         }
+    }
+
+    private void populateScoreboard() {
+        sbName.getItems().clear();
+        sbWins.getItems().clear();
+        for (Player player : scoreboard.getTopPlayers(10)) {
+            sbName.getItems().add(player.getName());
+            sbWins.getItems().add(player.getWins());
+        }
+    }
+
+    public void setScoreboard(ArrayList<Player> players) {
+        this.scoreboard = new Scoreboard(players);
     }
 }
