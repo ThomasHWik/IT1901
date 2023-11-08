@@ -4,6 +4,10 @@ package PadelApp.core;
  * The Player class represents a player in a game. It contains the player's name, age, number of wins, and phone number.
  * The class provides methods to set and get the player's name, age, number of wins, and phone number.
  * It also provides methods to increment the number of wins and to set the phone number with validation.
+ * @param name the name of the player
+ * @param age the age of the player
+ * @param wins the number of wins of the player
+ * @param tlfNr the phone number of the player
  */
 public class Player {
 
