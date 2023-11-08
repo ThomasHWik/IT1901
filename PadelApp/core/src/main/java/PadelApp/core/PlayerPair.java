@@ -3,16 +3,34 @@ package PadelApp.core;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a pair of players in a Padel game.
+ * @param player1 the first player in the pair
+ * @param player2 the second player in the pair
+ */
 public class PlayerPair {
     
     private Player player1;
     private Player player2;
     
+    /**
+     * Constructs a new PlayerPair object with the given players.
+     *
+     * @param player1 the first player in the pair
+     * @param player2 the second player in the pair
+     */
     public PlayerPair(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
     }
 
+    /**
+     * Creates a list of player pairs from a list of players.
+     * The number of players must be even.
+     * @param players the list of players to create pairs from
+     * @return a list of player pairs
+     * @throws IllegalArgumentException if the number of players is odd
+     */
     public List<PlayerPair> createPlayerPairs(List<Player> players) {
         List<PlayerPair> pairs = new ArrayList<>();
 
@@ -30,10 +48,20 @@ public class PlayerPair {
         return pairs;
     }
 
+    /**
+     * Returns the first player in the player pair.
+     *
+     * @return the first player in the player pair
+     */
     public Player getPlayer1() {
         return player1;
     }
 
+    /**
+     * Returns the second player in the player pair.
+     *
+     * @return the second player in the player pair
+     */
     public Player getPlayer2() {
         return player2;
     }

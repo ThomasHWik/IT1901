@@ -20,7 +20,6 @@ public class AppControllerGamesTest extends ApplicationTest {
     public ArrayList<Player> playerList;
     private Button CreateGame;
 
-
     private final FXMLLoader loader = new FXMLLoader(getClass().getResource("padel.fxml"));
 
     @Override
@@ -32,17 +31,17 @@ public class AppControllerGamesTest extends ApplicationTest {
     }
 
     void CreateGame(ActionEvent event) throws IOException {
-        
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
         Parent root = loader.load();
-            Stage stage = (Stage) CreateGame.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            AppControllerGames games = (AppControllerGames)loader.getController();
-            games.setPlayerList(playerList);
-            games.CreateGame();
+        Stage stage = (Stage) CreateGame.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        AppControllerGames games = (AppControllerGames) loader.getController();
+        games.setPlayerList(playerList);
+        games.CreateGame();
     }
 
-    public void AddPlayers() {
+    public void Add4Players() {
         // Input test data
         String player1Name = "John";
         String player1Age = "25";
@@ -56,7 +55,7 @@ public class AppControllerGamesTest extends ApplicationTest {
 
         String player2Name = "Tom";
         String player2Age = "21";
-        String Player2number = "12345678";
+        String Player2number = "45464748";
 
         // Locate the text fields and button by their fx:id
         clickOn("#addTlfNr").write(Player2number);
@@ -66,7 +65,7 @@ public class AppControllerGamesTest extends ApplicationTest {
 
         String player3Name = "Tim";
         String player3Age = "19";
-        String Player3number = "87654321";
+        String Player3number = "99989796";
 
         // Locate the text fields and button by their fx:id
         clickOn("#addTlfNr").write(Player3number);
@@ -76,7 +75,7 @@ public class AppControllerGamesTest extends ApplicationTest {
 
         String player4Name = "Ron";
         String player4Age = "25";
-        String Player4number = "18273645";
+        String Player4number = "49484746";
 
         // Locate the text fields and button by their fx:id
         clickOn("#addTlfNr").write(Player4number);
@@ -86,32 +85,84 @@ public class AppControllerGamesTest extends ApplicationTest {
         clickOn("#CreateGame");
 
     }
-    
+
+    public void Add2Players() {
+        // Input test data
+        String player1Name = "John";
+        String player1Age = "25";
+        String Player1number = "95643241";
+
+        // Locate the text fields and button by their fx:id
+        clickOn("#addTlfNr").write(Player1number);
+        clickOn("#addName").write(player1Name);
+        clickOn("#addAge").write(player1Age);
+        clickOn("#AddPlayer");
+
+        String player2Name = "Tom";
+        String player2Age = "21";
+        String Player2number = "45464748";
+
+        // Locate the text fields and button by their fx:id
+        clickOn("#addTlfNr").write(Player2number);
+        clickOn("#addName").write(player2Name);
+        clickOn("#addAge").write(player2Age);
+        clickOn("#AddPlayer");
+        clickOn("#CreateGame");
+
+    }
+
     @Test
-    public void testAddPointstoPlayer() {
-        AddPlayers();
-
-        clickOn("#onel");
-        clickOn("#twor");
+    public void testAddPointstoPlayer4() {
+        Add4Players();
+        clickOn("#threeOne1");
         clickOn("#NewRound");
 
-        clickOn("#oner");
-        clickOn("#twor");
+        clickOn("#threeOne2");
         clickOn("#NewRound");
 
-        clickOn("#oner");
-        clickOn("#twol");
+        clickOn("#threeTwo1");
         clickOn("#NewRound");
+
+        clickOn("#threeTwo2");
+        clickOn("#NewRound");
+
+        clickOn("#threeTwo2");
         clickOn("#GoToScore");
 
         playerList = FileManagerJson.getScoreboard("currentgame").getScorelist();
 
-        assertTrue(playerList.get(0).getWins() == 1);
-        assertTrue(playerList.get(1).getWins() == 2);
-        assertTrue(playerList.get(2).getWins() == 1);
-        assertTrue(playerList.get(3).getWins() == 2);
-        
+        assertTrue(playerList.get(0).getWins() == 2);
+        assertTrue(playerList.get(1).getWins() == 3);
+        assertTrue(playerList.get(2).getWins() == 2);
+        assertTrue(playerList.get(3).getWins() == 3);
+
     }
 
-    
+    @Test
+    public void testAddPointstoPlayer2() {
+        Add2Players();
+        // threeone1, threeone2
+        // threetwo1, threetwo2
+        clickOn("#oneOne");
+        clickOn("#NewRound");
+
+        clickOn("#oneTwo");
+        clickOn("#NewRound");
+
+        clickOn("#oneTwo");
+        clickOn("#NewRound");
+
+        clickOn("#oneOne");
+        clickOn("#NewRound");
+
+        clickOn("#GoToScore");
+
+        playerList = FileManagerJson.getScoreboard("currentgame").getScorelist();
+
+        assertTrue(playerList.get(0).getWins() == 2);
+        assertTrue(playerList.get(1).getWins() == 2);
+
+    }
+
+
 }

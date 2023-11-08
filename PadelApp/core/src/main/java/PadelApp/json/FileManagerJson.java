@@ -12,7 +12,18 @@ import PadelApp.core.Scoreboard;
 import PadelApp.core.Leaderboard;
 import PadelApp.core.RemoteLeaderboardAccess;
 
+
+/**
+ * Class with static methods for reading and writing JSON files.
+ */
 public class FileManagerJson {
+    /**
+     * Saves the given scoreboard object to a JSON file.
+     * 
+     * @param scoreboard the scoreboard object to be saved
+     * @throws IOException if an I/O error occurs while writing to the file
+     * @throws StreamWriteException if an error occurs while writing to the file
+     */
     static public void saveScoreboard(Scoreboard scoreboard) throws IOException, StreamWriteException {
         ObjectMapper om = new ObjectMapper();
         try {
@@ -26,6 +37,12 @@ public class FileManagerJson {
         restClient.sendScoreboard(scoreboard);
     }
 
+    /**
+     * Reads a Scoreboard object from a JSON file.
+     * 
+     * @param filename the name of the JSON file to read from
+     * @return the Scoreboard object read from the file, or null if the file does not exist or is empty
+     */
     static public Scoreboard getScoreboard(String filename) {
         if (filename == null || filename.isEmpty()) {
             return null;
@@ -43,6 +60,12 @@ public class FileManagerJson {
         return null;
     }
 
+    /**
+     * Reads a Leaderboard object from a JSON file.
+     * 
+     * @param filename the path of the JSON file to read from
+     * @return the Leaderboard object read from the file, or null if the file does not exist or cannot be read
+     */
     static public Leaderboard getLeaderboard(String filename) {
         File file = new File(filename);
         if (!file.exists()) {
