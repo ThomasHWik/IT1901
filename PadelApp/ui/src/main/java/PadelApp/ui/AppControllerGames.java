@@ -241,11 +241,7 @@ public class AppControllerGames {
             Stage stage = (Stage) GoToScore.getScene().getWindow();
             stage.setScene(new Scene(root));
             AppControllerScoreBoard score = (AppControllerScoreBoard)loader.getController();
-<<<<<<< HEAD
-            //score.setScore(Player);
-=======
             score.setScoreboard(new ArrayList<>(Player));
->>>>>>> 883875f8be2dce899a316b0abea266b15055c780
     }
 
     @Override
