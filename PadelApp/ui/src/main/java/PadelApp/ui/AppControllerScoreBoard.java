@@ -2,7 +2,6 @@ package PadelApp.ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import PadelApp.json.FileManagerJson;
 import PadelApp.core.Leaderboard;
@@ -17,10 +16,10 @@ public class AppControllerScoreBoard {
     private Scoreboard scoreboard;
 
     @FXML
-    ListView<String> name;
+    private ListView<String> lbName, sbName;
 
     @FXML
-    ListView<Integer> wins;
+    private ListView<Integer> lbWins, sbWins;
 
     @FXML
     public void initialize() throws IOException {
@@ -29,25 +28,35 @@ public class AppControllerScoreBoard {
             leaderboard = new Leaderboard();
         }
         createLeaderboard();
-        populateTable();
+        populateLeaderboard();
+        populateScoreboard();
     }
 
     public void createLeaderboard() throws IOException {
-        leaderboard.addScoreboard(FileManagerJson.getScoreboard("currentgame"));
+        leaderboard.addScoreboard(scoreboard);
         leaderboard.sortLeaderboard();
         FileManagerJson.saveScoreboard(leaderboard);
     }
 
-    public void setScoreboard(List<Player> playerlist) {
-        scoreboard = new Scoreboard((ArrayList<Player>) playerlist);
+    private void populateLeaderboard() {
+        lbName.getItems().clear();
+        lbWins.getItems().clear();
+        for (Player player : leaderboard.getTopPlayers(10)) {
+            lbName.getItems().add(player.getName());
+            lbWins.getItems().add(player.getWins());
+        }
     }
 
-    private void populateTable() {
-        name.getItems().clear();
-        wins.getItems().clear();
-        for (Player player : leaderboard.getTopPlayers(10)) {
-            name.getItems().add(player.getName());
-            wins.getItems().add(player.getWins());
+    private void populateScoreboard() {
+        sbName.getItems().clear();
+        sbWins.getItems().clear();
+        for (Player player : scoreboard.getTopPlayers(10)) {
+            sbName.getItems().add(player.getName());
+            sbWins.getItems().add(player.getWins());
         }
+    }
+
+    public void setScoreboard(ArrayList<Player> players) {
+        this.scoreboard = new Scoreboard(players);
     }
 }
