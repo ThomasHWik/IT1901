@@ -232,15 +232,16 @@ public class AppControllerGames {
     @FXML
     void GoToScore(ActionEvent event) throws IOException {
         addPointsToPlayer();
-Player = pairs.getPlayerlist();
+        Player = pairs.getPlayerlist();
         
         FileManagerJson.saveScoreboard(new Scoreboard("currentgame",(ArrayList<Player>)Player));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("scoreBoard.fxml"));
-
         Parent root = loader.load();
             Stage stage = (Stage) GoToScore.getScene().getWindow();
             stage.setScene(new Scene(root));
+            AppControllerScoreBoard score = (AppControllerScoreBoard)loader.getController();
+            score.setScore(Player);
     }
 
     @Override
