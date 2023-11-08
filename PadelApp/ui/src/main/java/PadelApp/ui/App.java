@@ -6,6 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * The App class extends the Application class and is the main entry point for the PadelApp UI.
+ * It contains the main method which launches the application and the start method which loads the padel.fxml file
+ * and sets the scene for the stage.
+ */
 public class App extends Application {
    
     public static void main(String[] args) {

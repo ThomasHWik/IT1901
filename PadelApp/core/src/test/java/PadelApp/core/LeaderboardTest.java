@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,10 +19,10 @@ public class LeaderboardTest {
     @BeforeEach
     public void setUp() {
         leaderboard = new Leaderboard("testLeaderboard.json");
-        player1 = new Player("John", 2, 5, 12345678);
-        player2 = new Player("Jane", 4, 3, 87654321);
-        player3 = new Player("Bob", 5, 2, 11111111);
-        player4 = new Player("Alice", 3, 4, 22222222);
+        player1 = new Player("John", 2, 5, 91919191);
+        player2 = new Player("Jane", 4, 3, 42424242);
+        player3 = new Player("Bob", 5, 2, 93939393);
+        player4 = new Player("Alice", 3, 4, 44444444);
     }
     /* 
     @Test
@@ -75,9 +76,9 @@ public class LeaderboardTest {
 
         ArrayList<Player> expected = new ArrayList<>();
         expected.add(player1);
-        expected.add(player2);
+        expected.add(player4);
 
-        ArrayList<Player> topPlayers = leaderboard.getTopPlayers(2);
+        List<Player> topPlayers = leaderboard.getTopPlayers(2);
         
         assertEquals(expected.size(), topPlayers.size());
         assertEquals(expected.get(0).getTlfNr(), topPlayers.get(0).getTlfNr());
