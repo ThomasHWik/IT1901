@@ -106,6 +106,14 @@
                 <!-- Usage: mvn javafx:run -->
                 <configuration>
                     <mainClass>PadelApp.ui/PadelApp.ui.App</mainClass>
+                    <!-- rest of options are for jlink -->
+                    <compress>2</compress>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <stripDebug>true</stripDebug>
+                    <noManPages>true</noManPages>
+                    <launcher>padelapp</launcher>
+                    <jlinkImageName>padelapp</jlinkImageName>
+                    <jlinkZipName>padelapp</jlinkZipName>
                 </configuration>
             </plugin>
 
