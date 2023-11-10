@@ -12,9 +12,6 @@ import PadelApp.core.PlayerPair;
 import PadelApp.core.RoundSelector;
 import PadelApp.core.Scoreboard;
 import PadelApp.core.gameSetup;
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -68,6 +65,7 @@ public class AppControllerGames {
      * If there are two courts available, adds buttons for those courts and the remaining available court options.
      */
     private void addToggleBs(){
+    //sets up the toggelbuttons so that the players will be plased in the right buttons
         if (courts.getDouble()==0){
             toggleButtons.add(oneOne);
             toggleButtons.add(oneTwo);
@@ -105,7 +103,6 @@ public class AppControllerGames {
             toggleButtons.add(fourTwo); 
             
         }
-
     }
 
 /**
@@ -134,6 +131,7 @@ public class AppControllerGames {
  */
    @FXML
     void NewRound(ActionEvent event) throws FileNotFoundException, IOException{
+        //sets up new round and adds points to players taht was selected
         if (!allselected()){
             error.visibleProperty().set(true);
             error.setText("Not all games have been selected");
@@ -149,9 +147,7 @@ public class AppControllerGames {
             }
 
             updateRound();
-        
-        }
-        
+        } 
     }
 
     /**
@@ -159,6 +155,7 @@ public class AppControllerGames {
      * If there is only one type of court available (single or double), the method returns without shuffling.
      */
     private void shuffel(){
+        //suffels the players so that they play against different players each round
         if(courts.getDouble()==1 && courts.getSingle()==0) return;
         if(courts.getSingle()==1 && courts.getDouble()==0) return;
         pairs.remakePlayersOrder();
@@ -171,6 +168,7 @@ public class AppControllerGames {
      */
     @FXML
     void pairOne(ActionEvent event){
+        //selects both buttons if one is selected
         threeOne1.selectedProperty().set(true);
         threeOne2.selectedProperty().set(true);
     }
@@ -180,6 +178,7 @@ public class AppControllerGames {
      */
     @FXML
     void pairTwo(ActionEvent event){
+        //selects both buttons if one is selected
         threeTwo1.selectedProperty().set(true);
         threeTwo2.selectedProperty().set(true);
     }
@@ -190,6 +189,7 @@ public class AppControllerGames {
      * @return true if all toggle buttons are selected, false otherwise.
      */
     private boolean allselected() {
+        //checks if there has been selected a winner on each court
         int togglesize = Pairs.size()*2;
         for (int i = 0; i < togglesize-1; i+=2){
             if (!(toggleButtons.get(i).isSelected() || toggleButtons.get(i+1).isSelected())){
@@ -243,6 +243,7 @@ public class AppControllerGames {
      * It then adds toggle buttons and sets the visibility of the courts based on the number of pairs.
      */
     private void createCourts(){
+        //if there is more then 2 players, there will be a dobbelcourt
         if (Pairs.size()>=2){
             courts = new gameSetup(1, Pairs);
         }
