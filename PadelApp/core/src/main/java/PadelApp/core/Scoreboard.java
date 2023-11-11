@@ -13,9 +13,6 @@ import java.util.List;
  * @param scorelist the list of players in the scoreboard
  */
 public class Scoreboard {
-    private String filename;
-    private ArrayList<Player> scorelist;
-
     /**
      * The name of the JSON file used to store the scoreboard data.
      */
@@ -24,7 +21,7 @@ public class Scoreboard {
     /**
      * The list of players in the scoreboard.
      */
-    private List<Player> scorelist;
+    private ArrayList<Player> scorelist;
         
     /**
      * Constructs a new Scoreboard object with an empty list of players and a default filename.

@@ -314,8 +314,6 @@ public class AppControllerGames {
         Parent root = loader.load();
             Stage stage = (Stage) GoToScore.getScene().getWindow();
             stage.setScene(new Scene(root));
-            AppControllerScoreBoard score = (AppControllerScoreBoard)loader.getController();
-           
     }
 
     /**
