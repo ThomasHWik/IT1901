@@ -36,6 +36,7 @@ public class AppControllerScoreBoard {
     @FXML
     public void initialize() throws IOException {
         leaderboard = FileManagerJson.getLeaderboard("Leaderboard");
+        scoreboard = FileManagerJson.getLeaderboard("currentgame");
         if (leaderboard == null) {
             leaderboard = new Leaderboard();
         }
@@ -55,21 +56,12 @@ public class AppControllerScoreBoard {
     }
 
     /**
-     * Sets the scoreboard with the given list of players.
-     * 
-     * @param playerlist the list of players to set the scoreboard with
-     */
-    public void setScoreboard(List<Player> playerlist) {
-        scoreboard = new Scoreboard((ArrayList<Player>) playerlist);
-    }
-
-    /**
      * Populates the table with the top 10 players in the leaderboard.
      * Clears the name and wins items before adding the new data.
      */
-    private void populateTable() {
-        name.getItems().clear();
-        wins.getItems().clear();
+    private void populateLeaderboard() {
+        lbName.getItems().clear();
+        lbWins.getItems().clear();
         for (Player player : leaderboard.getTopPlayers(10)) {
             lbName.getItems().add(player.getName());
             lbWins.getItems().add(player.getWins());
@@ -83,9 +75,5 @@ public class AppControllerScoreBoard {
             sbName.getItems().add(player.getName());
             sbWins.getItems().add(player.getWins());
         }
-    }
-
-    public void setScoreboard(ArrayList<Player> players) {
-        this.scoreboard = new Scoreboard(players);
     }
 }
