@@ -42,7 +42,7 @@ public class AppControllerPadelTest extends ApplicationTest {
     }
 
     @Test
-    public void testTexAreaPlayer(){
+    public void testTextAreaPlayer(){
         String Playernumber = "95643241";
         String playerName = "John";
         String playerAge = "25";
