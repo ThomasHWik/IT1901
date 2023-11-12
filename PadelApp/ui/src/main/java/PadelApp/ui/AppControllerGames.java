@@ -11,7 +11,7 @@ import PadelApp.core.Player;
 import PadelApp.core.PlayerPair;
 import PadelApp.core.RoundSelector;
 import PadelApp.core.Scoreboard;
-import PadelApp.core.gameSetup;
+import PadelApp.core.GameSetup;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,7 +40,7 @@ public class AppControllerGames {
     
 
 
-    private gameSetup courts= new gameSetup(0,Pairs);
+    private GameSetup courts= new GameSetup(0,Pairs);
     @FXML
     private TextArea error;
 
@@ -245,10 +245,10 @@ public class AppControllerGames {
     private void createCourts(){
         //if there is more then 2 players, there will be a dobbelcourt
         if (Pairs.size()>=2){
-            courts = new gameSetup(1, Pairs);
+            courts = new GameSetup(1, Pairs);
         }
         else{
-            courts= new gameSetup(0, Pairs);
+            courts= new GameSetup(0, Pairs);
         }
         addToggleBs();
         //To turn on the right amount of togglebuttons

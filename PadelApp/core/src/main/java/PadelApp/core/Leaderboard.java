@@ -1,11 +1,9 @@
 package PadelApp.core;
 
 import java.io.IOException;
-import java.util.List;
-
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 
-public class Leaderboard extends Scoreboard{
+public class Leaderboard extends Scoreboard {
     public Leaderboard() {
         super("Leaderboard");
     }
@@ -22,14 +20,15 @@ public class Leaderboard extends Scoreboard{
     /**
      * Sorts the scorelist of the leaderboard using the PlayerComparator.
      */
-    public void sortLeaderboard(){
+    public void sortLeaderboard() {
         this.getScorelist().sort(new PlayerComparator());
     }
 
     /**
      * Adds a scoreboard to the leaderboard. If a player in the scoreboard already exists in the leaderboard,
-     * their wins are added to the existing player's wins. If a player in the scoreboard does not exist in the leaderboard,
-     * a new player is created and added to the leaderboard. Unique identifier is players tlfNr.
+     * their wins are added to the existing player's wins. If a player in the scoreboard does not exist
+     * in the leaderboard, a new player is created and added to the leaderboard.
+     * Unique identifier is players tlfNr.
      *
      * @param scoreboard the scoreboard to add to the leaderboard
      * @throws StreamWriteException if there is an error writing to the stream
@@ -46,7 +45,11 @@ public class Leaderboard extends Scoreboard{
                 }
             }
             if (!found) {
-                Player player = new Player(playerScoreboard.getName(), playerScoreboard.getAge(), playerScoreboard.getWins(), playerScoreboard.getTlfNr());
+                String name = playerScoreboard.getName();
+                int age = playerScoreboard.getAge();
+                int wins = playerScoreboard.getWins();
+                int TlfNr = playerScoreboard.getTlfNr();
+                Player player = new Player(name, age, wins, TlfNr);
                 this.addPlayer(player);
             }
         }

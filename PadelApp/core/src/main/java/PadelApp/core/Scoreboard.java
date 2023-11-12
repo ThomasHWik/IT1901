@@ -1,14 +1,16 @@
 package PadelApp.core;
 
 import PadelApp.json.FileManagerJson;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The Scoreboard class represents a scoreboard for a PadelApp game. It contains a filename and an ArrayList of Player objects.
+ * The Scoreboard class represents a scoreboard for a PadelApp game.
+ * It contains a filename and an ArrayList of Player objects.
  * The class provides methods to set and get the filename and the ArrayList of Player objects.
- * It also provides methods to add and remove players from the scoreboard, and to save the scoreboard to a JSON file.
+ * It also provides methods to add and remove players from the scoreboard,
+ * and to save the scoreboard to a JSON file.
+ * 
  * @param filename the name of the file to be used for storing the scoreboard data
  * @param scorelist the list of players in the scoreboard
  */
@@ -34,7 +36,7 @@ public class Scoreboard {
     
     /**
      * Constructs a new Scoreboard object with the given filename.
-     * 
+     *
      * @param filename the name of the file to be used for storing the scoreboard data
      * @throws IllegalArgumentException if the filename is null or empty
      */
@@ -61,7 +63,7 @@ public class Scoreboard {
     
     /**
      * Constructs a Scoreboard object with a given filename and a list of players' scores.
-     * 
+     *
      * @param filename the name of the file to be used for storing the scores
      * @param scorelist the list of players' scores to be added to the scoreboard
      * @throws IllegalArgumentException if the filename is null or empty
@@ -89,7 +91,7 @@ public class Scoreboard {
 
     /**
      * Sets the filename of the scoreboard.
-     * 
+     *
      * @param filename the filename to set
      */
     public void setFilename(String filename) {
@@ -98,7 +100,7 @@ public class Scoreboard {
 
     /**
      * Adds a player to the scoreboard.
-     * 
+     *
      * @param player the player to be added to the scoreboard
      */
     public void addPlayer(Player player) {
@@ -120,7 +122,7 @@ public class Scoreboard {
 
     /**
      * Sets the scorelist of the scoreboard.
-     * 
+     *
      * @param scorelist the ArrayList of Player objects to set as the scorelist
      */
     public void setScorelist(ArrayList<Player> scorelist) {
@@ -132,7 +134,7 @@ public class Scoreboard {
 
     /**
      * Removes the given player from the scoreboard.
-     * 
+     *
      * @param player the player to be removed from the scoreboard
      */
     public void removePlayer(Player player) {
@@ -141,7 +143,7 @@ public class Scoreboard {
 
     /**
      * Saves the current scoreboard to a JSON file.
-     * 
+     *
      * @return the filename of the saved scoreboard
      */
     public String saveScoreboard() {

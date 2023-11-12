@@ -9,9 +9,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class gameStest {
+public class GameSetupTest {
     private List<PlayerPair> playerPairs= new ArrayList<>();
-    private gameSetup gameSetup= new gameSetup(0,playerPairs);
+    private GameSetup gameSetup= new GameSetup(0,playerPairs);
 
     @BeforeEach
     void setUp() {
@@ -24,7 +24,7 @@ public class gameStest {
         playerPairs = new ArrayList<>();
         playerPairs.add(new PlayerPair(player1, player2));
         playerPairs.add(new PlayerPair(player3, player4));
-        gameSetup = new gameSetup(1, playerPairs);
+        gameSetup = new GameSetup(1, playerPairs);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class gameStest {
     @Test
     void testInvalidSetup() {
         // Test that the constructor throws IllegalArgumentException for invalid setups
-        assertThrows(IllegalArgumentException.class, () -> new gameSetup(2, playerPairs));
+        assertThrows(IllegalArgumentException.class, () -> new GameSetup(2, playerPairs));
     }
 
     @Test
@@ -53,6 +53,6 @@ public class gameStest {
         for (int i = 0; i < 6; i++) {
             tooManyPlayerPairs.add(new PlayerPair(player,player));
         }
-        assertThrows(IllegalArgumentException.class, () -> new gameSetup(1, tooManyPlayerPairs));
+        assertThrows(IllegalArgumentException.class, () -> new GameSetup(1, tooManyPlayerPairs));
     }
 }

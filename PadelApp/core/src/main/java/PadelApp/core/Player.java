@@ -1,9 +1,13 @@
 package PadelApp.core;
 
 /**
- * The Player class represents a player in a game. It contains the player's name, age, number of wins, and phone number.
- * The class provides methods to set and get the player's name, age, number of wins, and phone number.
- * It also provides methods to increment the number of wins and to set the phone number with validation.
+ * The Player class represents a player in a game.
+ * It contains the player's name, age, number of wins, and phone number.
+ * The class provides methods to set and get the player's
+ * name, age, number of wins, and phone number.
+ * It also provides methods to increment the number of wins,
+ * and to set the phone number with validation.
+ * 
  * @param name the name of the player
  * @param age the age of the player
  * @param wins the number of wins of the player
@@ -30,6 +34,7 @@ public class Player {
     /**
      * Constructs a new Player object with the given name and age.
      * Sets the initial number of wins to 0 and the phone number to 11111111.
+     * 
      * @param name the name of the player
      * @param age the age of the player
      */
@@ -37,11 +42,12 @@ public class Player {
         setName(name);
         setAge(age);
         this.wins = 0;
-        this. tlfNr= 11111111;
+        this. tlfNr = 11111111;
     }
 
     /**
      * Constructs a new Player object with the given name, age and phone number.
+     * 
      * @param name the name of the player
      * @param age the age of the player
      * @param tlfNr the phone number of the player
@@ -55,6 +61,7 @@ public class Player {
 
     /**
      * Constructs a new Player object with the given name, age, number of wins and telephone number.
+     * 
      * @param name the name of the player
      * @param age the age of the player
      * @param wins the number of wins of the player
@@ -68,9 +75,22 @@ public class Player {
     }
 
     /**
+     * Constructs a new Player object with the same values as another Player object.
+     *
+     * @param player the other Player object you take the values from
+     */
+    public Player(Player player) {
+        setName(player.getName());
+        setAge(player.getAge());
+        setWins(player.getWins());
+        setTlfNr(player.getTlfNr());
+    }
+
+    /**
      * Sets the name of the player.
      * 
      * @param name the name of the player
+     * 
      * @throws IllegalArgumentException if the name is null or empty
      */
     public void setName(String name) {
@@ -84,6 +104,7 @@ public class Player {
      * Sets the age of the player.
      * 
      * @param age the age of the player to be set
+     * 
      * @throws IllegalArgumentException if the age is negative
      */
     public void setAge(int age) {
@@ -97,7 +118,7 @@ public class Player {
      * Increases the number of wins for the player by 1.
      */
     public void addwins() {
-        wins+=1;
+        this.wins += 1;
     }
 
     /**
@@ -138,7 +159,9 @@ public class Player {
     
     /**
      * Sets the number of wins for the player.
+     * 
      * @param wins the number of wins to set
+     * 
      * @throws IllegalArgumentException if the number of wins is negative
      */
     public void setWins(int wins) {
@@ -159,11 +182,15 @@ public class Player {
 
     /**
      * Sets the phone number of the player.
+     * 
      * @param tlfNr the phone number to set
-     * @throws IllegalArgumentException if the phone number is not valid (must be 8 digits and start with 9 or 4)
+     * 
+     * @throws IllegalArgumentException if the phone number is not valid
      */
     public void setTlfNr(int tlfNr) {
-        if (NumberManager.getDigits(tlfNr) != 8 || (NumberManager.getFirstDigit(tlfNr) != 9 && NumberManager.getFirstDigit(tlfNr) != 4)){
+        int digits = NumberManager.getDigits(tlfNr);
+        int firstDigit = NumberManager.getFirstDigit(tlfNr);
+        if (digits != 8 || (firstDigit != 9 && firstDigit != 4)) {
             throw new IllegalArgumentException("Phone must be valid");
         }
         this.tlfNr = tlfNr;
@@ -172,7 +199,7 @@ public class Player {
     /**
      * Returns a string representation of the Player object.
      * 
-     * @return a string representation of the Player object, including the player's name and number of wins.
+     * @return a string representation of the Player object
      */
     @Override
     public String toString() {

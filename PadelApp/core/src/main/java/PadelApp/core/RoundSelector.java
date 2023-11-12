@@ -2,6 +2,7 @@ package PadelApp.core;
 
 /**
  * The RoundSelector class represents a selector for the number of rounds in a tournament.
+ * 
  * @param numberOfRounds the number of rounds to be selected
  */
 public class RoundSelector {
@@ -22,17 +23,18 @@ public class RoundSelector {
      *
      * @return the number of rounds
      */
-    public int getNumberOfRounds(){
+    public int getNumberOfRounds() {
         return numberOfRounds;
     }
 
     /**
      * Sets the number of rounds for the tournament.
+     * 
      * @param numberOfRounds the number of rounds to be set
      * @throws IllegalArgumentException if the input is less than 1 or greater than 10
      */
     public void setNumberOfRounds(int numberOfRounds) {
-        if (numberOfRounds < 1 || numberOfRounds > 10){
+        if (numberOfRounds < 1 || numberOfRounds > 10) {
             throw new IllegalArgumentException("Not valid input!");
         }
         this.numberOfRounds = numberOfRounds;
