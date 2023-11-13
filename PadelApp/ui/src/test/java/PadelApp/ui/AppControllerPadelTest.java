@@ -1,4 +1,4 @@
-package PadelApp.ui;
+package padelapp.ui;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

@@ -1,4 +1,4 @@
-package PadelApp.core;
+package padelapp.core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import padelapp.core.Player;
+import padelapp.core.Scoreboard;
 
 public class ScoreboardTest {
 

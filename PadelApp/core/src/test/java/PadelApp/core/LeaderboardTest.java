@@ -1,7 +1,10 @@
-package PadelApp.core;
+package padelapp.core;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import padelapp.core.Leaderboard;
+import padelapp.core.Player;
 
 import java.util.ArrayList;
 import java.util.List;
