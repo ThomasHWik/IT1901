@@ -83,9 +83,12 @@ public class CreatePlayerPairsTest {
     }
 
     @Test
+    // Tests the overriding of the toString() method to custom string output of the
+    // CreatePlayerPairs object
     void testToString() {
         List<PlayerPair> PlayerPairslist = createPlayerPairs.getPlayerPairs();
         List<Player> playerList = createPlayerPairs.getPlayerlist();
-        assertEquals("CreatePlayerPairs [PlayerPairslist=" + PlayerPairslist + ", playerList=" + playerList + "]", createPlayerPairs.toString());
+        assertEquals("CreatePlayerPairs [PlayerPairslist=" + PlayerPairslist + ", playerList=" + playerList + "]",
+                createPlayerPairs.toString());
     }
 }
