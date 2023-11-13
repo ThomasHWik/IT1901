@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RoundSelectorTest {
-    RoundSelector roundSelector;
+    private RoundSelector roundSelector;
 
     @BeforeEach
     void setUp() {
