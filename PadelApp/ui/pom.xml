@@ -127,7 +127,7 @@
                     <appVersion>1.0.0</appVersion>
                     <vendor>it1901</vendor>
                     <destination>target/dist</destination>
-                    <module>PadelApp.ui/Padelapp.ui.App</module>
+                    <module>PadelApp.ui/PadelApp.ui.App</module>
                     <runtimeImage>target/padelapp</runtimeImage>
                     <javaOptions>
                         <option>-Dfile.encoding=UTF-8</option>
