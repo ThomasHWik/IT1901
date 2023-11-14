@@ -50,6 +50,7 @@ public class PadelModelController {
      */
     @PostMapping("/addScoreboard")
     public ResponseEntity<String> receiveScoreboard(@RequestBody Scoreboard scoreboard) {
+        System.out.println(scoreboard.getScorelist().toString());
         try {
             padelModelService.addToLeaderboard(scoreboard);
             System.out.println("processed scoreboard");
@@ -87,5 +88,17 @@ public class PadelModelController {
     public ResponseEntity<String> initialize() {
         padelModelService.initialize();
         return new ResponseEntity<>("Tried initializing", HttpStatus.OK);
+    }
+
+    
+    /**
+     * Endpoint to set the leaderboard.
+     * @param leaderboard The leaderboard to be set.
+     * @return ResponseEntity with a message indicating that the leaderboard has been set and a HTTP status code of 200 OK.
+     */
+    @PostMapping("/setLeaderboard")
+    public ResponseEntity<String> setLeaderboard(@RequestBody Leaderboard leaderboard) {
+        padelModelService.setLeaderboard(leaderboard);;
+        return new ResponseEntity<>("Leaderboard set", HttpStatus.OK);
     }
 }
