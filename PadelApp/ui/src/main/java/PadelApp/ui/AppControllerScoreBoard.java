@@ -54,10 +54,9 @@ public class AppControllerScoreBoard {
      * Adds the current game's scoreboard to the leaderboard
      * and retrieves the updated leaderboard from REST API
      */
-    public void createLeaderboard() throws IOException {
-        leaderboard.addScoreboard(scoreboard);
-        leaderboard.sortLeaderboard();
-        FileManagerJson.saveScoreboard(leaderboard);
+    public void createLeaderboard() {
+        this.restApi.sendScoreboard(scoreboard);
+        this.leaderboard = this.restApi.getLeaderboard();
     }
 
     /**
@@ -73,7 +72,6 @@ public class AppControllerScoreBoard {
      * Populates the table with the top 10 players in the leaderboard.
      * Clears the name and wins items before adding the new data.
      */
-
     private void populateLeaderboard() {
         lbName.getItems().clear();
         lbWins.getItems().clear();
@@ -90,5 +88,9 @@ public class AppControllerScoreBoard {
             sbName.getItems().add(player.getName());
             sbWins.getItems().add(player.getWins());
         }
+    }
+
+    public void setScoreboard(ArrayList<Player> players) {
+        this.scoreboard = new Scoreboard(players);
     }
 }
