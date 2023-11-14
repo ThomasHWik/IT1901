@@ -1,4 +1,4 @@
-package padelapp.core;
+package PadelApp.core;
 
 /**
  * The RoundSelector class represents a selector for the number of rounds in a

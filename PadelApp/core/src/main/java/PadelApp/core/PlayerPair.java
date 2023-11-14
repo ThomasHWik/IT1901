@@ -1,4 +1,4 @@
-package padelapp.core;
+package PadelApp.core;
 
 import java.util.ArrayList;
 import java.util.List;

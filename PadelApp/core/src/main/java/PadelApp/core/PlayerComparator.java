@@ -1,4 +1,4 @@
-package padelapp.core;
+package PadelApp.core;
 
 import java.io.Serializable;
 import java.util.Comparator;

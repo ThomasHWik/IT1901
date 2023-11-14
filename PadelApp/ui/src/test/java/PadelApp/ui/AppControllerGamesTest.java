@@ -1,4 +1,4 @@
-package padelapp.ui;
+package PadelApp.ui;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -11,8 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import padelapp.json.FileManagerJson;
-import padelapp.core.Player;
+import PadelApp.json.FileManagerJson;
+import PadelApp.core.Player;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 

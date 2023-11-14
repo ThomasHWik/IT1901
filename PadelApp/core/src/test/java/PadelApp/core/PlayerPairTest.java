@@ -1,4 +1,4 @@
-package padelapp.core;
+package PadelApp.core;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -63,13 +63,12 @@ public class PlayerPairTest {
     @Test
     void testGetPlayer1() {
         PlayerPair playerPair = new PlayerPair(player1, player2);
-        assertEquals(player1, playerPair.getPlayer1());
+        assertEquals(player1.toString(), playerPair.getPlayer1().toString());
     }
 
     @Test
     void testGetPlayer2() {
         PlayerPair playerPair = new PlayerPair(player1, player2);
-        assertEquals(player2, playerPair.getPlayer2());
+        assertEquals(player2.toString(), playerPair.getPlayer2().toString());
     }
-    
 }

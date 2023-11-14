@@ -1,10 +1,10 @@
-package padelapp.json;
+package PadelApp.json;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import padelapp.core.Leaderboard;
-import padelapp.core.Scoreboard;
-import padelapp.core.Player;
+import PadelApp.core.Leaderboard;
+import PadelApp.core.Scoreboard;
+import PadelApp.core.Player;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

@@ -1,4 +1,4 @@
-package padelapp.core;
+package PadelApp.core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -9,9 +9,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import padelapp.core.GameSetup;
-import padelapp.core.Player;
-import padelapp.core.PlayerPair;
+import PadelApp.core.GameSetup;
+import PadelApp.core.Player;
+import PadelApp.core.PlayerPair;
 
 public class GameSetupTest {
     private List<PlayerPair> playerPairs= new ArrayList<>();

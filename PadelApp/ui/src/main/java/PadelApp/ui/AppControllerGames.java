@@ -1,10 +1,17 @@
-package padelapp.ui;
+package PadelApp.ui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import PadelApp.core.CreatePlayerPairs;
+import PadelApp.core.GameSetup;
+import PadelApp.core.Player;
+import PadelApp.core.PlayerPair;
+import PadelApp.core.RoundSelector;
+import PadelApp.core.Scoreboard;
+import PadelApp.json.FileManagerJson;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,13 +23,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
-import padelapp.core.CreatePlayerPairs;
-import padelapp.core.GameSetup;
-import padelapp.core.Player;
-import padelapp.core.PlayerPair;
-import padelapp.core.RoundSelector;
-import padelapp.core.Scoreboard;
-import padelapp.json.FileManagerJson;
 
 /**
  * This class represents the controller for the games section of the PadelApp

@@ -1,4 +1,4 @@
-package padelapp.ui;
+package PadelApp.ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import padelapp.core.Player;
-import padelapp.core.RoundSelector;
+import PadelApp.core.Player;
+import PadelApp.core.RoundSelector;
 
 /**
  * This class represents the controller for the PadelApp UI. It handles adding players to the player list,

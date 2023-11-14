@@ -1,4 +1,4 @@
-package padelapp.core;
+package PadelApp.core;
 
 import java.io.IOException;
 import com.fasterxml.jackson.core.exc.StreamWriteException;

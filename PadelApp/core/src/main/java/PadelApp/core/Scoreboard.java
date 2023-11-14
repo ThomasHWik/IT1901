@@ -1,9 +1,9 @@
-package padelapp.core;
+package PadelApp.core;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import padelapp.json.FileManagerJson;
+import PadelApp.json.FileManagerJson;
 
 /**
  * The Scoreboard class represents a scoreboard for a PadelApp game.

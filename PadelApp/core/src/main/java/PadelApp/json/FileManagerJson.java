@@ -1,11 +1,11 @@
-package padelapp.json;
+package PadelApp.json;
 
 import java.io.File;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import padelapp.core.Leaderboard;
-import padelapp.core.Scoreboard;
+import PadelApp.core.Leaderboard;
+import PadelApp.core.Scoreboard;
 
 import java.io.IOException;
 

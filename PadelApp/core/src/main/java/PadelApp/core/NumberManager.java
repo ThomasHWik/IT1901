@@ -1,4 +1,4 @@
-package padelapp.core;
+package PadelApp.core;
 
 public class NumberManager {
   /**

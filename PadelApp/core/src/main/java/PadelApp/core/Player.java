@@ -1,4 +1,4 @@
-package padelapp.core;
+package PadelApp.core;
 
 /**
  * The Player class represents a player in a game.
