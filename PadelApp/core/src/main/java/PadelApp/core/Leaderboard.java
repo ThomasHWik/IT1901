@@ -1,7 +1,6 @@
 package PadelApp.core;
 
 import java.io.IOException;
-import java.util.List;
 
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 
@@ -39,7 +38,11 @@ public class Leaderboard extends Scoreboard{
         for (Player playerScoreboard : scoreboard.getScorelist()) {
             boolean found = false;
             for (Player playerLeaderboard : this.getScorelist()) {
+                if (found) {
+                    break;
+                }
                 if (playerScoreboard.getTlfNr() == playerLeaderboard.getTlfNr()) {
+                    System.out.println("Found player already in leaderboard, adding wins");
                     playerLeaderboard.addWins(playerScoreboard.getWins());
                     found = true;
                     break;
