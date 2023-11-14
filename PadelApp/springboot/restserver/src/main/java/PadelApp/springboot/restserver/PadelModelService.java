@@ -23,8 +23,9 @@ public class PadelModelService {
      * @return true if the leaderboard was successfully saved, false otherwise
      */
     public boolean saveLeaderboard(Leaderboard leaderboard) {
+        System.out.println("savingLeaderboard Service");
         try {
-            FileManagerJson.saveScoreboard(leaderboard);
+            FileManagerJson.saveScoreboard(new Scoreboard("Leaderboard",leaderboard.getScorelist()));
         } catch (IOException e) {
             e.printStackTrace();
             return false;
@@ -47,7 +48,12 @@ public class PadelModelService {
      * @return the leaderboard object
      */
     public Leaderboard getLeaderboard() {
-        return FileManagerJson.getLeaderboard(currentFilename);
+        Leaderboard leaderboard = FileManagerJson.getLeaderboard(currentFilename);
+        if (leaderboard != null) {
+             return leaderboard;
+        } else {
+            return new Leaderboard();
+        }
     }
 
     /**
@@ -61,11 +67,15 @@ public class PadelModelService {
         Leaderboard leaderboard = FileManagerJson.getLeaderboard(currentFilename);
         try {
             if (leaderboard != null) {
-                leaderboard.addScoreboard(scoreboard);
+                Leaderboard newLeaderboard = new Leaderboard();
+                newLeaderboard.addScoreboard(new Scoreboard(leaderboard.getScorelist())); // Add the existing leaderboard
+                newLeaderboard.addScoreboard(scoreboard);   // Add the new scoreboard
+                saveLeaderboard(newLeaderboard);
             } else {
-                leaderboard = (Leaderboard) scoreboard;
+                leaderboard = new Leaderboard();
+                leaderboard.addScoreboard(scoreboard);
+                saveLeaderboard(leaderboard);
             }
-            saveLeaderboard(leaderboard);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -78,6 +88,13 @@ public class PadelModelService {
      */
     public void initialize() {
         Leaderboard leaderboard = new Leaderboard();
+        saveLeaderboard(leaderboard);
+    }
+
+    /**
+     * Sets a leadearboard for the server for testing
+     */
+    public void setLeaderboard(Leaderboard leaderboard) {
         saveLeaderboard(leaderboard);
     }
 }
