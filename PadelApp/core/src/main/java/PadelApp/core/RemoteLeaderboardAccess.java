@@ -27,7 +27,7 @@ public class RemoteLeaderboardAccess {
 
     public Leaderboard getLeaderboard() {
         try {
-            HttpRequest request = HttpRequest.newBuilder(baseEndpoint)
+            HttpRequest request = HttpRequest.newBuilder(URI.create(baseEndpoint+"/leaderboard"))
                     .header("Accept", "application/json")
                     .build();
 
@@ -40,6 +40,7 @@ public class RemoteLeaderboardAccess {
             } else {
                 // Handle error status codes if needed
                 System.out.println("Error: " + response.statusCode());
+                System.out.println("this.leaderboard wil be null");
             }
         } catch (Exception e) {
            e.printStackTrace();
