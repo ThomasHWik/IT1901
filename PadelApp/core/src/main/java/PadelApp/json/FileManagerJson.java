@@ -10,7 +10,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import PadelApp.core.Scoreboard;
 import PadelApp.core.Leaderboard;
-import PadelApp.core.RemoteLeaderboardAccess;
 
 
 /**
@@ -31,10 +30,6 @@ public class FileManagerJson {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        //send to rest server
-        RemoteLeaderboardAccess restClient = new RemoteLeaderboardAccess(URI.create("http://localhost:8080/api/padel"));
-        restClient.sendScoreboard(scoreboard);
     }
 
     /**
