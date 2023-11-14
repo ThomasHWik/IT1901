@@ -21,7 +21,7 @@ public class Scoreboard {
     /**
      * The list of players in the scoreboard.
      */
-    private List<Player> scorelist;
+    private ArrayList<Player> scorelist;
         
     /**
      * Constructs a new Scoreboard object with an empty list of players and a default filename.
