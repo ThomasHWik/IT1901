@@ -8,8 +8,10 @@ import PadelApp.json.FileManagerJson;
 import java.io.IOException;
 
 /**
- * This class provides methods to manage the PadelModelService, which is responsible for managing the Leaderboard and Scoreboard data.
- * The class provides methods to save, get and add to the Leaderboard, as well as initialize the Leaderboard.
+ * This class provides methods to manage the PadelModelService, which is
+ * responsible for managing the Leaderboard and Scoreboard data.
+ * The class provides methods to save, get and add to the Leaderboard, as well
+ * as initialize the Leaderboard.
  * The Leaderboard is saved as a JSON file using the FileManagerJson class.
  */
 @Service
@@ -25,7 +27,7 @@ public class PadelModelService {
     public boolean saveLeaderboard(Leaderboard leaderboard) {
         System.out.println("savingLeaderboard Service");
         try {
-            FileManagerJson.saveScoreboard(new Scoreboard("Leaderboard",leaderboard.getScorelist()));
+            FileManagerJson.saveScoreboard(new Scoreboard("Leaderboard", leaderboard.getScorelist()));
         } catch (IOException e) {
             e.printStackTrace();
             return false;
@@ -44,13 +46,15 @@ public class PadelModelService {
     }
 
     /**
-     * Returns the leaderboard object by calling the getLeaderboard method of the FileManagerJson class.
+     * Returns the leaderboard object by calling the getLeaderboard method of the
+     * FileManagerJson class.
+     * 
      * @return the leaderboard object
      */
     public Leaderboard getLeaderboard() {
         Leaderboard leaderboard = FileManagerJson.getLeaderboard(currentFilename);
         if (leaderboard != null) {
-             return leaderboard;
+            return leaderboard;
         } else {
             return new Leaderboard();
         }
@@ -59,23 +63,17 @@ public class PadelModelService {
     /**
      * Adds a scoreboard to the leaderboard.
      * If the leaderboard already exists, the scoreboard is added to it.
-     * If the leaderboard does not exist, a new leaderboard is created with the scoreboard.
+     * If the leaderboard does not exist, a new leaderboard is created with the
+     * scoreboard.
+     * 
      * @param scoreboard the scoreboard to add to the leaderboard
      * @return true if the scoreboard was successfully added, false otherwise
      */
     public boolean addToLeaderboard(Scoreboard scoreboard) {
         Leaderboard leaderboard = FileManagerJson.getLeaderboard(currentFilename);
         try {
-            if (leaderboard != null) {
-                Leaderboard newLeaderboard = new Leaderboard();
-                newLeaderboard.addScoreboard(new Scoreboard(leaderboard.getScorelist())); // Add the existing leaderboard
-                newLeaderboard.addScoreboard(scoreboard);   // Add the new scoreboard
-                saveLeaderboard(newLeaderboard);
-            } else {
-                leaderboard = new Leaderboard();
-                leaderboard.addScoreboard(scoreboard);
-                saveLeaderboard(leaderboard);
-            }
+            leaderboard.addScoreboard(scoreboard); // Add the new scoreboard
+            saveLeaderboard(leaderboard);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -84,7 +82,8 @@ public class PadelModelService {
     }
 
     /**
-     * Initializes the PadelModelService by creating a new Leaderboard object and saving it.
+     * Initializes the PadelModelService by creating a new Leaderboard object and
+     * saving it.
      */
     public void initialize() {
         Leaderboard leaderboard = new Leaderboard();
