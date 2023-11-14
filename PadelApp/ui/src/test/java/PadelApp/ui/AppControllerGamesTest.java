@@ -82,7 +82,6 @@ public class AppControllerGamesTest extends ApplicationTest {
         clickOn("#addName").write(player4Name);
         clickOn("#addAge").write(player4Age);
         clickOn("#AddPlayer");
-        clickOn("#InputRounds").write("5");
         clickOn("#CreateGame");
 
     }
@@ -108,7 +107,6 @@ public class AppControllerGamesTest extends ApplicationTest {
         clickOn("#addName").write(player2Name);
         clickOn("#addAge").write(player2Age);
         clickOn("#AddPlayer");
-        clickOn("#InputRounds").write("5");
         clickOn("#CreateGame");
 
     }
