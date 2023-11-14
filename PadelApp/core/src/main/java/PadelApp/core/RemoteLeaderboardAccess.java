@@ -1,5 +1,6 @@
 package PadelApp.core;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.net.URI;
@@ -17,14 +18,15 @@ import java.util.Collection;
  */
 public class RemoteLeaderboardAccess {
     private final URI baseEndpoint;
+    private final HttpClient client;
 
     public RemoteLeaderboardAccess(URI baseEndpoint) {
         this.baseEndpoint = baseEndpoint;
+        this.client = HttpClient.newHttpClient();
     }
 
     public Leaderboard getLeaderboard() {
         try {
-            HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder(baseEndpoint)
                     .header("Accept", "application/json")
                     .build();
@@ -59,15 +61,19 @@ public class RemoteLeaderboardAccess {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() == 200) {
-                System.out.println("sent success");
+                System.out.println("sent success, remoteLeaderboardAccess");
                 return true; // Scoreboard sent successfully
             } else {
                 // Handle error status codes if needed
                 System.out.println("Error: " + response.statusCode());
             }
-        } catch (Exception e) {
+        } catch (JsonProcessingException e) {
+            System.out.println("Json Failed");
             e.printStackTrace();
             // Handle exceptions if necessary
+        } catch (IOException | InterruptedException e) {
+            System.out.println("Io/inter failed");
+            e.printStackTrace();
         }
 
         return false; // Scoreboard sending failed
