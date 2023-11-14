@@ -9,5 +9,5 @@ module PadelApp.springboot.restserver {
 
     requires PadelApp.core;
 
-    opens PadelApp.springboot.restserver to spring.beans, spring.context, spring.web;
+    opens PadelApp.springboot.restserver to spring.beans, spring.context, spring.web, spring.core;
 }
