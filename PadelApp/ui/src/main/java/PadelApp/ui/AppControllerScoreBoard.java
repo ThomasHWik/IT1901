@@ -43,8 +43,11 @@ public class AppControllerScoreBoard {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        this.leaderboard = this.restApi.getLeaderboard();
+        
         this.scoreboard = FileManagerJson.getScoreboard("currentgame");
+        createLeaderboard();
+        this.leaderboard = this.restApi.getLeaderboard();
+        System.out.println(this.leaderboard.getScorelist());
         populateLeaderboard();
         populateScoreboard();
     }
