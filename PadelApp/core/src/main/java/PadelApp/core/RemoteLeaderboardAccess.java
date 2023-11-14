@@ -49,9 +49,10 @@ public class RemoteLeaderboardAccess {
     }
 
     public boolean sendScoreboard(Scoreboard scoreboard) {
+        Scoreboard payloadScoreboard = new Scoreboard(scoreboard.getScorelist());
         try {
             HttpClient client = HttpClient.newHttpClient();
-            String scoreboardJson = new ObjectMapper().writeValueAsString(scoreboard);
+            String scoreboardJson = new ObjectMapper().writeValueAsString(payloadScoreboard);
 
             HttpRequest request = HttpRequest.newBuilder(URI.create(baseEndpoint+"/addScoreboard"))
                     .header("Content-Type", "application/json")
