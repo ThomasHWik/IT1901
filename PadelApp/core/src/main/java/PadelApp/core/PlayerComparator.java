@@ -3,11 +3,13 @@ package PadelApp.core;
 import java.io.Serializable;
 import java.util.Comparator;
 
+/**
+ * This class implements the Comparator interface to compare two Player objects
+ * based on their number of wins.
+ */
 public class PlayerComparator implements Comparator<Player>, Serializable {
 
   /**
-   * This class implements the Comparator interface to compare two Player objects
-   * based on their number of wins.
    * The compare method returns a negative integer, zero, or a positive integer
    * as the first argument is greater than, equal to, or less than the second.
    *

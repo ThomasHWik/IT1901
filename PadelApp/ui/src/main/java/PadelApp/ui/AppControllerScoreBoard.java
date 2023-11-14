@@ -1,13 +1,12 @@
 package PadelApp.ui;
 
 import java.io.IOException;
-
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 import PadelApp.core.Leaderboard;
 import PadelApp.core.Player;
 import PadelApp.core.Scoreboard;
 import PadelApp.json.FileManagerJson;
+import javafx.scene.control.ListView;
 
 /**
  * This class represents the controller for the scoreboard view of the PadelApp.

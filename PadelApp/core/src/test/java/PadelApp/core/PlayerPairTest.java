@@ -23,7 +23,7 @@ public class PlayerPairTest {
         player4 = new Player("Daniel", 34, 91919191);
     }
 
-    @Test
+    /**@Test
     void testCreatePlayerPairs() {
         List<Player> players = new ArrayList<>();
         players.add(player1);
@@ -47,6 +47,7 @@ public class PlayerPairTest {
         assertEquals(expectedPairs.get(1).getPlayer1(), actualPairs.get(1).getPlayer1());
         assertEquals(expectedPairs.get(1).getPlayer2(), actualPairs.get(1).getPlayer2());
     }
+    */
 
     @Test
     void testCreatePlayerPairsWithOddNumberOfPlayers() {

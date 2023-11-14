@@ -1,9 +1,8 @@
 package PadelApp.core;
 
+import PadelApp.json.FileManagerJson;
 import java.util.ArrayList;
 import java.util.List;
-
-import PadelApp.json.FileManagerJson;
 
 /**
  * The Scoreboard class represents a scoreboard for a PadelApp game.
@@ -115,7 +114,7 @@ public class Scoreboard {
   /**
    * Returns an ArrayList of Player objects representing the current scorelist.
    *
-   * @return ArrayList<Player> representing the current scorelist.
+   * @return ArrayList of Player objects representing the current scorelist.
    */
   public ArrayList<Player> getScorelist() {
     ArrayList<Player> scorelist = new ArrayList<>();

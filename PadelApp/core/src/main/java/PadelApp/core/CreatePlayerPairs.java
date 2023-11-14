@@ -123,6 +123,7 @@ public class CreatePlayerPairs {
    */
   @Override
   public String toString() {
-    return "CreatePlayerPairs [PlayerPairslist=" + playerPairslist + ", playerList=" + playerList + "]";
+    String info = "[PlayerPairslist=" + playerPairslist + ", playerList=" + playerList + "]";
+    return "CreatePlayerPairs " + info;
   }
 }

@@ -1,7 +1,7 @@
 package PadelApp.core;
 
-import java.io.IOException;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
+import java.io.IOException;
 
 public class Leaderboard extends Scoreboard {
   public Leaderboard() {
@@ -51,8 +51,8 @@ public class Leaderboard extends Scoreboard {
         String name = playerScoreboard.getName();
         int age = playerScoreboard.getAge();
         int wins = playerScoreboard.getWins();
-        int TlfNr = playerScoreboard.getTlfNr();
-        Player player = new Player(name, age, wins, TlfNr);
+        int tlfNr = playerScoreboard.getTlfNr();
+        Player player = new Player(name, age, wins, tlfNr);
         this.addPlayer(player);
       }
     }

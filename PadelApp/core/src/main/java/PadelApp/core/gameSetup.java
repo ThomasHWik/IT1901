@@ -16,7 +16,7 @@ import java.util.List;
  * @param maxPlayerpairs  The maximum number of player pairs allowed in a game.
  * @param singelCourt     The number of single courts needed for a game.
  * @param doubleCourt     The number of double courts needed for a game.
- * @param PlayerPairslist The list of player pairs.
+ * @param playerPairslist The list of player pairs.
  */
 public class GameSetup {
 
@@ -26,7 +26,7 @@ public class GameSetup {
 
   private int singelCourt;
   private int doubleCourt;
-  private List<PlayerPair> PlayerPairslist = new ArrayList<>();
+  private List<PlayerPair> playerPairslist = new ArrayList<>();
 
   /**
    * Constructor for the GameSetup class.
@@ -35,7 +35,7 @@ public class GameSetup {
    * @param playerPairslist a list of player pairs for the game
    */
   public GameSetup(int doubleCourt, List<PlayerPair> playerPairslist) {
-    this.PlayerPairslist = playerPairslist;
+    this.playerPairslist = playerPairslist;
     courts(doubleCourt);
   }
 
@@ -54,24 +54,25 @@ public class GameSetup {
   private void courts(int ammount) {
     // sets up the ammount of courts needed after you choose how many double courts
     // you want
-    if (PlayerPairslist.size() < ammount * 2) {
+    if (playerPairslist.size() < ammount * 2) {
       throw new IllegalArgumentException("There has to be at least 4 players per double Court");
     }
     if (ammount > maxDouble) {
       throw new IllegalArgumentException("We only have " + maxDouble + " double courts");
     }
-    if (PlayerPairslist.size() > maxPlayerpairs) {
-      throw new IllegalArgumentException("We don't have enough courts for more than" + maxPlayerpairs * 2 + "players");
+    if (playerPairslist.size() > maxPlayerpairs) {
+      int info = maxPlayerpairs * 2;
+      throw new IllegalArgumentException("There's only courts for " + info + "players");
     }
     if (ammount == 0) {
-      if (PlayerPairslist.size() > maxSingle) {
-        throw new IllegalArgumentException("There is only " + maxSingle + " avalable single courts");
+      if (playerPairslist.size() > maxSingle) {
+        throw new IllegalArgumentException("There's only " + maxSingle + " avalable single courts");
       }
       doubleCourt = 0;
-      singelCourt = PlayerPairslist.size();
+      singelCourt = playerPairslist.size();
     } else {
       doubleCourt = ammount;
-      singelCourt = PlayerPairslist.size() - ammount * 2;
+      singelCourt = playerPairslist.size() - ammount * 2;
     }
   }
 

@@ -2,7 +2,6 @@ package PadelApp.ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,39 +11,33 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import PadelApp.core.Player;
 import PadelApp.core.RoundSelector;
+import javafx.stage.Stage;
 
 /**
- * This class represents the controller for the PadelApp UI. It handles adding players to the player list,
- * creating games, and updating the GUI. It also contains methods for error handling and refreshing error messages.
- * The class has FXML fields for the text fields, text area, buttons, and labels used in the UI.
- * The class has private fields for the player list and methods for converting between String and int.
- * The class also has methods for updating the GUI and creating games.
- */
-/**
  * This class represents the controller for the PadelApp UI. It handles adding
- * players to a player list,
- * creating games, and updating the GUI accordingly. The class contains methods
- * for adding players, creating games,
- * handling invalid input, refreshing error messages, and updating the GUI. It
- * also contains private helper methods
- * for converting strings to integers and integers to strings. The class uses
- * JavaFX for the UI components.
+ * players to the player list,
+ * creating games, and updating the GUI. It also contains methods for error
+ * handling and refreshing error messages.
+ * The class has FXML fields for the text fields, text area, buttons, and labels
+ * used in the UI.
+ * The class has private fields for the player list and methods for converting
+ * between String and int.
+ * The class also has methods for updating the GUI and creating games.
  */
 public class AppControllerPadel {
 
   private ArrayList<Player> playerlist = new ArrayList<>();
 
   @FXML
-  private TextField addName, addAge, addTlfNr, InputRounds;
+  private TextField addName, addAge, addTlfNr, inputRounds;
 
   @FXML
   private TextArea players;
 
   @FXML
-  private Button AddPlayer, CreateGame;
+  private Button addPlayer, createGame;
 
   @FXML
   private Label errorMsg, errorCreateGamesMsg;
@@ -56,10 +49,13 @@ public class AppControllerPadel {
    * @throws IOException If an I/O error occurs.
    */
   @FXML
-  void AddPlayer(ActionEvent event) throws IOException {
+  void addPlayer(ActionEvent event) throws IOException {
     // try catch to check if the input is valid
     try {
-      Player player = new Player(addName.getText(), StringToInt(addAge.getText()), StringToInt(addTlfNr.getText()));
+      String name = addName.getText();
+      int age = stringToInt(addAge.getText());
+      int tlfNr = stringToInt(addTlfNr.getText());
+      Player player = new Player(name, age, tlfNr);
       playerlist.add(player);
       refreshErrorMsg();
     } catch (Exception e) {
@@ -75,7 +71,7 @@ public class AppControllerPadel {
 
     for (int i = 0; i < playerlist.size(); i++) {
       String Name = playerlist.get(i).getName();
-      String age = IntToString(playerlist.get(i).getAge());
+      String age = intToString(playerlist.get(i).getAge());
       list.add(Name + ", " + age);
     }
 
@@ -87,7 +83,7 @@ public class AppControllerPadel {
     String output = sb.toString();
     players.setText(output);
 
-    updateGUI();
+    updateGui();
   }
 
   /**
@@ -102,9 +98,9 @@ public class AppControllerPadel {
    *                     file.
    */
   @FXML
-  void CreateGame(ActionEvent event) throws IOException {
+  void createGame(ActionEvent event) throws IOException {
 
-    int chosenRounds = Integer.parseInt(InputRounds.getText());
+    int chosenRounds = Integer.parseInt(inputRounds.getText());
 
     refreshErrorCreateGamesMsg();
     if (playerlist.size() % 2 != 0) {
@@ -113,11 +109,11 @@ public class AppControllerPadel {
     }
     FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
     Parent root = loader.load();
-    Stage stage = (Stage) CreateGame.getScene().getWindow();
+    Stage stage = (Stage) createGame.getScene().getWindow();
     stage.setScene(new Scene(root));
     AppControllerGames games = (AppControllerGames) loader.getController();
     games.setPlayerList(playerlist);
-    games.CreateGame();
+    games.createGame();
     games.roundSelector(chosenRounds);
 
   }
@@ -163,7 +159,7 @@ public class AppControllerPadel {
   /**
    * Clears the text fields for name, age, and phone number in the GUI.
    */
-  private void updateGUI() {
+  private void updateGui() {
     addName.clear();
     addAge.clear();
     addTlfNr.clear();
@@ -175,7 +171,7 @@ public class AppControllerPadel {
    * @param string the string to be converted to an integer
    * @return the integer value of the string
    */
-  private int StringToInt(String string) {
+  private int stringToInt(String string) {
     return Integer.valueOf(string);
   }
 
@@ -185,7 +181,7 @@ public class AppControllerPadel {
    * @param number the integer to be converted
    * @return the string representation of the integer
    */
-  private String IntToString(int number) {
+  private String intToString(int number) {
     return Integer.toString(number);
   }
 }
