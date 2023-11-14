@@ -1,0 +1,91 @@
+@startuml classDiagram
+
+title Class Diagram
+!define List java.util.List !define ArrayList java.util.ArrayList
+
+
+core.ScoreBoard --|> core.Leaderboard
+
+
+
+package core {
+    class Player {
+        - name: String
+        - age: int
+        - wins: int
+        - tlfNr: int
+        + Player(name: String, age: int, tlfNr: int, wins: int)
+        + setName(name: String): void
+        + setAge(age: int): void
+        + setWins(wins: int): void
+        + getName(): String
+        + getAge(): int
+        + getWins(): int
+        + getTlfNr(): int
+        + setTlfNr(tlfNr: int): void
+        
+    }
+
+    class PlayerPair {
+        - player1: Player
+        - player2: Player
+        + PlayerPair(player1: Player, player2: Player)
+        + createPlayerPairs(players: List<PlayerPair>)
+    }
+
+    class ScoreBoard {
+        - filename: String
+        - scoreList: ArrayList<Player>
+        + Scoreboard()
+        + Scoreboard(filename: String)
+        + Scoreboard(scorelist: ArrayList<Player>)
+        + Scoreboard(filename: String, scorelist: ArrayList<Player>)
+        + getFilename(): String
+        + setFilename(filename: String): void
+        + addPlayer(player: Player): void
+        + getScorelist(): ArrayList<Player>
+        + setScorelist(scorelist: ArrayList<Player>): void
+        + removePlayer(player: Player): void
+        + saveScoreboard(): String
+        + getTopPlayers(n: int): List<Player
+
+    }
+
+    class Leaderboard {
+        + Leaderboard()
+        + Leaderboard(filename: String)
+        + sortLeaderboard(): void
+        + addScoreboard(scoreboard: Scoreboard): void
+        + getTopPlayers(n: int): ArrayList<Player>
+    }
+
+    class gameSetup {
+        - maxSingle: int
+        - maxDouble: int
+        - maxPlayerpairs: int
+        - singelCourt: int
+        - doubleCourt: int
+        - PlayerPairslist: List<PlayerPair>
+
+        + gameSetup(doubleCourt: int, playerPairslist: List<PlayerPair>)
+        + getSingle(): int
+        + getDouble(): int
+        - courts(ammount: int): void
+    }
+
+}
+package ui {
+    class AppControllerGames {
+
+    }
+
+    class AppControllerPadel {
+
+    }
+
+    class AppControllerScoreBoard {
+
+    }
+}
+
+@enduml
