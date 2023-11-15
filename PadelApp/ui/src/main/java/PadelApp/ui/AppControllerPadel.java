@@ -1,7 +1,6 @@
 package PadelApp.ui;
 
 import PadelApp.core.Player;
-import PadelApp.core.RoundSelector;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
@@ -45,7 +44,6 @@ public class AppControllerPadel {
 
   @FXML
   private Slider courtCount;
-
 
   /**
    * Adds a new player to the player list and updates the GUI accordingly.
@@ -116,19 +114,23 @@ public class AppControllerPadel {
     AppControllerGames games = (AppControllerGames) loader.getController();
     int chosenRounds = Integer.parseInt(inputRounds.getText());
     games.setPlayerList(playerlist);
-    games.createGame(setcourts());
+    games.createGame(setCourts());
     games.roundSelector(chosenRounds);
   }
 
   /**
-     * @return the integer value of the courtCount.
-     */
-    private int setcourts() {
-      int value = (int) courtCount.getValue();
-      if (playerlist.size() < 8 && value == 2) {return 1;}
-      if (playerlist.size() < 4 && value > 0) {return 0;}
+   * @return the integer value of the courtCount.
+   */
+  private int setCourts() {
+    int value = (int) courtCount.getValue();
+    if (playerlist.size() < 8 && value == 2) {
+      return 1;
+    }
+    if (playerlist.size() < 4 && value > 0) {
+      return 0;
+    }
 
-      return value;
+    return value;
   }
 
   /**
