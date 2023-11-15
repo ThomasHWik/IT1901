@@ -3,11 +3,19 @@
 title Class Diagram
 !define List java.util.List !define ArrayList java.util.ArrayList
 
-
 core.ScoreBoard --|> core.Leaderboard
-core.PlayerPair --> core.Player
-core.createPlayerPairs --> core.PlayerPair
+core.PlayerPair --> "Players: 2" core.Player
+core.ScoreBoard --> "Players: *" core.Player
+core.gameSetup -- core.PlayerPair
+core.CreatePlayerPairs --> core.PlayerPair
+core.CreatePlayerPairs --> core.Player
 
+ui.AppControllerScoreBoard -- core.ScoreBoard
+ui.AppControllerScoreBoard -- core.Leaderboard
+ui.AppControllerPadel -- core.Player
+ui.AppControllerGames -- core.gameSetup
+ui.AppControllerGames -- core.createPlayerPairs
+ui.AppControllerGames -- core.PlayerPair
 
 
 package core {
@@ -32,8 +40,18 @@ package core {
         - player1: Player
         - player2: Player
         + PlayerPair(player1: Player, player2: Player)
-        + createPlayerPairs(players: List<PlayerPair>)
     }
+
+    class createPlayerPairs {
+        - playerList: List<Player>
+        - PlayerPairslist: List<PlayerPair>
+
+        + createPlayerPairs(players: List<Player>): void
+        + remakePlayersOrder(): void
+        + getPlayerPairs(): List<PlayerPair>
+        + getPlayerlist(): List<Player>
+    }
+
 
     class ScoreBoard {
         - filename: String
