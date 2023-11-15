@@ -26,40 +26,40 @@
          </toggleGroup>
       </ToggleButton>
       <ToggleButton fx:id="twoTwo" disable="true" layoutX="159.0" layoutY="182.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="109.0" toggleGroup="$court2" visible="false" wrapText="true" />
-      <ToggleButton fx:id="threeOne1" layoutX="299.0" layoutY="61.0" mnemonicParsing="false" onAction="#pairOne" prefHeight="93.0" prefWidth="67.0" visible="false" wrapText="true">
+      <ToggleButton fx:id="threeOne1" layoutX="299.0" layoutY="61.0" mnemonicParsing="false" onAction="#court3pairOne" prefHeight="93.0" prefWidth="67.0" visible="false" wrapText="true">
          <toggleGroup>
             <ToggleGroup fx:id="court3" />
          </toggleGroup>
       </ToggleButton>
-      <ToggleButton fx:id="threeTwo1" layoutX="299.0" layoutY="160.0" mnemonicParsing="false" onAction="#pairTwo" prefHeight="93.0" prefWidth="67.0" toggleGroup="$court3" visible="false" wrapText="true" />
+      <ToggleButton fx:id="threeTwo1" layoutX="299.0" layoutY="160.0" mnemonicParsing="false" onAction="#court3pairTwo" prefHeight="93.0" prefWidth="67.0" toggleGroup="$court3" visible="false" wrapText="true" />
       <ToggleButton fx:id="fourOne" disable="true" layoutX="475.0" layoutY="61.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="81.0" visible="false" wrapText="true">
          <toggleGroup>
             <ToggleGroup fx:id="court4" />
          </toggleGroup>
       </ToggleButton>
       <ToggleButton fx:id="fourTwo" disable="true" layoutX="475.0" layoutY="160.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="81.0" toggleGroup="$court4" visible="false" wrapText="true" />
-      <ToggleButton fx:id="threeOne2" layoutX="365.0" layoutY="61.0" mnemonicParsing="false" onAction="#pairOne" prefHeight="93.0" prefWidth="67.0" visible="false" wrapText="true">
+      <ToggleButton fx:id="threeOne2" layoutX="365.0" layoutY="61.0" mnemonicParsing="false" onAction="#court3pairOne" prefHeight="93.0" prefWidth="67.0" visible="false" wrapText="true">
          <toggleGroup>
             <ToggleGroup fx:id="courtThree" />
          </toggleGroup>
       </ToggleButton>
-      <ToggleButton fx:id="threeTwo2" layoutX="365.0" layoutY="160.0" mnemonicParsing="false" onAction="#pairTwo" prefHeight="93.0" prefWidth="67.0" toggleGroup="$courtThree" visible="false" wrapText="true" />
+      <ToggleButton fx:id="threeTwo2" layoutX="365.0" layoutY="160.0" mnemonicParsing="false" onAction="#court3pairTwo" prefHeight="93.0" prefWidth="67.0" toggleGroup="$courtThree" visible="false" wrapText="true" />
       <Label fx:id="Court1" layoutX="43.0" layoutY="46.0" text="Court 1" visible="false" />
       <Label fx:id="Court2" layoutX="42.0" layoutY="162.0" text="Court 2" visible="false" />
       <Label fx:id="Court3" layoutX="301.0" layoutY="41.0" text="Court 3" visible="false" />
       <Label fx:id="Court4" layoutX="475.0" layoutY="41.0" text="Court 4" visible="false" />
-      <ToggleButton fx:id="fiveOne1" disable="true" layoutX="43.0" layoutY="61.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="67.0" visible="false" wrapText="true">
+      <ToggleButton fx:id="fiveOne1" disable="true" layoutX="43.0" layoutY="61.0" mnemonicParsing="false" onAction="#court5PairOne" prefHeight="93.0" prefWidth="67.0" visible="false" wrapText="true">
          <toggleGroup>
             <ToggleGroup fx:id="court5" />
          </toggleGroup>
       </ToggleButton>
-      <ToggleButton fx:id="fiveTwo1" layoutX="43.0" layoutY="160.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="67.0" toggleGroup="$court5" visible="false" wrapText="true" />
-      <ToggleButton fx:id="fiveOne2" layoutX="109.0" layoutY="61.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="67.0" visible="false" wrapText="true">
+      <ToggleButton fx:id="fiveTwo1" layoutX="43.0" layoutY="160.0" mnemonicParsing="false" onAction="#court5PairTwo" prefHeight="93.0" prefWidth="67.0" toggleGroup="$court5" visible="false" wrapText="true" />
+      <ToggleButton fx:id="fiveOne2" layoutX="109.0" layoutY="61.0" mnemonicParsing="false" onAction="#court5PairOne" prefHeight="93.0" prefWidth="67.0" visible="false" wrapText="true">
          <toggleGroup>
             <ToggleGroup fx:id="courtfive" />
          </toggleGroup>
       </ToggleButton>
-      <ToggleButton fx:id="fiveTwo2" layoutX="109.0" layoutY="160.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="67.0" toggleGroup="$courtfive" visible="false" wrapText="true" />
+      <ToggleButton fx:id="fiveTwo2" layoutX="109.0" layoutY="160.0" mnemonicParsing="false" onAction="#court5PairTwo" prefHeight="93.0" prefWidth="67.0" toggleGroup="$courtfive" visible="false" wrapText="true" />
       <Label fx:id="Court5" layoutX="43.0" layoutY="41.0" text="Court 5" visible="false" />
       <ToggleButton fx:id="sevenOne" disable="true" layoutX="378.0" layoutY="61.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="81.0" visible="false" wrapText="true">
          <toggleGroup>
