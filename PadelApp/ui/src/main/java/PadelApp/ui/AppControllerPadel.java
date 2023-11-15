@@ -43,10 +43,12 @@ public class AppControllerPadel {
     private Button AddPlayer, CreateGame;
 
     @FXML 
-    private Label errorMsg, errorCreateGamesMsg;
+    private Label errorMsg, errorCreateGamesMsg, NumberOfPlayers;
 
     @FXML
     private Slider courtCount;
+
+    private int NOP;
 
 
     /**
@@ -58,6 +60,10 @@ public class AppControllerPadel {
     void AddPlayer(ActionEvent event) throws IOException {
         //try catch to check if the input is valid
         try {
+            if(playerlist.size()==10){
+                errorCreateGames("There can not be more then 10 players");
+                return;
+            }
             Player player= new Player(addName.getText(), StringToInt(addAge.getText()), StringToInt(addTlfNr.getText()));
             playerlist.add(player);
             refreshErrorMsg();
@@ -98,12 +104,23 @@ public class AppControllerPadel {
      */
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
-
+        if (players.getText().trim().isEmpty()){
+            errorCreateGames("Must add players to create a game");
+            return;
+        }
+        if (InputRounds.getText()== "" ||InputRounds.getText().trim().isEmpty()){
+            errorCreateGames("Must choose number of rounds between 1-10");
+            return;
+        }
         int chosenRounds = Integer.parseInt(InputRounds.getText());
         
         refreshErrorCreateGamesMsg();
         if (playerlist.size() % 2 != 0){
             errorCreateGames("Must be even number of players");
+            return;
+        }
+        if (chosenRounds<1 || chosenRounds>10){
+            errorCreateGames("Must choose number of rounds between 1-10");
             return;
         }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
@@ -117,6 +134,7 @@ public class AppControllerPadel {
     }
 
     /**
+     * Gets the number of wanted double courts.
      * @return the integer value of the courtCount.
      */
     private int setcourts(){

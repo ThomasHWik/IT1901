@@ -6,24 +6,30 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PadelApp.ui.AppControllerPadel">
    <children>
       <Button fx:id="AddPlayer" layoutX="34.0" layoutY="336.0" mnemonicParsing="false" onAction="#AddPlayer" prefHeight="17.0" prefWidth="92.0" text="Add player" />
       <TextField fx:id="addName" layoutX="34.0" layoutY="173.0" prefHeight="25.0" prefWidth="200.0" />
       <Label layoutX="34.0" layoutY="146.0" prefHeight="17.0" prefWidth="92.0" text="Name" />
-      <TextArea fx:id="players" layoutX="303.0" layoutY="29.0" prefHeight="225.0" prefWidth="234.0" />
+      <TextArea fx:id="players" editable="false" layoutX="303.0" layoutY="29.0" prefHeight="225.0" prefWidth="234.0" />
       <Label layoutX="34.0" layoutY="208.0" prefHeight="17.0" prefWidth="92.0" text="Age" />
       <TextField fx:id="addAge" layoutX="34.0" layoutY="233.0" prefHeight="25.0" prefWidth="200.0" />
-      <Button fx:id="CreateGame" layoutX="420.0" layoutY="331.0" mnemonicParsing="false" onAction="#CreateGame" prefHeight="35.0" prefWidth="120.0" text="Create a game" />
+      <Button fx:id="CreateGame" layoutX="420.0" layoutY="325.0" mnemonicParsing="false" onAction="#CreateGame" prefHeight="35.0" prefWidth="120.0" text="Create a game" />
       <Label fx:id="errorMsg" layoutX="34.0" layoutY="303.0" prefHeight="26.0" prefWidth="234.0" textFill="#f80000" />
       <TextField fx:id="addTlfNr" layoutX="34.0" layoutY="113.0" prefHeight="25.0" prefWidth="200.0" />
       <Label layoutX="34.0" layoutY="86.0" prefHeight="17.0" prefWidth="92.0" text="Mobilnummer" />
       <TextField fx:id="InputRounds" layoutX="491.0" layoutY="294.0" prefHeight="26.0" prefWidth="46.0" />
 
-      <Label fx:id="errorCreateGamesMsg" layoutX="306.0" layoutY="361.0" prefHeight="26.0" prefWidth="234.0" textFill="#f80000" />
+      <Label fx:id="errorCreateGamesMsg" layoutX="306.0" layoutY="355.0" prefHeight="44.0" prefWidth="234.0" textFill="#f80000" wrapText="true" />
       <Slider fx:id="courtCount" blockIncrement="1.0" layoutX="443.0" layoutY="259.0" majorTickUnit="1.0" max="2.0" minorTickCount="1" prefHeight="38.0" prefWidth="98.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
       <Label layoutX="303.0" layoutY="261.0" prefHeight="17.0" prefWidth="92.0" text="Double courts:" />
       <Label layoutX="303.0" layoutY="295.0" prefHeight="17.0" prefWidth="107.0" text="Number of rounds:" />
+      <Label fx:id="NumberOfPlayers" layoutX="138.0" layoutY="331.0" prefHeight="35.0" prefWidth="28.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
