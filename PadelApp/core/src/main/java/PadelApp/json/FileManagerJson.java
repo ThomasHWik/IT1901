@@ -6,14 +6,6 @@ import com.fasterxml.jackson.core.exc.StreamWriteException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.exc.StreamWriteException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import PadelApp.core.Scoreboard;
-import PadelApp.core.Leaderboard;
 
 /**
  * Class with static methods for reading and writing JSON files.
@@ -78,21 +70,5 @@ public class FileManagerJson {
       e.printStackTrace();
     }
     return null;
-  }
-
-  /**
-   * 
-   * @param scoreboard object to serialize as json
-   * @return json string of the serialized object
-   * @throws JsonProcessingException when the serialization fails
-   */
-  public static String getJsonString(Scoreboard scoreboard) {
-    ObjectMapper om = new ObjectMapper();
-    try {
-      return om.writeValueAsString(scoreboard);
-    } catch (JsonProcessingException e) {
-      e.printStackTrace();
-      return "";
-    }
   }
 }

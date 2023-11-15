@@ -1,17 +1,12 @@
 package PadelApp.ui;
 
-import java.io.IOException;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-
-import PadelApp.json.FileManagerJson;
 import PadelApp.core.Leaderboard;
 import PadelApp.core.Player;
 import PadelApp.core.RemoteLeaderboardAccess;
 import PadelApp.core.Scoreboard;
 import PadelApp.json.FileManagerJson;
 import java.io.IOException;
+import java.net.URI;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
@@ -60,7 +55,7 @@ public class AppControllerScoreBoard {
 
   /**
    * Adds the current game's scoreboard to the leaderboard
-   * and retrieves the updated leaderboard from REST API
+   * and retrieves the updated leaderboard from REST API.
    */
   public void createLeaderboard() {
     this.restApi.sendScoreboard(scoreboard);
