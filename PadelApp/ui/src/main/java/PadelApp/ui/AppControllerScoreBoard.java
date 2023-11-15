@@ -1,11 +1,14 @@
 package PadelApp.ui;
 
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
+import java.util.List;
 
 import PadelApp.json.FileManagerJson;
 import PadelApp.core.Leaderboard;
 import PadelApp.core.Player;
+import PadelApp.core.RemoteLeaderboardAccess;
 import PadelApp.core.Scoreboard;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -20,7 +23,7 @@ public class AppControllerScoreBoard {
 
     private Leaderboard leaderboard;
     private Scoreboard scoreboard;
-
+    private RemoteLeaderboardAccess restApi;
     @FXML
     private ListView<String> lbName, sbName;
 
@@ -28,30 +31,32 @@ public class AppControllerScoreBoard {
     private ListView<Integer> lbWins, sbWins;
 
     /**
-     * Initializes the AppControllerScoreBoard by loading the leaderboard from a JSON file using FileManagerJson.getLeaderboard method.
+     * Initializes the AppControllerScoreBoard by loading the leaderboard from the REST API
      * If the leaderboard is null, a new Leaderboard object is created.
      * Calls createLeaderboard method to create the leaderboard UI and populateTable method to populate the table with data.
      * @throws IOException if there is an error reading the JSON file.
      */
     @FXML
     public void initialize() throws IOException {
-        leaderboard = FileManagerJson.getLeaderboard("Leaderboard");
-        if (leaderboard == null) {
-            leaderboard = new Leaderboard();
+        try {
+            this.restApi = new RemoteLeaderboardAccess(new URI("http://localhost:8080/api/padel"));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        this.scoreboard = FileManagerJson.getScoreboard("currentgame");
         createLeaderboard();
+        System.out.println(this.leaderboard.getScorelist());
         populateLeaderboard();
         populateScoreboard();
     }
 
     /**
-     * Adds the current game's scoreboard to the leaderboard, sorts it, and saves it to a file.
-     * @throws IOException if there is an error reading or writing the file.
+     * Adds the current game's scoreboard to the leaderboard
+     * and retrieves the updated leaderboard from REST API
      */
-    public void createLeaderboard() throws IOException {
-        leaderboard.addScoreboard(scoreboard);
-        leaderboard.sortLeaderboard();
-        FileManagerJson.saveScoreboard(leaderboard);
+    public void createLeaderboard() {
+        this.restApi.sendScoreboard(scoreboard);
+        this.leaderboard = this.restApi.getLeaderboard();
     }
 
     /**
@@ -67,9 +72,9 @@ public class AppControllerScoreBoard {
      * Populates the table with the top 10 players in the leaderboard.
      * Clears the name and wins items before adding the new data.
      */
-    private void populateTable() {
-        name.getItems().clear();
-        wins.getItems().clear();
+    private void populateLeaderboard() {
+        lbName.getItems().clear();
+        lbWins.getItems().clear();
         for (Player player : leaderboard.getTopPlayers(10)) {
             lbName.getItems().add(player.getName());
             lbWins.getItems().add(player.getWins());

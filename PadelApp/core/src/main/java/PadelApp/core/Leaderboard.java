@@ -1,7 +1,6 @@
 package PadelApp.core;
 
 import java.io.IOException;
-import java.util.List;
 
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 
@@ -39,7 +38,11 @@ public class Leaderboard extends Scoreboard{
         for (Player playerScoreboard : scoreboard.getScorelist()) {
             boolean found = false;
             for (Player playerLeaderboard : this.getScorelist()) {
+                if (found) {
+                    break;
+                }
                 if (playerScoreboard.getTlfNr() == playerLeaderboard.getTlfNr()) {
+                    System.out.println("Found player already in leaderboard, adding wins");
                     playerLeaderboard.addWins(playerScoreboard.getWins());
                     found = true;
                     break;
@@ -50,22 +53,5 @@ public class Leaderboard extends Scoreboard{
                 this.addPlayer(player);
             }
         }
-    }
-    /**
-     * Returns an ArrayList of the top n players in the leaderboard.
-     * If the leaderboard has less than n players, it returns an ArrayList of all the players in the leaderboard.
-     * @param n the number of top players to return
-     * @return an ArrayList of the top n players in the leaderboard
-     */
-    public ArrayList<Player> getTopPlayers(int n) {
-        sortLeaderboard();
-        if (this.getScorelist().size() < n) {
-            n = this.getScorelist().size();
-        }
-        ArrayList<Player> topPlayers = new ArrayList<Player>();
-        for (int i = 0; i < n; i++) {
-            topPlayers.add(this.getScorelist().get(i));
-        }
-        return topPlayers;
     }
 }

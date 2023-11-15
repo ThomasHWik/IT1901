@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class gameStest {
+public class gameSetupTest {
     private List<PlayerPair> playerPairs= new ArrayList<>();
     private gameSetup gameSetup= new gameSetup(0,playerPairs);
 
