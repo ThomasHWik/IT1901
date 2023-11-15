@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import PadelApp.core.Player;
-import PadelApp.core.RoundSelector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -44,6 +44,9 @@ public class AppControllerPadel {
 
     @FXML 
     private Label errorMsg, errorCreateGamesMsg;
+
+    @FXML
+    private Slider courtCount;
 
 
     /**
@@ -109,9 +112,19 @@ public class AppControllerPadel {
             stage.setScene(new Scene(root));
             AppControllerGames games = (AppControllerGames)loader.getController();
             games.setPlayerList(playerlist);
-            games.CreateGame();
-            games.roundSelector(chosenRounds);
-            
+            games.CreateGame(setcourts());
+            games.roundSelector(chosenRounds);     
+    }
+
+    /**
+     * @return the integer value of the courtCount.
+     */
+    private int setcourts(){
+        int value = (int) courtCount.getValue();
+        if(playerlist.size()<8 && value ==2)return 1;
+        if(playerlist.size()<4 && value>0)return 0;
+        return value;
+
     }
    
     /**
