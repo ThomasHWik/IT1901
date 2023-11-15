@@ -79,7 +79,7 @@ public class AppControllerGames {
                        sevenTwo;
 
   @FXML
-  private Label court1, court2, court3, court4, court5, court6, court7;
+  private Label Court1, Court2, Court3, Court4, Court5, Court6, Court7;
 
   private ArrayList<ToggleButton> toggleButtons = new ArrayList<ToggleButton>();
 
@@ -303,25 +303,25 @@ public class AppControllerGames {
     }
     // to turn on the right labels
     if (oneOne.isVisible()) {
-      court1.visibleProperty().set(true);
+      Court1.visibleProperty().set(true);
     }
     if (twoTwo.isVisible()) {
-      court2.visibleProperty().set(true);
+      Court2.visibleProperty().set(true);
     }
     if (threeOne1.isVisible()) {
-      court3.visibleProperty().set(true);
+      Court3.visibleProperty().set(true);
     }
     if (fourOne.isVisible()) {
-      court4.visibleProperty().set(true);
+      Court4.visibleProperty().set(true);
     }
     if (fiveOne1.isVisible()) {
-      court5.visibleProperty().set(true);
+      Court5.visibleProperty().set(true);
     }
     if (sixOne.isVisible()) {
-      court6.visibleProperty().set(true);
+      Court6.visibleProperty().set(true);
     }
     if (sevenOne.isVisible()) {
-      court7.visibleProperty().set(true);
+      Court7.visibleProperty().set(true);
     }
   }
 
@@ -349,7 +349,6 @@ public class AppControllerGames {
    * @param playerlist the list of players to be set
    */
   public void setPlayerList(ArrayList<Player> playerlist) {
-    this.playerList = playerlist;
     pairs = new CreatePlayerPairs(playerlist);
   }
 
