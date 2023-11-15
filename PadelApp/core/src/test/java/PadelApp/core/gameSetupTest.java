@@ -9,10 +9,6 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import PadelApp.core.GameSetup;
-import PadelApp.core.Player;
-import PadelApp.core.PlayerPair;
-
 public class GameSetupTest {
     private List<PlayerPair> playerPairs= new ArrayList<>();
     private GameSetup gameSetup= new GameSetup(0,playerPairs);

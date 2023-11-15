@@ -11,6 +11,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -60,23 +63,23 @@ public class AppControllerGames {
 
   @FXML
   private ToggleButton oneOne,
-                       oneTwo,
-                       twoOne,
-                       twoTwo,
-                       threeOne1,
-                       threeOne2,
-                       threeTwo1,
-                       threeTwo2,
-                       fourOne,
-                       fourTwo,
-                       fiveOne1,
-                       fiveOne2,
-                       fiveTwo1,
-                       fiveTwo2,
-                       sixOne,
-                       sixTwo,
-                       sevenOne,
-                       sevenTwo;
+      oneTwo,
+      twoOne,
+      twoTwo,
+      threeOne1,
+      threeOne2,
+      threeTwo1,
+      threeTwo2,
+      fourOne,
+      fourTwo,
+      fiveOne1,
+      fiveOne2,
+      fiveTwo1,
+      fiveTwo2,
+      sixOne,
+      sixTwo,
+      sevenOne,
+      sevenTwo;
 
   @FXML
   private Label Court1, Court2, Court3, Court4, Court5, Court6, Court7;
