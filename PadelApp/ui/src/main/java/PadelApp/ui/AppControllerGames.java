@@ -202,31 +202,51 @@ public class AppControllerGames {
     setPairs();
   }
 
-  /**
-   * Sets the selected property of threeOne1 and threeOne2 to true when pairOne
-   * button is clicked.
-   *
-   * @param event the action event that occurred (clicking the pairOne button)
-   */
-  @FXML
-  void pairOne(ActionEvent event) {
-    // selects both buttons if one is selected
-    threeOne1.selectedProperty().set(true);
-    threeOne2.selectedProperty().set(true);
-  }
+  /*
+     * Sets the selected property of threeOne1 and threeOne2 to true when one of them is clicked.
+     * 
+     * @param event the action event that occurred (clicking the pairOne button)
+     */
+    @FXML
+    void court3pairOne(ActionEvent event){
+        //selects both buttons if one is selected
+        threeOne1.selectedProperty().set(true);
+        threeOne2.selectedProperty().set(true);
+    }
+    /**
+     * Sets the selected property of threeTwo1 and threeTwo2 to true when one of them is clicked.
+     * @param event The event that triggered this method.
+     */
+    @FXML
+    void court3pairTwo(ActionEvent event){
+        //selects both buttons if one is selected
+        threeTwo1.selectedProperty().set(true);
+        threeTwo2.selectedProperty().set(true);
+    }
 
-  /**
-   * This method is called when the "Pair Two" button is clicked. It selects the
-   * checkboxes for the "3-2" score option for both teams.
-   *
-   * @param event The event that triggered this method.
-   */
-  @FXML
-  void pairTwo(ActionEvent event) {
-    // selects both buttons if one is selected
-    threeTwo1.selectedProperty().set(true);
-    threeTwo2.selectedProperty().set(true);
-  }
+     /**
+     * Sets the selected property of fiveOne1 and fiveOne2 to true when one of them is clicked.
+     * 
+     * @param event the action event that occurred (clicking the pairOne button)
+     */
+    @FXML
+    void court5PairOne(ActionEvent event){
+        //selects both buttons if one is selected
+        fiveOne1.selectedProperty().set(true);
+        fiveOne2.selectedProperty().set(true);
+    }
+
+     /**
+     * Sets the selected property of fiveTwo1 and tfiveTwo2 to true when one of them is clicked.
+     * 
+     * @param event the action event that occurred (clicking the pairOne button)
+     */
+    @FXML
+    void court5PairTwo(ActionEvent event){
+        //selects both buttons if one is selected
+        fiveTwo1.selectedProperty().set(true);
+        fiveTwo2.selectedProperty().set(true);
+    }
 
   /**
    * Checks if all toggle buttons are selected.
@@ -277,58 +297,39 @@ public class AppControllerGames {
    * Initializes the game by creating player pairs, creating courts, and adding
    * players to courts.
    */
-  public void createGame() throws FileNotFoundException, IOException {
+  public void createGame(int value) throws FileNotFoundException, IOException {
     setPairs();
+    setCourts(value);
     createCourts();
     addPlayersToCourts();
   }
 
-  /**
-   * Creates courts based on the number of pairs in the game.
-   * If there are at least two pairs, it creates a game setup with one court,
-   * otherwise it creates a game setup with zero courts.
-   * It then adds toggle buttons and sets the visibility of the courts based on
-   * the number of pairs.
-   */
-  private void createCourts() {
-    // if there is more then 2 players, there will be a dobbelcourt
-    if (pairsList.size() >= 2) {
-      courts = new GameSetup(1, pairsList);
-    } else {
-      courts = new GameSetup(0, pairsList);
+    /**
+     * Adds toggle buttons and sets the visibility of the courts based on the number of pairs.
+     */
+    private void createCourts() {
+        addToggleBs();
+        //To turn on the right amount of togglebuttons
+        int togglesize = pairsList.size() * 2;
+        for (int i = 0; i < togglesize; i++) {
+            toggleButtons.get(i).setDisable(false);
+            toggleButtons.get(i).setVisible(true);
+        }
+        //to turn on the right labels
+        if (oneOne.isVisible()){Court1.visibleProperty().set(true);}
+        if (twoTwo.isVisible()){Court2.visibleProperty().set(true);}
+        if (threeOne1.isVisible()){Court3.visibleProperty().set(true);}
+        if (fourOne.isVisible()){Court4.visibleProperty().set(true);}
+        if (fiveOne1.isVisible()){Court5.visibleProperty().set(true);} 
+        if (sixOne.isVisible()){Court6.visibleProperty().set(true);} 
+        if (sevenOne.isVisible()){Court7.visibleProperty().set(true);} 
     }
-    addToggleBs();
-    // To turn on the right amount of togglebuttons
-    int togglesize = pairsList.size() * 2;
-    for (int i = 0; i < togglesize; i++) {
-      toggleButtons.get(i).setDisable(false);
-      toggleButtons.get(i).setVisible(true);
-    }
-    // to turn on the right labels
-    if (oneOne.isVisible()) {
-      Court1.visibleProperty().set(true);
-    }
-    if (twoTwo.isVisible()) {
-      Court2.visibleProperty().set(true);
-    }
-    if (threeOne1.isVisible()) {
-      Court3.visibleProperty().set(true);
-    }
-    if (fourOne.isVisible()) {
-      Court4.visibleProperty().set(true);
-    }
-    if (fiveOne1.isVisible()) {
-      Court5.visibleProperty().set(true);
-    }
-    if (sixOne.isVisible()) {
-      Court6.visibleProperty().set(true);
-    }
-    if (sevenOne.isVisible()) {
-      Court7.visibleProperty().set(true);
-    }
-  }
 
-  /**
+    private void setCourts(int value) {
+        courts = new GameSetup(value, pairsList);
+    }
+
+    /**
    * Adds players to courts by setting the text of toggle buttons with player
    * names and their wins.
    * Uses the Pairs list to get player information.

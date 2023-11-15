@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -41,6 +42,10 @@ public class AppControllerPadel {
 
   @FXML
   private Label errorMsg, errorCreateGamesMsg;
+
+  @FXML
+  private Slider courtCount;
+
 
   /**
    * Adds a new player to the player list and updates the GUI accordingly.
@@ -111,8 +116,19 @@ public class AppControllerPadel {
     AppControllerGames games = (AppControllerGames) loader.getController();
     int chosenRounds = Integer.parseInt(inputRounds.getText());
     games.setPlayerList(playerlist);
-    games.createGame();
+    games.createGame(setcourts());
     games.roundSelector(chosenRounds);
+  }
+
+  /**
+     * @return the integer value of the courtCount.
+     */
+    private int setcourts() {
+      int value = (int) courtCount.getValue();
+      if (playerlist.size() < 8 && value == 2) {return 1;}
+      if (playerlist.size() < 4 && value > 0) {return 0;}
+
+      return value;
   }
 
   /**

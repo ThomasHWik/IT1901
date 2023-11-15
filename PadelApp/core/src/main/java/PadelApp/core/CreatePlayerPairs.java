@@ -88,7 +88,7 @@ public class CreatePlayerPairs {
     // So that the players will not play at the same court
     for (int i = 0; i < playerPairslist.size() / 2; i++) {
       PlayerPair pair = playerPairslist.get(0);
-      playerPairslist.remove(i);
+      playerPairslist.remove(0);
       playerPairslist.add(pair);
     }
   }
