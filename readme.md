@@ -5,7 +5,7 @@
 [<img src="https://eclipse.dev/che/docs/_/img/icon-eclipse-che.svg" width = "25"/> Open in Eclipse Che](https://che.stud.ntnu.no/#https://gitlab.stud.idi.ntnu.no/it1901/groups-2023/gr2362/gr2362?new)
 
 # About the PadelApp:
-The Padel App is an app that is supposed to organize matches and tournaments, and creates a scoreboard for the results.
+The Padel App is an app that organize matches and tournaments, and creates a scoreboard and leaderboard for the results.
 
 The app is located in PadelApp
 
@@ -37,9 +37,15 @@ To generate JaCoCo run: 'mvn test'
 You can find the html files under target/site in the core and ui module, and open them by copying the path and paste into a web browser. 
 
 # Diagram
-You can see our package diagram below:
+You can see our diagrams below:
 
+Package diagram:
 [here](/PackageDiagram.png)
+
+Class diagram:
+
+Sequence diagram:
+
 
 
 # The Code Structure
