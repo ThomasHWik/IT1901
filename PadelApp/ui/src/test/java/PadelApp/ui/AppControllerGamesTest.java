@@ -38,7 +38,7 @@ public class AppControllerGamesTest extends ApplicationTest {
         stage.setScene(new Scene(root));
         AppControllerGames games = (AppControllerGames) loader.getController();
         games.setPlayerList(playerList);
-        games.CreateGame();
+        games.CreateGame(0);
     }
 
     public void Add4Players() {
