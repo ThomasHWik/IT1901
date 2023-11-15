@@ -1,5 +1,7 @@
 package PadelApp.ui;
 
+import PadelApp.core.Player;
+import PadelApp.core.RoundSelector;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
@@ -11,8 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import PadelApp.core.Player;
-import PadelApp.core.RoundSelector;
 import javafx.stage.Stage;
 
 /**
@@ -70,9 +70,9 @@ public class AppControllerPadel {
     ArrayList<String> list = new ArrayList<>();
 
     for (int i = 0; i < playerlist.size(); i++) {
-      String Name = playerlist.get(i).getName();
+      String name = playerlist.get(i).getName();
       String age = intToString(playerlist.get(i).getAge());
-      list.add(Name + ", " + age);
+      list.add(name + ", " + age);
     }
 
     StringBuilder sb = new StringBuilder();
@@ -99,9 +99,6 @@ public class AppControllerPadel {
    */
   @FXML
   void createGame(ActionEvent event) throws IOException {
-
-    int chosenRounds = Integer.parseInt(inputRounds.getText());
-
     refreshErrorCreateGamesMsg();
     if (playerlist.size() % 2 != 0) {
       errorCreateGames("Must be even number of players");
@@ -112,10 +109,10 @@ public class AppControllerPadel {
     Stage stage = (Stage) createGame.getScene().getWindow();
     stage.setScene(new Scene(root));
     AppControllerGames games = (AppControllerGames) loader.getController();
+    int chosenRounds = Integer.parseInt(inputRounds.getText());
     games.setPlayerList(playerlist);
     games.createGame();
     games.roundSelector(chosenRounds);
-
   }
 
   /**
@@ -172,7 +169,7 @@ public class AppControllerPadel {
    * @return the integer value of the string
    */
   private int stringToInt(String string) {
-    return Integer.valueOf(string);
+    return Integer.parseInt(string);
   }
 
   /**

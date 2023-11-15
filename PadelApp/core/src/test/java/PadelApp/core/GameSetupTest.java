@@ -16,14 +16,18 @@ import PadelApp.core.PlayerPair;
 public class GameSetupTest {
     private List<PlayerPair> playerPairs= new ArrayList<>();
     private GameSetup gameSetup= new GameSetup(0,playerPairs);
+    private Player player1;
+    private Player player2;
+    private Player player3;
+    private Player player4;
 
     @BeforeEach
     void setUp() {
         // Create a list of player pairs and a game setup object before each test
-        Player player1 = new Player();
-        Player player2 = new Player();
-        Player player3 = new Player();
-        Player player4 = new Player();
+        player1 = new Player("Lewis", 38, 41414141);
+        player2 = new Player("Lando", 23, 92929292);
+        player3 = new Player("Logan", 22, 43434343);
+        player4 = new Player("Daniel", 34, 94949494);
 
         playerPairs = new ArrayList<>();
         playerPairs.add(new PlayerPair(player1, player2));
@@ -51,7 +55,7 @@ public class GameSetupTest {
 
     @Test
     void testMaxPlayerPairs() {
-        Player player = new Player();
+        Player player = new Player("test", 1, 40000000);
         // Test that the constructor throws IllegalArgumentException when exceeding maxPlayerpairs
         List<PlayerPair> tooManyPlayerPairs = new ArrayList<>();
         for (int i = 0; i < 6; i++) {

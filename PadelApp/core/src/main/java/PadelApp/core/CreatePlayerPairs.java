@@ -53,7 +53,6 @@ public class CreatePlayerPairs {
    *                                  than 10
    */
   private void createPlayerPairs(List<Player> players) {
-
     if (playerList.size() % 2 != 0) {
       throw new IllegalArgumentException("The number of players must be even");
     }

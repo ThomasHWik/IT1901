@@ -1,8 +1,5 @@
 package PadelApp.ui;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
 import PadelApp.core.CreatePlayerPairs;
 import PadelApp.core.GameSetup;
 import PadelApp.core.Player;
@@ -10,6 +7,9 @@ import PadelApp.core.PlayerPair;
 import PadelApp.core.RoundSelector;
 import PadelApp.core.Scoreboard;
 import PadelApp.json.FileManagerJson;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,14 +40,15 @@ import javafx.stage.Stage;
  */
 public class AppControllerGames {
 
-  private List<Player> player = new ArrayList<>();
-  private CreatePlayerPairs pairs = new CreatePlayerPairs(player);
+  private List<Player> playerList = new ArrayList<>();
+  private CreatePlayerPairs pairs = new CreatePlayerPairs(playerList);
   private List<PlayerPair> pairsList = new ArrayList<>();
   private RoundSelector roundSelector = new RoundSelector(0);
   private int chosenRounds = roundSelector.getNumberOfRounds();
   private int round = 0;
 
   private GameSetup courts = new GameSetup(0, pairsList);
+
   @FXML
   private TextArea error;
 
@@ -58,8 +59,24 @@ public class AppControllerGames {
   private Button goToScore, newRound;
 
   @FXML
-  private ToggleButton oneOne, oneTwo, twoOne, twoTwo, threeOne1, threeOne2, threeTwo1, threeTwo2, fourOne, fourTwo,
-      fiveOne1, fiveOne2, fiveTwo1, fiveTwo2, sixOne, sixTwo, sevenOne, sevenTwo;
+  private ToggleButton oneOne,
+                       oneTwo,
+                       twoOne,
+                       twoTwo,
+                       threeOne1,
+                       threeOne2,
+                       threeTwo1,
+                       threeTwo2,
+                       fourOne,
+                       fourTwo,
+                       fiveOne1,
+                       fiveOne2,
+                       fiveTwo1,
+                       fiveTwo2,
+                       sixOne,
+                       sixTwo,
+                       sevenOne,
+                       sevenTwo;
 
   @FXML
   private Label court1, court2, court3, court4, court5, court6, court7;
@@ -114,7 +131,6 @@ public class AppControllerGames {
       toggleButtons.add(threeTwo2);
       toggleButtons.add(fourOne);
       toggleButtons.add(fourTwo);
-
     }
   }
 
@@ -320,6 +336,7 @@ public class AppControllerGames {
       String name1 = pairsList.get(i / 2).getPlayer1().getName();
       int wins1 = pairsList.get(i / 2).getPlayer1().getWins();
       toggleButtons.get(i).setText(name1 + " : " + wins1);
+
       String name2 = pairsList.get(i / 2).getPlayer2().getName();
       int wins2 = pairsList.get(i / 2).getPlayer2().getWins();
       toggleButtons.get(i + 1).setText(name2 + " : " + wins2);
@@ -332,6 +349,7 @@ public class AppControllerGames {
    * @param playerlist the list of players to be set
    */
   public void setPlayerList(ArrayList<Player> playerlist) {
+    this.playerList = playerlist;
     pairs = new CreatePlayerPairs(playerlist);
   }
 
@@ -357,9 +375,9 @@ public class AppControllerGames {
   @FXML
   void goToScore(ActionEvent event) throws IOException {
     addPointsToPlayer();
-    player = pairs.getPlayerlist();
+    playerList = pairs.getPlayerlist();
 
-    FileManagerJson.saveScoreboard(new Scoreboard("currentgame", (ArrayList<Player>) player));
+    FileManagerJson.saveScoreboard(new Scoreboard("currentgame", (ArrayList<Player>) playerList));
 
     FXMLLoader loader = new FXMLLoader(getClass().getResource("scoreBoard.fxml"));
     Parent root = loader.load();
@@ -375,6 +393,7 @@ public class AppControllerGames {
    */
   @Override
   public String toString() {
-    return "AppControllerGames [Pairs=" + pairsList + ", Player=" + player + ", pairs=" + pairs + "]";
+    String info = "[Pairs=" + pairsList + ", Player=" + playerList + ", pairs=" + pairs + "]";
+    return "AppControllerGames " + info;
   }
 }

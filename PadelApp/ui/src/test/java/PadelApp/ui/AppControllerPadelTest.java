@@ -26,34 +26,32 @@ public class AppControllerPadelTest extends ApplicationTest {
         // Input test data
         String playerName = "John";
         String playerAge = "25";
-        String Playernumber = "95643241";
+        String playernumber = "95643241";
 
         // Locate the text fields and button by their fx:id
-        clickOn("#addTlfNr").write(Playernumber);
+        clickOn("#addTlfNr").write(playernumber);
         clickOn("#addName").write(playerName);
         clickOn("#addAge").write(playerAge);
-        clickOn("#AddPlayer");
+        clickOn("#addPlayer");
 
         // Assert that the text fields are cleared after adding a player
         //FxAssert.verifyThat("#addTlfNr", hasText(""));
         FxAssert.verifyThat("#addName", hasText(""));
         FxAssert.verifyThat("#addAge", hasText(""));
-
     }
 
     @Test
     public void testTextAreaPlayer(){
-        String Playernumber = "95643241";
+        String playernumber = "95643241";
         String playerName = "John";
         String playerAge = "25";
 
 
-        clickOn("#addTlfNr").write(Playernumber);
+        clickOn("#addTlfNr").write(playernumber);
         clickOn("#addName").write(playerName);
         clickOn("#addAge").write(playerAge);
-        clickOn("#AddPlayer");
+        clickOn("#addPlayer");
 
         FxAssert.verifyThat("#players", hasText("John, 25\n"));
     }
-    
 }

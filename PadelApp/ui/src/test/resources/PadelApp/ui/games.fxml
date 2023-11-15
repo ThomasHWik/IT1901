@@ -10,8 +10,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PadelApp.ui.AppControllerGames">
    <children>
-      <Button fx:id="GoToScore" layoutX="475.0" layoutY="333.0" mnemonicParsing="false" onAction="#GoToScore" text="End Games" />
-      <Button fx:id="NewRound" layoutX="42.0" layoutY="333.0" mnemonicParsing="false" onAction="#NewRound" text="New Round" />
+      <Button fx:id="goToScore" layoutX="475.0" layoutY="333.0" mnemonicParsing="false" onAction="#goToScore" text="End Games" />
+      <Button fx:id="newRound" layoutX="42.0" layoutY="333.0" mnemonicParsing="false" onAction="#newRound" text="New Round" />
       <TextField fx:id="rounds" editable="false" layoutX="42.0" layoutY="281.0" prefHeight="25.0" prefWidth="82.0" text="" />
       <TextArea fx:id="error" editable="false" layoutX="169.0" layoutY="313.0" prefHeight="48.0" prefWidth="263.0" visible="false" />
       <ToggleButton fx:id="oneOne" disable="true" layoutX="44.0" layoutY="69.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="109.0" textAlignment="CENTER" visible="false" wrapText="true">
@@ -44,10 +44,10 @@
          </toggleGroup>
       </ToggleButton>
       <ToggleButton fx:id="threeTwo2" layoutX="365.0" layoutY="160.0" mnemonicParsing="false" onAction="#pairTwo" prefHeight="93.0" prefWidth="67.0" toggleGroup="$courtThree" visible="false" wrapText="true" />
-      <Label fx:id="Court1" layoutX="43.0" layoutY="46.0" text="Court 1" visible="false" />
-      <Label fx:id="Court2" layoutX="42.0" layoutY="162.0" text="Court 2" visible="false" />
-      <Label fx:id="Court3" layoutX="301.0" layoutY="41.0" text="Court 3" visible="false" />
-      <Label fx:id="Court4" layoutX="475.0" layoutY="41.0" text="Court 4" visible="false" />
+      <Label fx:id="court1" layoutX="43.0" layoutY="46.0" text="Court 1" visible="false" />
+      <Label fx:id="court2" layoutX="42.0" layoutY="162.0" text="Court 2" visible="false" />
+      <Label fx:id="court3" layoutX="301.0" layoutY="41.0" text="Court 3" visible="false" />
+      <Label fx:id="court4" layoutX="475.0" layoutY="41.0" text="Court 4" visible="false" />
       <ToggleButton fx:id="fiveOne1" disable="true" layoutX="43.0" layoutY="61.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="67.0" visible="false" wrapText="true">
          <toggleGroup>
             <ToggleGroup fx:id="court5" />
@@ -60,20 +60,20 @@
          </toggleGroup>
       </ToggleButton>
       <ToggleButton fx:id="fiveTwo2" layoutX="109.0" layoutY="160.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="67.0" toggleGroup="$courtfive" visible="false" wrapText="true" />
-      <Label fx:id="Court5" layoutX="43.0" layoutY="41.0" text="Court 5" visible="false" />
+      <Label fx:id="court5" layoutX="43.0" layoutY="41.0" text="Court 5" visible="false" />
       <ToggleButton fx:id="sevenOne" disable="true" layoutX="378.0" layoutY="61.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="81.0" visible="false" wrapText="true">
          <toggleGroup>
             <ToggleGroup fx:id="court7" />
          </toggleGroup>
       </ToggleButton>
       <ToggleButton fx:id="sevenTwo" disable="true" layoutX="378.0" layoutY="160.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="81.0" toggleGroup="$court7" visible="false" wrapText="true" />
-      <Label fx:id="Court7" layoutX="378.0" layoutY="41.0" text="Court 7" visible="false" />
+      <Label fx:id="court7" layoutX="378.0" layoutY="41.0" text="Court 7" visible="false" />
       <ToggleButton fx:id="sixOne" disable="true" layoutX="281.0" layoutY="61.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="81.0" visible="false" wrapText="true">
          <toggleGroup>
             <ToggleGroup fx:id="court6" />
          </toggleGroup>
       </ToggleButton>
       <ToggleButton fx:id="sixTwo" disable="true" layoutX="281.0" layoutY="160.0" mnemonicParsing="false" prefHeight="93.0" prefWidth="81.0" toggleGroup="$court6" visible="false" wrapText="true" />
-      <Label fx:id="Court6" layoutX="281.0" layoutY="41.0" text="Court 6" visible="false" />
+      <Label fx:id="court6" layoutX="281.0" layoutY="41.0" text="Court 6" visible="false" />
    </children>
 </AnchorPane>
