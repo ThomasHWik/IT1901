@@ -12,14 +12,12 @@ component core {
 component jackson {
 }
 
-
 PadelApp.json ..> jackson
 
 component ui {
     package PadelApp.ui
 }
 PadelApp.ui ..> PadelApp.core
-
 
 component javafx {
     component fxml {
@@ -30,6 +28,13 @@ ui ..> javafx
 ui ..> fxml
 
 PadelApp.ui ..> PadelApp.json
+
+component springboot {
+    package PadelApp.restserver
+}
+
+PadelApp.restserver ..> PadelApp.core
+PadelApp.restserver ..> PadelApp.json
 
 
 @enduml
