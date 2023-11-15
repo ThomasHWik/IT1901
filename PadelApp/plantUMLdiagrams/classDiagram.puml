@@ -5,6 +5,8 @@ title Class Diagram
 
 
 core.ScoreBoard --|> core.Leaderboard
+core.PlayerPair --> core.Player
+core.createPlayerPairs --> core.PlayerPair
 
 
 
@@ -76,14 +78,53 @@ package core {
 }
 package ui {
     class AppControllerGames {
+        - Player: List<Player>
+        - Pairs: List<PlayerPair>
+        - roundSelector: RoundSelector
+        - chosenRounds: int
+        - round: int
+        - courts: gameSetup
+        - error: TextArea
+        - rounds: TextField
+        - GoToScore: Button
+        - NewRound: Button
+        - toggleButtons: ArrayList<ToggleButton>
 
+        + addToggleBs()
+        + addPointsToPlayer()
+        + NewRound(event: ActionEvent)
+        + shuffle()
+        + pairOne(event: ActionEvent)
+        + pairTwo(event: ActionEvent)
+        + allSelected(): boolean
+        + roundSelector(chosenRounds: int): int
+        + updateRound()
+        + CreateGame()
+        + createCourts()
+        + addPlayersToCourts()
+        + setPlayerList(playerlist: ArrayList<Player>)
+        + setPairs()
+        + GoToScore(event: ActionEvent)
     }
 
     class AppControllerPadel {
+        - playerlist: ArrayList<Player>
+        
+        + AddPlayer(event: ActionEvent): void
+        + CreateGame(event: ActionEvent): void
 
     }
 
     class AppControllerScoreBoard {
+        - leaderboard: Leaderboard
+        - scoreboard: Scoreboard
+
+        + initialize(): void
+        + createLeaderboard(): void
+        + setScoreboard(playerlist: List<Player>): void
+        - populateTable(): void
+        - populateScoreboard(): void
+        + setScoreboard(players: ArrayList<Player>): void
 
     }
 }
