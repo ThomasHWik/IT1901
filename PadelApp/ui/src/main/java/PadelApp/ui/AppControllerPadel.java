@@ -40,7 +40,7 @@ public class AppControllerPadel {
   private Button addPlayer, createGame;
 
   @FXML
-  private Label errorMsg, errorCreateGamesMsg;
+  private Label errorMsg, errorCreateGamesMsg, NumberOfPlayers;
 
   @FXML
   private Slider courtCount;
@@ -55,6 +55,10 @@ public class AppControllerPadel {
   void addPlayer(ActionEvent event) throws IOException {
     // try catch to check if the input is valid
     try {
+      if (playerlist.size() == 10) {
+        errorCreateGames("There can not be more then 10 players");
+        return;
+      }
       String name = addName.getText();
       int age = stringToInt(addAge.getText());
       int tlfNr = stringToInt(addTlfNr.getText());
@@ -102,9 +106,22 @@ public class AppControllerPadel {
    */
   @FXML
   void createGame(ActionEvent event) throws IOException {
+    if (players.getText().trim().isEmpty()) {
+      errorCreateGames("Must add players to create a game");
+      return;
+    }
+    if (inputRounds.getText() == "" || inputRounds.getText().trim().isEmpty()) {
+      errorCreateGames("Must choose number of rounds between 1-10");
+      return;
+    }
     refreshErrorCreateGamesMsg();
     if (playerlist.size() % 2 != 0) {
       errorCreateGames("Must be even number of players");
+      return;
+    }
+    int chosenRounds = Integer.parseInt(inputRounds.getText());
+    if (chosenRounds < 1 || chosenRounds > 10) {
+      errorCreateGames("Must choose number of rounds between 1-10");
       return;
     }
     FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
@@ -112,13 +129,14 @@ public class AppControllerPadel {
     Stage stage = (Stage) createGame.getScene().getWindow();
     stage.setScene(new Scene(root));
     AppControllerGames games = (AppControllerGames) loader.getController();
-    int chosenRounds = Integer.parseInt(inputRounds.getText());
     games.setPlayerList(playerlist);
     games.createGame(setCourts());
     games.roundSelector(chosenRounds);
   }
 
   /**
+   * Gets the number of wanted double courts.
+   * 
    * @return the integer value of the courtCount.
    */
   private int setCourts() {
