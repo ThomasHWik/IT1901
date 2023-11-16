@@ -18,17 +18,16 @@ import javafx.scene.control.ListView;
  * list of players.
  * The class uses FileManagerJson to read and write data to JSON files.
  */
+@SuppressWarnings({"MultipleVariableDeclarations"})
 public class AppControllerScoreBoard {
 
   private Leaderboard leaderboard;
   private Scoreboard scoreboard;
   private RemoteLeaderboardAccess restApi;
 
-  @SuppressWarnings({"MultipleVariableDeclarations"})
   @FXML
   private ListView<String> lbName, sbName;
 
-  @SuppressWarnings({"MultipleVariableDeclarations"})
   @FXML
   private ListView<Integer> lbWins, sbWins;
 

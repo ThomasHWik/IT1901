@@ -26,22 +26,20 @@ import javafx.stage.Stage;
  * between String and int.
  * The class also has methods for updating the GUI and creating games.
  */
+@SuppressWarnings({"MultipleVariableDeclarations"})
 public class AppControllerPadel {
 
   private ArrayList<Player> playerlist = new ArrayList<>();
 
-  @SuppressWarnings({"MultipleVariableDeclarations"})
   @FXML
   private TextField addName, addAge, addTlfNr, inputRounds;
 
   @FXML
   private TextArea players;
 
-  @SuppressWarnings({"MultipleVariableDeclarations"})
   @FXML
   private Button addPlayer, createGame;
 
-  @SuppressWarnings({"MultipleVariableDeclarations"})
   @FXML
   private Label errorMsg, errorCreateGamesMsg, numberOfPlayers;
 

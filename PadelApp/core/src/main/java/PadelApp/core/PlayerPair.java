@@ -56,7 +56,7 @@ public class PlayerPair {
    * @return the first player in the player pair
    */
   public Player getPlayer1() {
-    return new Player(player1);
+    return player1;
   }
 
   /**
@@ -65,6 +65,6 @@ public class PlayerPair {
    * @return the second player in the player pair
    */
   public Player getPlayer2() {
-    return new Player(player2);
+    return player2;
   }
 }

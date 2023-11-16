@@ -38,6 +38,7 @@ import javafx.stage.Stage;
  * includes methods for updating the round count and selecting player pairs for
  * each court.
  */
+@SuppressWarnings({ "MultipleVariableDeclarations", "MemberName"})
 public class AppControllerGames {
 
   private List<Player> playerList = new ArrayList<>();
@@ -55,32 +56,15 @@ public class AppControllerGames {
   @FXML
   private TextField rounds;
 
-  @SuppressWarnings({"MultipleVariableDeclarations"})
   @FXML
   private Button goToScore, newRound;
 
-  @SuppressWarnings({"MultipleVariableDeclarations"})
   @FXML
-  private ToggleButton oneOne,
-      oneTwo,
-      twoOne,
-      twoTwo,
-      threeOne1,
-      threeOne2,
-      threeTwo1,
-      threeTwo2,
-      fourOne,
-      fourTwo,
-      fiveOne1,
-      fiveOne2,
-      fiveTwo1,
-      fiveTwo2,
-      sixOne,
-      sixTwo,
-      sevenOne,
-      sevenTwo;
+  private ToggleButton oneOne, oneTwo, twoOne, twoTwo,
+      threeOne1, threeOne2, threeTwo1, threeTwo2,
+      fourOne, fourTwo, fiveOne1, fiveOne2, fiveTwo1, fiveTwo2,
+      sixOne, sixTwo, sevenOne, sevenTwo;
 
-  @SuppressWarnings({"MultipleVariableDeclarations", "MemberName"})
   @FXML
   private Label Court1, Court2, Court3, Court4, Court5, Court6, Court7;
 
