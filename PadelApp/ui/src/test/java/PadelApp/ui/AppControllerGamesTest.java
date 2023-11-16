@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import PadelApp.json.FileManagerJson;
 import PadelApp.core.Player;
 import org.junit.jupiter.api.Test;
+import org.testfx.api.FxAssert;
 import org.testfx.framework.junit5.ApplicationTest;
 
 public class AppControllerGamesTest extends ApplicationTest {
@@ -114,7 +116,7 @@ public class AppControllerGamesTest extends ApplicationTest {
     }
 
     @Test
-    public void testAddPointstoPlayer4() {
+    public void testAddPointsToPlayer4() {
         Add4Players();
         clickOn("#threeOne1");
         clickOn("#NewRound");
@@ -141,10 +143,9 @@ public class AppControllerGamesTest extends ApplicationTest {
     }
 
     @Test
-    public void testAddPointstoPlayer2() {
+    public void testAddPointsToPlayer2() {
         Add2Players();
-        // threeone1, threeone2
-        // threetwo1, threetwo2
+
         clickOn("#oneOne");
         clickOn("#NewRound");
 
@@ -157,13 +158,21 @@ public class AppControllerGamesTest extends ApplicationTest {
         clickOn("#oneOne");
         clickOn("#NewRound");
 
+        clickOn("#oneOne");
         clickOn("#GoToScore");
 
         playerList = FileManagerJson.getScoreboard("currentgame").getScorelist();
 
-        assertTrue(playerList.get(0).getWins() == 2);
+        assertTrue(playerList.get(0).getWins() == 3);
         assertTrue(playerList.get(1).getWins() == 2);
 
+    }
+
+    @Test
+    public void testNotAllSelected(){
+        Add2Players();
+        clickOn("#NewRound");
+        FxAssert.verifyThat("#error", Node::isVisible);
     }
 
 

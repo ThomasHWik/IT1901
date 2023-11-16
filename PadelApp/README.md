@@ -1,13 +1,13 @@
 # App description
 
-The app should allow users to register as a player, and based on the players, the app should assign courts and pairs of players such that every player has a court and someone to play with. In addition, the app should include functionality for creation and tracking of tournaments and game results.
+The app should allow users to register as a player, to choose number of double courts and to choose number of rounds they want to play. Based on the players, the app should assign courts and pairs of players such that every player has a court and someone to play with. In addition, the app should include functionality for creation and tracking of tournaments and game results.
 
 ## Game assigment
 Players will either play singles matches vs another player, or will be grouped with another player and play doubles against another team on an assigned court.
-The players will only play against the player or team first paired up with.
+The players will will after each round be swtiched around and paired with a new player, so they dont play against the same player each round.
 
 ## Game results
-Players register the game results (games won and games lost) for a pairing, and based on the results, the app should provide a scoreboard. The scoreboard is made based on phonenumber, so if someone has the same name they will still be separated on the scoreboard.
+Players register the game results (games won and games lost) for a pairing, and based on the results, the app should provide a scoreboard and a leaderboard. The scoreboard is made based on phonenumber, so if someone has the same name they will still be separated on the scoreboard.
 
 ## Tournament
 In later versions users should be able to create torunaments of the participating players, where players or teams play against multiple opponents.
@@ -27,6 +27,7 @@ There is a need to register participants, assign courts, and create a simple ove
 ### Important functionality
 - Register participants
 - Choose number of courts available / choose reserved 
+- Choose number fo rounds
 - Choose tournament format
 - Start tournament at a specific time
 
@@ -48,6 +49,6 @@ There is a need to register participants and get an overview of who is playing a
 - Adjust costs, e.g. by reducing the amount of matches per participant
 
 # App screenshots
-A screenshot of player registration can be found [here](/App1.png)
-A screenshot of list of paired players and the result of 5 rounds can be found [here](/App2.png)
-A screenshot of scoreboard can be found [here](/App3.png)
+A screenshot of player registration can be found [here](/PadelApp/pictures/PlayerRegistration.png)
+A screenshot of list of paired players on courts can be found [here](/PadelApp/pictures/Game.png)
+A screenshot of scoreboard and leaderboard can be found [here](/PadelApp/pictures/ScoreboardAndLeaderboard.png)
