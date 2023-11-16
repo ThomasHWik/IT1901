@@ -88,9 +88,6 @@ public class AppControllerPadelTest extends ApplicationTest {
     public void TestEvenNumberPlayers(){
         String playerName = "John";
         String playerAge = "25";
-
-
-        clickOn("#addTlfNr").write(playernumber);
         String Playernumber = "95643241";
 
         // Locate the text fields and button by their fx:id

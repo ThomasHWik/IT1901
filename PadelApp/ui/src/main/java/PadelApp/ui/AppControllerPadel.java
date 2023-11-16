@@ -30,6 +30,7 @@ import javafx.stage.Stage;
 public class AppControllerPadel {
 
   private ArrayList<Player> playerlist = new ArrayList<>();
+  private int nPlayers;
 
   @FXML
   private TextField addName, addAge, addTlfNr, inputRounds;
@@ -91,8 +92,8 @@ public class AppControllerPadel {
         String output = sb.toString();
         players.setText(output);
 
-        NOP += 1;
-        String nop= "" + NOP;
+        nPlayers += 1;
+        String nop= "" + nPlayers;
         numberOfPlayers.visibleProperty().set(true);
         numberOfPlayers.setText(nop);
         

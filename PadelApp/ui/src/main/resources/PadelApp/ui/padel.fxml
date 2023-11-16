@@ -26,7 +26,7 @@
       <Slider fx:id="courtCount" blockIncrement="1.0" layoutX="443.0" layoutY="259.0" majorTickUnit="1.0" max="2.0" minorTickCount="1" prefHeight="38.0" prefWidth="98.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
       <Label layoutX="303.0" layoutY="261.0" prefHeight="17.0" prefWidth="92.0" text="Double courts:" />
       <Label layoutX="303.0" layoutY="295.0" prefHeight="17.0" prefWidth="107.0" text="Number of rounds:" />
-      <Label fx:id="NumberOfPlayers" layoutX="138.0" layoutY="331.0" prefHeight="35.0" prefWidth="28.0">
+      <Label fx:id="numberOfPlayers" layoutX="138.0" layoutY="331.0" prefHeight="35.0" prefWidth="28.0">
          <font>
             <Font size="18.0" />
          </font>
