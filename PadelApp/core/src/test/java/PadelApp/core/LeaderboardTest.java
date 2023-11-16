@@ -2,10 +2,9 @@ package PadelApp.core;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import com.fasterxml.jackson.core.exc.StreamWriteException;
 
-import PadelApp.core.Leaderboard;
-import PadelApp.core.Player;
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,53 +21,59 @@ public class LeaderboardTest {
     @BeforeEach
     public void setUp() {
         leaderboard = new Leaderboard("testLeaderboard.json");
-        player1 = new Player("John", 2, 5, 91919191);
-        player2 = new Player("Jane", 4, 3, 42424242);
-        player3 = new Player("Bob", 5, 2, 93939393);
-        player4 = new Player("Alice", 3, 4, 44444444);
+        player1 = new Player("John", 22, 5, 98786564);
+        player2 = new Player("Jane", 44, 3, 42635442);
+        player3 = new Player("Bob", 55, 2, 97363634);
+        player4 = new Player("Alice", 33, 4, 98345643);
     }
-    /* 
+    
+   
     @Test
-    public void testAddScoreboard() throws IOException {
-        Scoreboard scoreboard = new Scoreboard();
-        scoreboard.addPlayer(player1);
-        scoreboard.addPlayer(player2);
-
-        leaderboard.addScoreboard(scoreboard);
-
-        ArrayList<Player> expected = new ArrayList<>();
-        expected.add(player1);
-        expected.add(player2);
-
-        for (int i = 0; i < expected.size(); i++) {
-            assertEquals(expected.get(i), leaderboard.getScorelist().get(i));
-        }
-    }
-    */
-
-    /*
-    @Test
-    public void testSortLeaderboard() {
+    void testSortLeaderboard() {
         leaderboard.addPlayer(player1);
         leaderboard.addPlayer(player2);
         leaderboard.addPlayer(player3);
         leaderboard.addPlayer(player4);
 
+        // Sort the leaderboard
+        leaderboard.sortLeaderboard();
+        
+
+        // Get the sorted player list
+        List<Player> sortedPlayers = leaderboard.getTopPlayers(4);
+
+        // Check that the players are sorted in descending order of wins
+        assertEquals(5, sortedPlayers.get(0).getWins()); 
+        assertEquals(4, sortedPlayers.get(1).getWins());
+        assertEquals(3, sortedPlayers.get(2).getWins()); 
+        assertEquals(2, sortedPlayers.get(3).getWins()); 
+    }
+
+    @Test
+    void testAddScoreboard() throws StreamWriteException, IOException {
+        // Create a scoreboard with unsorted scores
+        Scoreboard scoreboard = new Scoreboard();
+    
+        scoreboard.addPlayer(player1);
+        scoreboard.addPlayer(player2);
+        scoreboard.addPlayer(player3);
+        scoreboard.addPlayer(player4);
+
+        // Add the scoreboard to the leaderboard
+        leaderboard.addScoreboard(scoreboard);
+
+        // Sort the leaderboard
         leaderboard.sortLeaderboard();
 
-        ArrayList<Player> expected = new ArrayList<>();
-        expected.add(player1);
-        expected.add(player2);
-        expected.add(player3);
-        expected.add(player4);
+        // Get the sorted player list
+        List<Player> sortedPlayers = leaderboard.getTopPlayers(4);
 
-        expected.sort(new PlayerComparator());
-
-        for (int i = 0; i < expected.size(); i++) {
-            assertEquals(expected.get(i).getTlfNr(), leaderboard.getScorelist().get(i).getTlfNr());
-        }
+        // Check that the players are sorted in descending order of wins
+        assertEquals(5, sortedPlayers.get(0).getWins()); 
+        assertEquals(4, sortedPlayers.get(1).getWins()); 
+        assertEquals(3, sortedPlayers.get(2).getWins());
+        assertEquals(2, sortedPlayers.get(3).getWins());
     }
-    */
 
     @Test
     public void testGetTopPlayers() {
