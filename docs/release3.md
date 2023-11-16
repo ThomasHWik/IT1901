@@ -16,8 +16,44 @@ For the functionality on the second page in the app, we have made single and dou
 
 We have also done some changes on the last page in the app. In release 2 you could only see a leaderboard, but now we have created a scoreboard so you can see both scoreboard and leaderboard on the last page. The scoreboard shows the ranking of players in one game of selected rounds, while leaderboard shows the ranking of all players that have played ever.
 
-#### REST-API
-For this release we have implemented a server and a springboot as our Rest api.
+### REST-API
+For this release we have implemented a springboot server as our REST-API. It runs on default port 8080 and completes PadelApp functionality of having a "global" leaderboard that current games gets added to.
+
+#### Base Endpoint
+
+* URI: host:port/api/padel  
+<http://localhost:8080/api/padel>
+* Response: 
+    * None
+
+#### Get Leaderboard
+Retrieves the Padel leaderboard stored on the server.
+* Endpoint: GET /api/padel/leaderboard 
+<http://localhost:8080/api/padel/leaderboard>
+* Response:
+    * 200 OK with the leaderboard if it exists.
+    * 404 Not Found if the leaderboard does not exist.
+
+
+#### Add Scoreboard
+Adds scoreboard from client to the server leaderboard
+* Endpoint: POST /api/padel/addScoreboard  
+<http://localhost:8080/api/padel/addScoreboard>
+* Request:
+    * Method: POST
+    * URL: /api/padel/addScoreboard
+    * Body: JSON object representing the scoreboard.
+* Response:
+    * 200 OK with a success message if the scoreboard is processed successfully.
+    * 400 Internal Server Error with an error message if an error occurs.
+
+#### Initialize
+Initializes the restServer with a Leaderboard when its known that the server doesnt have an existing Leaderboard file.
+* Endpoint: GET /api/padel/initialize  
+<http://localhost:8080/api/padel/initialize>
+* Response:  
+    * 200 OK with sucess message
+
 
 These classes are new:
 * **core/RemoteLeaderboardAccess.java**
