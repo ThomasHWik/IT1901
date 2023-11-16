@@ -19,17 +19,23 @@ Necessary maven-version: maven 3.9.4
 ## Running the app
 To run the app you have to run the restserver first.
 
-To initialize the restserver run: `mvn clean install -f ./springboot/restserver/pom.xml´
-To run the restserver from root, run: `mvn spring-boot:run -f ./springboot/restserver/pom.xml´
+To initialize the restserver from the PadelApp folder, run: `mvn clean install -f ./springboot/restserver/pom.xml´
+To run the restserver from the PadelApp folder, run: `mvn spring-boot:run -f ./springboot/restserver/pom.xml´
 Open new terminal, and run: `mvn javafx:run -f ./ui/pom.xml´
 
+### Shippable product
+To turn the app into a shippable product, the project uses jlink and jpackage.
+Jlink and jpackage requires the .NET framework and wix tool set.
+First run the command: `mvn javafx:jlink -f ./ui/pom.xml´ from the PadelApp folder
+Then run the command: `mvn jpackage:jpackage -f ./ui/pom.xml
+The installation file can then be found under the /ui/target/dist folder
+
 ## Testing
-To test the core module from root, run: `mvn test -f ./core/pom.xml´
-To test the ui module from root, run:
+To test the core module from the PadelApp folder, run: `mvn test -f ./core/pom.xml´
+To test the ui module from the PadelApp folder, run:
 * `mvn spring-boot:run -f ./springboot/restserver/pom.xml´
 * Open new terminal and run: `mvn test -f ./ui/pom.xml`
-To test the springboot restserver / API froom root, run: `mvn test -f ./springboot/restserver/pom.xml´
-
+To test the springboot restserver / API from the PadelApp folder, run: `mvn test -f ./springboot/restserver/pom.xml´
 
 # Code quality tools
 We use three code quality analysis tools to make sure our code is up to standards:
@@ -40,11 +46,11 @@ We use three code quality analysis tools to make sure our code is up to standard
 
 All three generate HTML reports with pointers to what can be improved.
 
-To generate the checkstyle report from root, run: `mvn checkstyle:checkstyle´
+To generate the checkstyle report from the PadelApp folder, run: `mvn checkstyle:checkstyle´
 The report can be found in each modules /target/site folder
 You can also run the checkstyle test without creating a report by running: `mvn checkstyle:check´
 
-To generate the spotbugs report from root, run : `mvn spotbugs:spotbugs´
+To generate the spotbugs report from the PadelApp folder, run : `mvn spotbugs:spotbugs´
 The report can be found in each modules /target folder
 You can also run the spotbugs test without creating a report by running: `mvn spotbugs:check´
 
