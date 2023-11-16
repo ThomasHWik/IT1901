@@ -34,7 +34,7 @@ public class AppControllerPadelTest extends ApplicationTest {
         clickOn("#addTlfNr").write(Player1number);
         clickOn("#addName").write(player1Name);
         clickOn("#addAge").write(player1Age);
-        clickOn("#AddPlayer");
+        clickOn("#addPlayer");
 
         String player2Name = "Tom";
         String player2Age = "21";
@@ -44,7 +44,7 @@ public class AppControllerPadelTest extends ApplicationTest {
         clickOn("#addTlfNr").write(Player2number);
         clickOn("#addName").write(player2Name);
         clickOn("#addAge").write(player2Age);
-        clickOn("#AddPlayer");
+        clickOn("#addPlayer");
 
     }
 
@@ -77,8 +77,8 @@ public class AppControllerPadelTest extends ApplicationTest {
     @Test
     public void testCreateGame() {
         Add2Players();
-        clickOn("#InputRounds").write("0");
-        clickOn("#CreateGame");
+        clickOn("#inputRounds").write("0");
+        clickOn("#createGame");
 
         // Verify that the errorCreateGamesMsg Label is visible
         FxAssert.verifyThat("#errorCreateGamesMsg", LabeledMatchers.hasText("Must choose number of rounds between 1-10"));
@@ -94,9 +94,9 @@ public class AppControllerPadelTest extends ApplicationTest {
         clickOn("#addTlfNr").write(Playernumber);
         clickOn("#addName").write(playerName);
         clickOn("#addAge").write(playerAge);
-        clickOn("#AddPlayer");
-        clickOn("#InputRounds").write("5");
-        clickOn("#CreateGame");
+        clickOn("#addPlayer");
+        clickOn("#inputRounds").write("5");
+        clickOn("#createGame");
 
         FxAssert.verifyThat("#errorCreateGamesMsg", LabeledMatchers.hasText("Must be even number of players"));
 
@@ -128,6 +128,6 @@ public class AppControllerPadelTest extends ApplicationTest {
     public void testPlayerCount() {
         Add2Players();
 
-        FxAssert.verifyThat("#NumberOfPlayers", LabeledMatchers.hasText("2"));
+        FxAssert.verifyThat("#numberOfPlayers", LabeledMatchers.hasText("2"));
     }
 }

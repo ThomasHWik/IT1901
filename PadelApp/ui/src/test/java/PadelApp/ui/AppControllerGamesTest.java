@@ -167,7 +167,7 @@ public class AppControllerGamesTest extends ApplicationTest {
     @Test
     public void testNotAllSelected(){
         Add2Players();
-        clickOn("#NewRound");
+        clickOn("#newRound");
         FxAssert.verifyThat("#error", Node::isVisible);
     }
 
