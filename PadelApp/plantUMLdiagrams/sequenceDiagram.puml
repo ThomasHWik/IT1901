@@ -3,22 +3,31 @@
 title Sequence Diagram
 !define List java.util.List !define ArrayList java.util.ArrayList
 
-group Player registration
-user -> ui: push the "AddPlayer" button
-ui -> core: AddPlayer(Player player)
 
+user -> AppControllerGames: click: NewRound
+AppControllerGames -> Player: addWins
+AppControllerGames -> AppControllerGames: shuffel
+AppControllerGames -> AppControllerGames: addPlayersToCourts
+AppControllerGames -> Player: getWins
+AppControllerGames -> AppControllerGames: updateround
+user -> AppControllerGames: click: EndGame
+AppControllerGames -> Player: addWins
+AppControllerGames -> Player: getWins
 
-end
-
-group Update wins
-
-end
-
-group Update Scoreboard and Leaderboard
-
-end
-
-
-
+AppControllerGames -> AppControllerScoreBoard: initialize
+AppControllerScoreBoard -> FileManagerJson: getScoreboard
+FileManagerJson -> AppControllerScoreBoard: return Scoreboard
+AppControllerScoreBoard -> RemoteLeaderboardAccess: sendScoreboard
+RemoteLeaderboardAccess -> PadelModelController: send
+PadelModelController -> PadelModelService: receiveScoreboard
+PadelModelService -> FileManagerJson: saveScoreboard
+PadelModelService -> Leaderboard: addScoreboard
+AppControllerScoreBoard -> RemoteLeaderboardAccess: getLeaderboard
+RemoteLeaderboardAccess -> PadelModelController: send
+PadelModelController -> PadelModelService: getLeaderboard
+PadelModelService -> FileManagerJson: getLeaderboard
+FileManagerJson -> AppControllerScoreBoard: return Leaderboard
+AppControllerScoreBoard -> user: populateLeaderboard
+AppControllerScoreBoard -> user: populateScoreboard
 
 @enduml
