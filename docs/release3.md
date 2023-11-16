@@ -155,7 +155,11 @@ This bug complains about a PadelModelService object not being used in the PadelM
 get used several times, so we chose to exclude this from the report so it can't lead to any misunderstanding.
 
 #### Checkstyle
-We have configured our project to exclude certain checks from the checkstyle report
+We have configured our project to exclude certain checks from the checkstyle report such as "MultipleVariableDeclarations" and "MemberName". 
+
+"MultipleVariableDeclarations": We have done this becuase we think the code is more readble when all the variables with the same interface/class declaration is together, as it doesn't take up as much space and you can clearly see how they are related.
+
+"MemberName": We chose to use capital letters for court variable names as it corresponds to fxml tag names
 
 
 ### Test coverage
