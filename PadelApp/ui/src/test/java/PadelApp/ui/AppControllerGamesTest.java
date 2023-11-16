@@ -116,7 +116,7 @@ public class AppControllerGamesTest extends ApplicationTest {
     }
 
     @Test
-    public void testAddPointstoPlayer4() {
+    public void testAddPointsToPlayer4() {
         Add4Players();
         clickOn("#threeOne1");
         clickOn("#NewRound");
@@ -143,7 +143,7 @@ public class AppControllerGamesTest extends ApplicationTest {
     }
 
     @Test
-    public void testAddPointstoPlayer2() {
+    public void testAddPointsToPlayer2() {
         Add2Players();
 
         clickOn("#oneOne");
