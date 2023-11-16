@@ -247,7 +247,7 @@ public class AppControllerGames {
     // checks if there has been selected a winner on each court
     int togglesize = pairsList.size() * 2;
     for (int i = 0; i < togglesize - 1; i += 2) {
-      if (!(toggleButtons.get(i).isSelected() || toggleButtons.get(i++).isSelected())) {
+      if (!(toggleButtons.get(i).isSelected() || toggleButtons.get(i + 1).isSelected())) {
         return false;
       }
     }

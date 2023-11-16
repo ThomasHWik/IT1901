@@ -35,7 +35,7 @@ public class GameSetup {
    * @param playerPairslist a list of player pairs for the game
    */
   public GameSetup(int doubleCourt, List<PlayerPair> playerPairslist) {
-    this.playerPairslist = new ArrayList<PlayerPair>(playerPairslist);
+    this.playerPairslist = playerPairslist;
     courts(doubleCourt);
   }
 

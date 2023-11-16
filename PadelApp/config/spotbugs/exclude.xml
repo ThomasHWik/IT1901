@@ -1,5 +1,11 @@
 <FindBugsFilter>
     <Match>
-        <Bug pattern="" />
+        <Bug pattern="EI_EXPOSE_REP" />
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP2" />
+    </Match>
+    <Match>
+        <Bug pattern="UUF_UNUSED_FIELD" />
     </Match>
 </FindBugsFilter>

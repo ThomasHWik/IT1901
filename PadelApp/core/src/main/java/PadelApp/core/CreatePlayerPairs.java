@@ -99,7 +99,7 @@ public class CreatePlayerPairs {
    * @return the list of player pairs
    */
   public List<PlayerPair> getPlayerPairs() {
-    return new ArrayList<>(this.playerPairslist);
+    return this.playerPairslist;
   }
 
   /**
@@ -108,7 +108,7 @@ public class CreatePlayerPairs {
    * @return the list of players
    */
   public List<Player> getPlayerlist() {
-    return new ArrayList<>(this.playerList);
+    return this.playerList;
   }
 
   /**
