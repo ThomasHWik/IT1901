@@ -51,7 +51,7 @@ public class CreatePlayerPairsTest {
         assertEquals(expectedPairs.get(1).getPlayer1(), actualPairs.get(1).getPlayer1());
         assertEquals(expectedPairs.get(1).getPlayer2(), actualPairs.get(1).getPlayer2());
     }
-
+    */
     @Test
     void testCreatePlayerPairsWithOddNumberOfPlayers() {
         List<Player> oddNumberedPlayers = new ArrayList<>();
