@@ -20,7 +20,7 @@ import org.testfx.framework.junit5.ApplicationTest;
 
 public class AppControllerGamesTest extends ApplicationTest {
     public ArrayList<Player> playerList;
-    private Button CreateGame;
+    private Button createGame;
 
     private final FXMLLoader loader = new FXMLLoader(getClass().getResource("padel.fxml"));
 
@@ -36,102 +36,100 @@ public class AppControllerGamesTest extends ApplicationTest {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
         Parent root = loader.load();
-        Stage stage = (Stage) CreateGame.getScene().getWindow();
+        Stage stage = (Stage) createGame.getScene().getWindow();
         stage.setScene(new Scene(root));
         AppControllerGames games = (AppControllerGames) loader.getController();
         games.setPlayerList(playerList);
-        games.CreateGame(0);
+        games.createGame(0);
     }
 
     public void Add4Players() {
         // Input test data
         String player1Name = "John";
         String player1Age = "25";
-        String Player1number = "95643241";
+        String player1number = "95643241";
 
         // Locate the text fields and button by their fx:id
-        clickOn("#addTlfNr").write(Player1number);
+        clickOn("#addTlfNr").write(player1number);
         clickOn("#addName").write(player1Name);
         clickOn("#addAge").write(player1Age);
-        clickOn("#AddPlayer");
+        clickOn("#addPlayer");
 
         String player2Name = "Tom";
         String player2Age = "21";
-        String Player2number = "45464748";
+        String player2number = "45464748";
 
         // Locate the text fields and button by their fx:id
-        clickOn("#addTlfNr").write(Player2number);
+        clickOn("#addTlfNr").write(player2number);
         clickOn("#addName").write(player2Name);
         clickOn("#addAge").write(player2Age);
-        clickOn("#AddPlayer");
+        clickOn("#addPlayer");
 
         String player3Name = "Tim";
         String player3Age = "19";
-        String Player3number = "99989796";
+        String player3number = "99989796";
 
         // Locate the text fields and button by their fx:id
-        clickOn("#addTlfNr").write(Player3number);
+        clickOn("#addTlfNr").write(player3number);
         clickOn("#addName").write(player3Name);
         clickOn("#addAge").write(player3Age);
-        clickOn("#AddPlayer");
+        clickOn("#addPlayer");
 
         String player4Name = "Ron";
         String player4Age = "25";
-        String Player4number = "49484746";
+        String player4number = "49484746";
 
         // Locate the text fields and button by their fx:id
-        clickOn("#addTlfNr").write(Player4number);
+        clickOn("#addTlfNr").write(player4number);
         clickOn("#addName").write(player4Name);
         clickOn("#addAge").write(player4Age);
-        clickOn("#AddPlayer");
-        clickOn("#InputRounds").write("5");
-        clickOn("#CreateGame");
-
+        clickOn("#addPlayer");
+        clickOn("#inputRounds").write("5");
+        clickOn("#createGame");
     }
 
     public void Add2Players() {
         // Input test data
         String player1Name = "John";
         String player1Age = "25";
-        String Player1number = "95643241";
+        String player1number = "95643241";
 
         // Locate the text fields and button by their fx:id
-        clickOn("#addTlfNr").write(Player1number);
+        clickOn("#addTlfNr").write(player1number);
         clickOn("#addName").write(player1Name);
         clickOn("#addAge").write(player1Age);
-        clickOn("#AddPlayer");
+        clickOn("#addPlayer");
 
         String player2Name = "Tom";
         String player2Age = "21";
-        String Player2number = "45464748";
+        String player2number = "45464748";
 
         // Locate the text fields and button by their fx:id
-        clickOn("#addTlfNr").write(Player2number);
+        clickOn("#addTlfNr").write(player2number);
         clickOn("#addName").write(player2Name);
         clickOn("#addAge").write(player2Age);
-        clickOn("#AddPlayer");
-        clickOn("#InputRounds").write("5");
-        clickOn("#CreateGame");
-
+        clickOn("#addPlayer");
+        clickOn("#inputRounds").write("5");
+        clickOn("#createGame");
     }
 
     @Test
     public void testAddPointsToPlayer4() {
         Add4Players();
         clickOn("#threeOne1");
-        clickOn("#NewRound");
+        clickOn("#newRound");
 
         clickOn("#threeOne2");
-        clickOn("#NewRound");
+        clickOn("#newRound");
 
         clickOn("#threeTwo1");
-        clickOn("#NewRound");
+        clickOn("#newRound");
 
         clickOn("#threeTwo2");
-        clickOn("#NewRound");
+        clickOn("#newRound");
 
         clickOn("#threeTwo2");
-        clickOn("#GoToScore");
+        clickOn("#goToScore");
 
         playerList = FileManagerJson.getScoreboard("currentgame").getScorelist();
 
@@ -139,7 +137,6 @@ public class AppControllerGamesTest extends ApplicationTest {
         assertTrue(playerList.get(1).getWins() == 3);
         assertTrue(playerList.get(2).getWins() == 2);
         assertTrue(playerList.get(3).getWins() == 3);
-
     }
 
     @Test
@@ -147,25 +144,24 @@ public class AppControllerGamesTest extends ApplicationTest {
         Add2Players();
 
         clickOn("#oneOne");
-        clickOn("#NewRound");
+        clickOn("#newRound");
 
         clickOn("#oneTwo");
-        clickOn("#NewRound");
+        clickOn("#newRound");
 
         clickOn("#oneTwo");
-        clickOn("#NewRound");
+        clickOn("#newRound");
 
         clickOn("#oneOne");
-        clickOn("#NewRound");
+        clickOn("#newRound");
 
         clickOn("#oneOne");
-        clickOn("#GoToScore");
+        clickOn("#goToScore");
 
         playerList = FileManagerJson.getScoreboard("currentgame").getScorelist();
 
         assertTrue(playerList.get(0).getWins() == 3);
         assertTrue(playerList.get(1).getWins() == 2);
-
     }
 
     @Test

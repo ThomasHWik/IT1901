@@ -1,9 +1,8 @@
 package PadelApp.ui;
 
+import PadelApp.core.Player;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import PadelApp.core.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,204 +16,213 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
- * This class represents the controller for the PadelApp UI. It handles adding players to the player list,
- * creating games, and updating the GUI. It also contains methods for error handling and refreshing error messages.
- * The class has FXML fields for the text fields, text area, buttons, and labels used in the UI.
- * The class has private fields for the player list and methods for converting between String and int.
+ * This class represents the controller for the PadelApp UI. It handles adding
+ * players to the player list,
+ * creating games, and updating the GUI. It also contains methods for error
+ * handling and refreshing error messages.
+ * The class has FXML fields for the text fields, text area, buttons, and labels
+ * used in the UI.
+ * The class has private fields for the player list and methods for converting
+ * between String and int.
  * The class also has methods for updating the GUI and creating games.
  */
-/**
- * This class represents the controller for the PadelApp UI. It handles adding players to a player list,
- * creating games, and updating the GUI accordingly. The class contains methods for adding players, creating games,
- * handling invalid input, refreshing error messages, and updating the GUI. It also contains private helper methods
- * for converting strings to integers and integers to strings. The class uses JavaFX for the UI components.
- */
+@SuppressWarnings({ "MultipleVariableDeclarations", "MemberName"})
 public class AppControllerPadel {
 
-    private ArrayList<Player> playerlist = new ArrayList<>();
+  private ArrayList<Player> playerlist = new ArrayList<>();
+  private int nPlayers;
 
-    @FXML
-    private TextField addName, addAge, addTlfNr, InputRounds;
+  @FXML
+  private TextField addName, addAge, addTlfNr, inputRounds;
 
-    @FXML
-    private TextArea players;
+  @FXML
+  private TextArea players;
 
-    @FXML
-    private Button AddPlayer, CreateGame;
+  @FXML
+  private Button addPlayer, createGame;
 
-    @FXML 
-    private Label errorMsg, errorCreateGamesMsg, NumberOfPlayers;
+  @FXML
+  private Label errorMsg, errorCreateGamesMsg, numberOfPlayers;
 
-    @FXML
-    private Slider courtCount;
+  @FXML
+  private Slider courtCount;
 
-    private int NOP;
-
-
-    /**
-     * Adds a new player to the player list and updates the GUI accordingly.
-     * @param event The event that triggered the method call.
-     * @throws IOException If an I/O error occurs.
-     */
-    @FXML
-    void AddPlayer(ActionEvent event) throws IOException {
-        //try catch to check if the input is valid
-        try {
-            if(playerlist.size()==10){
-                error("There can not be more then 10 players");
-                return;
-            }
-            Player player= new Player(addName.getText(), StringToInt(addAge.getText()), StringToInt(addTlfNr.getText()));
-            playerlist.add(player);
-            refreshErrorMsg();
-        } catch (Exception e) {
-            if (e instanceof IllegalArgumentException) {
-                error(e.getMessage());
-            } else {
-                error("Invalid input!");
-            }
-            return;
-        }
-
-        ArrayList<String> list = new ArrayList<>();
-
-        for (int i = 0; i< playerlist.size(); i++) {
-            String Name = playerlist.get(i).getName();
-            String age = IntToString(playerlist.get(i).getAge());
-            list.add(Name + ", " + age);
-        }
-
-        StringBuilder sb = new StringBuilder();
-        for (String item : list) {
-            sb.append(item).append("\n");
-        }
-
-        String output = sb.toString();
-        players.setText(output);
-
-        NOP+=1;
-        String nop= "" + NOP;
-        NumberOfPlayers.visibleProperty().set(true);
-        NumberOfPlayers.setText(nop);
-        
-        updateGUI();
+  /**
+   * Adds a new player to the player list and updates the GUI accordingly.
+   *
+   * @param event The event that triggered the method call.
+   * @throws IOException If an I/O error occurs.
+   */
+  @FXML
+  void addPlayer(ActionEvent event) throws IOException {
+    // try catch to check if the input is valid
+    try {
+      if (playerlist.size() == 10) {
+        error("There can not be more then 10 players");
+        return;
+      }
+      String name = addName.getText();
+      int age = stringToInt(addAge.getText());
+      int tlfNr = stringToInt(addTlfNr.getText());
+      Player player = new Player(name, age, tlfNr);
+      playerlist.add(player);
+      refreshErrorMsg();
+    } catch (Exception e) {
+      if (e instanceof IllegalArgumentException) {
+        error(e.getMessage());
+      } else {
+        error("Invalid input!");
+      }
+      return;
     }
 
-    
-    /**
-     * This method is called when the "Create Game" button is clicked. It retrieves the number of rounds from the "InputRounds" text field, checks if the number of players is even, and displays an error message if it is not. It then loads the "games.fxml" file, sets the player list, creates a game, and selects the number of rounds.
-     *
-     * @param event The event that triggered the method call.
-     * @throws IOException If an I/O error occurs while loading the "games.fxml" file.
-     */
-    @FXML
-    void CreateGame(ActionEvent event) throws IOException {
-        if (players.getText().trim().isEmpty()){
-            errorCreateGames("Must add players to create a game");
-            return;
-        }
-        if (InputRounds.getText()== "" ||InputRounds.getText().trim().isEmpty()){
-            errorCreateGames("Must choose number of rounds between 1-10");
-            return;
-        }
-        int chosenRounds = Integer.parseInt(InputRounds.getText());
-        
-        refreshErrorCreateGamesMsg();
-        if (playerlist.size() % 2 != 0){
-            errorCreateGames("Must be even number of players");
-            return;
-        }
-        if (chosenRounds<1 || chosenRounds>10){
-            errorCreateGames("Must choose number of rounds between 1-10");
-            return;
-        }
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
-        Parent root = loader.load();
-            Stage stage = (Stage) CreateGame.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            AppControllerGames games = (AppControllerGames)loader.getController();
-            games.setPlayerList(playerlist);
-            games.CreateGame(setcourts());
-            games.roundSelector(chosenRounds);     
+    ArrayList<String> list = new ArrayList<>();
+
+    for (int i = 0; i < playerlist.size(); i++) {
+      String name = playerlist.get(i).getName();
+      String age = intToString(playerlist.get(i).getAge());
+      list.add(name + ", " + age);
     }
 
-    /**
-     * Gets the number of wanted double courts.
-     * @return the integer value of the courtCount.
-     */
-    private int setcourts(){
-        int value = (int) courtCount.getValue();
-        if(playerlist.size()<8 && value ==2)return 1;
-        if(playerlist.size()<4 && value>0)return 0;
-        return value;
-
-    }
-   
-    /**
-     * Sets the error message to be displayed in the UI.
-     * 
-     * @param message the error message to be displayed
-     */
-    @FXML
-    private void error(String message) {
-        errorMsg.visibleProperty().set(true);
-        errorMsg.setText(message);
+    StringBuilder sb = new StringBuilder();
+    for (String item : list) {
+      sb.append(item).append("\n");
     }
 
-    /**
-     * Clears the error message displayed on the UI.
-     */
-    @FXML
-    private void refreshErrorMsg() {
-        errorMsg.setText("");
+    String output = sb.toString();
+    players.setText(output);
+
+    nPlayers += 1;
+    String nop = "" + nPlayers;
+    numberOfPlayers.visibleProperty().set(true);
+    numberOfPlayers.setText(nop);
+
+    updateGui();
+  }
+
+  /**
+   * This method is called when the "Create Game" button is clicked. It retrieves
+   * the number of rounds from the "InputRounds" text field, checks if the number
+   * of players is even, and displays an error message if it is not. It then loads
+   * the "games.fxml" file, sets the player list, creates a game, and selects the
+   * number of rounds.
+   *
+   * @param event The event that triggered the method call.
+   * @throws IOException If an I/O error occurs while loading the "games.fxml"
+   *                     file.
+   */
+  @FXML
+  void createGame(ActionEvent event) throws IOException {
+    if (players.getText().trim().isEmpty()) {
+      errorCreateGames("Must add players to create a game");
+      return;
+    }
+    if (inputRounds.getText().equals("") || inputRounds.getText().trim().isEmpty()) {
+      errorCreateGames("Must choose number of rounds between 1-10");
+      return;
+    }
+    refreshErrorCreateGamesMsg();
+    if (playerlist.size() % 2 != 0) {
+      errorCreateGames("Must be even number of players");
+      return;
+    }
+    int chosenRounds = Integer.parseInt(inputRounds.getText());
+    if (chosenRounds < 1 || chosenRounds > 10) {
+      errorCreateGames("Must choose number of rounds between 1-10");
+      return;
+    }
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
+    Parent root = loader.load();
+    Stage stage = (Stage) createGame.getScene().getWindow();
+    stage.setScene(new Scene(root));
+    AppControllerGames games = (AppControllerGames) loader.getController();
+    games.setPlayerList(playerlist);
+    games.createGame(setCourts());
+    games.roundSelector(chosenRounds);
+  }
+
+  /**
+   * Gets the number of wanted double courts.
+   *
+   * @return the integer value of the courtCount.
+   */
+  private int setCourts() {
+    int value = (int) courtCount.getValue();
+    if (playerlist.size() < 8 && value == 2) {
+      return 1;
+    }
+    if (playerlist.size() < 4 && value > 0) {
+      return 0;
     }
 
-    /**
-     * Sets the error message for creating games.
-     * 
-     * @param message the error message to be displayed
-     */
-    @FXML
-    private void errorCreateGames(String message){
-        errorCreateGamesMsg.visibleProperty().set(true);
-        errorCreateGamesMsg.setText(message);
-    }
+    return value;
+  }
 
-    /**
-     * This method refreshes the error message displayed on the UI for creating games.
-     * It sets the text of the errorCreateGamesMsg label to an empty string.
-     */
-    @FXML
-    private void refreshErrorCreateGamesMsg(){
-        errorCreateGamesMsg.setText("");
-    }
+  /**
+   * Sets the error message to be displayed in the UI.
+   *
+   * @param message the error message to be displayed
+   */
+  @FXML
+  private void error(String message) {
+    errorMsg.setText(message);
+  }
 
-    /**
-     * Clears the text fields for name, age, and phone number in the GUI.
-     */
-    private void updateGUI() {
-        addName.clear();
-        addAge.clear();
-        addTlfNr.clear();
-    }
+  /**
+   * Clears the error message displayed on the UI.
+   */
+  @FXML
+  private void refreshErrorMsg() {
+    errorMsg.setText("");
+  }
 
-    /**
-     * Converts a string to an integer.
-     * 
-     * @param string the string to be converted to an integer
-     * @return the integer value of the string
-     */
-    private int StringToInt(String string) {
-        return Integer.valueOf(string);
-    }
+  /**
+   * Sets the error message for creating games.
+   *
+   * @param message the error message to be displayed
+   */
+  @FXML
+  private void errorCreateGames(String message) {
+    errorCreateGamesMsg.visibleProperty().set(true);
+    errorCreateGamesMsg.setText(message);
+  }
 
-    /**
-     * Converts an integer to a string representation.
-     * 
-     * @param number the integer to be converted
-     * @return the string representation of the integer
-     */
-    private String IntToString(int number) {
-        return Integer.toString(number);
-    }
+  /**
+   * This method refreshes the error message displayed on the UI for creating
+   * games.
+   * It sets the text of the errorCreateGamesMsg label to an empty string.
+   */
+  @FXML
+  private void refreshErrorCreateGamesMsg() {
+    errorCreateGamesMsg.setText("");
+  }
+
+  /**
+   * Clears the text fields for name, age, and phone number in the GUI.
+   */
+  private void updateGui() {
+    addName.clear();
+    addAge.clear();
+    addTlfNr.clear();
+  }
+
+  /**
+   * Converts a string to an integer.
+   *
+   * @param string the string to be converted to an integer
+   * @return the integer value of the string
+   */
+  private int stringToInt(String string) {
+    return Integer.parseInt(string);
+  }
+
+  /**
+   * Converts an integer to a string representation.
+   *
+   * @param number the integer to be converted
+   * @return the string representation of the integer
+   */
+  private String intToString(int number) {
+    return Integer.toString(number);
+  }
 }

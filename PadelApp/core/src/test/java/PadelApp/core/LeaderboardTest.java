@@ -2,7 +2,6 @@ package PadelApp.core;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 
 import java.io.IOException;
