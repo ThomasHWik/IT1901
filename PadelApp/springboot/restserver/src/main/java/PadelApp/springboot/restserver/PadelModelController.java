@@ -72,16 +72,4 @@ public class PadelModelController {
         padelModelService.initialize();
         return new ResponseEntity<>("Tried initializing", HttpStatus.OK);
     }
-
-    
-    /**
-     * Endpoint to set the leaderboard.
-     * @param leaderboard The leaderboard to be set.
-     * @return ResponseEntity with a message indicating that the leaderboard has been set and a HTTP status code of 200 OK.
-     */
-    @PostMapping("/setLeaderboard")
-    public ResponseEntity<String> setLeaderboard(@RequestBody Leaderboard leaderboard) {
-        padelModelService.setLeaderboard(leaderboard);;
-        return new ResponseEntity<>("Leaderboard set", HttpStatus.OK);
-    }
 }
