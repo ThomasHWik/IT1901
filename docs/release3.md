@@ -83,7 +83,7 @@ To test the core module from the PadelApp folder, run: `mvn test -f ./core/pom.x
 To test the ui module from the PadelApp folder, run:
 * `mvn spring-boot:run -f ./springboot/restserver/pom.xml´
 * Open new terminal and run: `mvn test -f ./ui/pom.xml`
-To test the springboot restserver / API from the PadelApp folder, run: `mvn test -f ./springboot/restserver/pom.xml´
+To test the springboot restserver from the PadelApp folder, run: `mvn test -f ./springboot/restserver/pom.xml´
 
 ### Code quality tools
 We have used three code quality analysis tools to make sure our code is up to standards:
@@ -93,6 +93,31 @@ We have used three code quality analysis tools to make sure our code is up to st
 *Checkstyle: generates a report regarding the code style
 
 All three generate HTML reports with pointers to what can be improved.
+
+#### Spotbugs
+We have configured spotbugs to exclude certain bugs from it's report due to it detecting bugs which if fixed would not work with our app.
+##### Core module
+We get two types of bugs in the core module that we exclude from the report:
+
+Bug 1:
+    EI_EXPOSE_REP: "May expose internal representation by returning reference to mutable object"
+
+    Spotbugs complains that we return the types playerPairslist, playerList, player1 and player2, and that we may "expose internal representation by returning" them. It also suggests that we return a copy of the object for security resons. However, we need to return the actual objects in order to update their win score for the scoreboard and leaderboard. If returning copies of the objects, it won't correctly update the Player objects score.
+
+Bug 2:
+    EI_EXPOSE_REP2: "May expose internal representation by incorporating reference to mutable object"
+
+    This bugs also complains about compromised security, due to using the playerPairslist object to create the GameSetup, and using the player1 and player2 Player objects to create a PlayerPair object, using the "new" keyword. For the same reasons as with bug 1, we need to use the real objects rather than copies of them as the report suggests.
+
+##### Sringboot restserver module
+
+In the springboot restserver module we excluded one bug from the report:
+
+Bug 3:
+    UUF_UNUSED_FIELD
+
+    This bug complains about a PadelModelService object not being used in the PadelModelController.java file. However it does get used several times, so we chose to exclude this from the report so it can't lead to any misunderstanding.
+
 
 ### Test coverage rate
 
