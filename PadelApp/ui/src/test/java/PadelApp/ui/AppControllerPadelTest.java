@@ -1,15 +1,14 @@
 package PadelApp.ui;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.testfx.api.FxAssert;
 import org.testfx.framework.junit5.ApplicationTest;
+import org.testfx.matcher.control.LabeledMatchers;
 
-import java.awt.*;
-import java.util.Objects;
+
 
 import static org.testfx.matcher.control.TextInputControlMatchers.hasText;
 
@@ -83,7 +82,25 @@ public class AppControllerPadelTest extends ApplicationTest {
         clickOn("#CreateGame");
 
         // Verify that the errorCreateGamesMsg Label is visible
-        FxAssert.verifyThat("#errorCreateGamesMsg", Node::isVisible );
+        FxAssert.verifyThat("#errorCreateGamesMsg", LabeledMatchers.hasText("Must choose number of rounds between 1-10"));
+    }
+
+    @Test
+    public void TestEvenNumberPlayers(){
+        String playerName = "John";
+        String playerAge = "25";
+        String Playernumber = "95643241";
+
+        // Locate the text fields and button by their fx:id
+        clickOn("#addTlfNr").write(Playernumber);
+        clickOn("#addName").write(playerName);
+        clickOn("#addAge").write(playerAge);
+        clickOn("#AddPlayer");
+        clickOn("#InputRounds").write("5");
+        clickOn("#CreateGame");
+
+        FxAssert.verifyThat("#errorCreateGamesMsg", LabeledMatchers.hasText("Must be even number of players"));
+
     }
 
     @Test
@@ -105,7 +122,14 @@ public class AppControllerPadelTest extends ApplicationTest {
         clickOn("#AddPlayer");
 
         // Verify that the errorsMsg is visible
-        FxAssert.verifyThat("#errorMsg", Node::isVisible);
+        FxAssert.verifyThat("#errorMsg", LabeledMatchers.hasText("There can not be more then 10 players"));
+    }
+
+    @Test
+    public void testPlayerCount(){
+        Add2Players();
+
+        FxAssert.verifyThat("#NumberOfPlayers", LabeledMatchers.hasText("2"));
     }
     
 }
