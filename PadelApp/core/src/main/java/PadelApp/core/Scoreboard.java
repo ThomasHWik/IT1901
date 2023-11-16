@@ -160,6 +160,13 @@ public class Scoreboard {
     return null;
   }
 
+  /**
+   * Retrieves a list of top players from the scoreboard based on the specified
+   * count.
+   *
+   * @param n the number of top players to retrieve
+   * @return a List of Player objects representing the top players
+   */
   public List<Player> getTopPlayers(int n) {
     PlayerComparator pc = new PlayerComparator();
     List<Player> lbList = this.getScorelist().stream()

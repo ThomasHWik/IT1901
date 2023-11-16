@@ -9,17 +9,31 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 /**
- * RemoteLeaderboardAccess.
+ * This class facilitates access to a remote leaderboard system through HTTP
+ * requests.
+ * It allows fetching the leaderboard and sending scoreboard data to the remote
+ * server.
  */
 public class RemoteLeaderboardAccess {
   private final URI baseEndpoint;
   private final HttpClient client;
 
+  /**
+   * Initializes a RemoteLeaderboardAccess object with the base URI endpoint.
+   *
+   * @param baseEndpoint the base URI endpoint of the remote leaderboard system
+   */
   public RemoteLeaderboardAccess(URI baseEndpoint) {
     this.baseEndpoint = baseEndpoint;
     this.client = HttpClient.newHttpClient();
   }
 
+  /**
+   * Fetches the current leaderboard from the remote server.
+   *
+   * @return the Leaderboard object retrieved from the remote server, or null in
+   *         case of an error
+   */
   public Leaderboard getLeaderboard() {
     try {
       HttpRequest request = HttpRequest.newBuilder(URI.create(baseEndpoint + "/leaderboard"))
@@ -44,6 +58,12 @@ public class RemoteLeaderboardAccess {
     return null;
   }
 
+  /**
+   * Sends a Scoreboard object to update the remote leaderboard.
+   *
+   * @param scoreboard the Scoreboard object to be sent to the remote server
+   * @return true if the scoreboard was successfully sent, false otherwise
+   */
   public boolean sendScoreboard(Scoreboard scoreboard) {
     Scoreboard payloadScoreboard = new Scoreboard(scoreboard.getScorelist());
     try {

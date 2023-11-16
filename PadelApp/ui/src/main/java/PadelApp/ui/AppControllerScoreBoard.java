@@ -24,9 +24,11 @@ public class AppControllerScoreBoard {
   private Scoreboard scoreboard;
   private RemoteLeaderboardAccess restApi;
 
+  @SuppressWarnings({"MultipleVariableDeclarations"})
   @FXML
   private ListView<String> lbName, sbName;
 
+  @SuppressWarnings({"MultipleVariableDeclarations"})
   @FXML
   private ListView<Integer> lbWins, sbWins;
 

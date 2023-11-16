@@ -30,17 +30,20 @@ public class AppControllerPadel {
 
   private ArrayList<Player> playerlist = new ArrayList<>();
 
+  @SuppressWarnings({"MultipleVariableDeclarations"})
   @FXML
   private TextField addName, addAge, addTlfNr, inputRounds;
 
   @FXML
   private TextArea players;
 
+  @SuppressWarnings({"MultipleVariableDeclarations"})
   @FXML
   private Button addPlayer, createGame;
 
+  @SuppressWarnings({"MultipleVariableDeclarations"})
   @FXML
-  private Label errorMsg, errorCreateGamesMsg, NumberOfPlayers;
+  private Label errorMsg, errorCreateGamesMsg, numberOfPlayers;
 
   @FXML
   private Slider courtCount;
@@ -110,7 +113,7 @@ public class AppControllerPadel {
       errorCreateGames("Must add players to create a game");
       return;
     }
-    if (inputRounds.getText() == "" || inputRounds.getText().trim().isEmpty()) {
+    if (inputRounds.getText().equals("") || inputRounds.getText().trim().isEmpty()) {
       errorCreateGames("Must choose number of rounds between 1-10");
       return;
     }
@@ -136,7 +139,7 @@ public class AppControllerPadel {
 
   /**
    * Gets the number of wanted double courts.
-   * 
+   *
    * @return the integer value of the courtCount.
    */
   private int setCourts() {

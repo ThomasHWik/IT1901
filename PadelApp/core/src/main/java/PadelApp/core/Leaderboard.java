@@ -3,6 +3,9 @@ package PadelApp.core;
 import com.fasterxml.jackson.core.exc.StreamWriteException;
 import java.io.IOException;
 
+/**
+ * Represents a leaderboard that extends Scoreboard and manages player rankings.
+ */
 public class Leaderboard extends Scoreboard {
   public Leaderboard() {
     super("Leaderboard");

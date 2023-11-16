@@ -1,5 +1,8 @@
 package PadelApp.core;
 
+/**
+ * Utility class for managing and extracting information from numbers.
+ */
 public class NumberManager {
   /**
    * Returns the number of digits in an integer.
