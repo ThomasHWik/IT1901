@@ -61,7 +61,7 @@ public class AppControllerPadel {
         //try catch to check if the input is valid
         try {
             if(playerlist.size()==10){
-                errorCreateGames("There can not be more then 10 players");
+                error("There can not be more then 10 players");
                 return;
             }
             Player player= new Player(addName.getText(), StringToInt(addAge.getText()), StringToInt(addTlfNr.getText()));
@@ -152,6 +152,7 @@ public class AppControllerPadel {
      */
     @FXML
     private void error(String message) {
+        errorMsg.visibleProperty().set(true);
         errorMsg.setText(message);
     }
 
@@ -170,6 +171,7 @@ public class AppControllerPadel {
      */
     @FXML
     private void errorCreateGames(String message){
+        errorCreateGamesMsg.visibleProperty().set(true);
         errorCreateGamesMsg.setText(message);
     }
 
