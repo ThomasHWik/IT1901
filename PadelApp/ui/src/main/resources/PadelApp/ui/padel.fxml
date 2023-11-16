@@ -17,12 +17,12 @@
       <Label layoutX="34.0" layoutY="208.0" prefHeight="17.0" prefWidth="92.0" text="Age" />
       <TextField fx:id="addAge" layoutX="34.0" layoutY="233.0" prefHeight="25.0" prefWidth="200.0" />
       <Button fx:id="CreateGame" layoutX="420.0" layoutY="325.0" mnemonicParsing="false" onAction="#CreateGame" prefHeight="35.0" prefWidth="120.0" text="Create a game" />
-      <Label fx:id="errorMsg" layoutX="34.0" layoutY="303.0" prefHeight="26.0" prefWidth="234.0" textFill="#f80000" />
+      <Label fx:id="errorMsg" layoutX="34.0" layoutY="303.0" prefHeight="26.0" prefWidth="234.0" textFill="#f80000" visible="false" />
       <TextField fx:id="addTlfNr" layoutX="34.0" layoutY="113.0" prefHeight="25.0" prefWidth="200.0" />
       <Label layoutX="34.0" layoutY="86.0" prefHeight="17.0" prefWidth="92.0" text="Mobilnummer" />
       <TextField fx:id="InputRounds" layoutX="491.0" layoutY="294.0" prefHeight="26.0" prefWidth="46.0" />
 
-      <Label fx:id="errorCreateGamesMsg" layoutX="306.0" layoutY="355.0" prefHeight="44.0" prefWidth="234.0" textFill="#f80000" wrapText="true" />
+      <Label fx:id="errorCreateGamesMsg" layoutX="306.0" layoutY="355.0" prefHeight="44.0" prefWidth="234.0" textFill="#f80000" visible="false" wrapText="true" />
       <Slider fx:id="courtCount" blockIncrement="1.0" layoutX="443.0" layoutY="259.0" majorTickUnit="1.0" max="2.0" minorTickCount="1" prefHeight="38.0" prefWidth="98.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
       <Label layoutX="303.0" layoutY="261.0" prefHeight="17.0" prefWidth="92.0" text="Double courts:" />
       <Label layoutX="303.0" layoutY="295.0" prefHeight="17.0" prefWidth="107.0" text="Number of rounds:" />
