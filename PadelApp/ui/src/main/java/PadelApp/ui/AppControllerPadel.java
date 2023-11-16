@@ -92,6 +92,11 @@ public class AppControllerPadel {
         String output = sb.toString();
         players.setText(output);
 
+        NOP+=1;
+        String nop= "" + NOP;
+        NumberOfPlayers.visibleProperty().set(true);
+        NumberOfPlayers.setText(nop);
+        
         updateGUI();
     }
 

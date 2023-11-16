@@ -158,11 +158,12 @@ public class AppControllerGamesTest extends ApplicationTest {
         clickOn("#oneOne");
         clickOn("#NewRound");
 
+        clickOn("#oneOne");
         clickOn("#GoToScore");
 
         playerList = FileManagerJson.getScoreboard("currentgame").getScorelist();
 
-        assertTrue(playerList.get(0).getWins() == 2);
+        assertTrue(playerList.get(0).getWins() == 3);
         assertTrue(playerList.get(1).getWins() == 2);
 
     }
@@ -171,7 +172,6 @@ public class AppControllerGamesTest extends ApplicationTest {
     public void testNotAllSelected(){
         Add2Players();
         clickOn("#NewRound");
-
         FxAssert.verifyThat("#error", Node::isVisible);
     }
 
