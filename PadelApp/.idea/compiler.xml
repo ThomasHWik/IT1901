@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="modules-ui" />
+        <module name="springboot.restserver" />
         <module name="modules-core" />
       </profile>
     </annotationProcessing>

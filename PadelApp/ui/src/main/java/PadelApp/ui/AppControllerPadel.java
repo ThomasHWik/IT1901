@@ -57,7 +57,7 @@ public class AppControllerPadel {
     // try catch to check if the input is valid
     try {
       if (playerlist.size() == 10) {
-        errorCreateGames("There can not be more then 10 players");
+        error("There can not be more then 10 players");
         return;
       }
       String name = addName.getText();
@@ -88,11 +88,16 @@ public class AppControllerPadel {
       sb.append(item).append("\n");
     }
 
-    String output = sb.toString();
-    players.setText(output);
+        String output = sb.toString();
+        players.setText(output);
 
-    updateGui();
-  }
+        NOP += 1;
+        String nop= "" + NOP;
+        numberOfPlayers.visibleProperty().set(true);
+        numberOfPlayers.setText(nop);
+        
+        updateGui();
+    }
 
   /**
    * This method is called when the "Create Game" button is clicked. It retrieves
@@ -135,32 +140,27 @@ public class AppControllerPadel {
     games.roundSelector(chosenRounds);
   }
 
-  /**
-   * Gets the number of wanted double courts.
-   *
-   * @return the integer value of the courtCount.
-   */
-  private int setCourts() {
-    int value = (int) courtCount.getValue();
-    if (playerlist.size() < 8 && value == 2) {
-      return 1;
+    /**
+     * Gets the number of wanted double courts.
+     * @return the integer value of the courtCount.
+     */
+    private int setCourts() {
+        int value = (int) courtCount.getValue();
+        if (playerlist.size() < 8 && value ==2 ) {return 1;}
+        if (playerlist.size() < 4 && value > 0) {return 0;}
+        
+        return value;
     }
-    if (playerlist.size() < 4 && value > 0) {
-      return 0;
+   
+    /**
+     * Sets the error message to be displayed in the UI.
+     *
+     * @param message the error message to be displayed
+     */
+    @FXML
+    private void error(String message) {
+        errorMsg.setText(message);
     }
-
-    return value;
-  }
-
-  /**
-   * Sets the error message to be displayed in the UI.
-   *
-   * @param message the error message to be displayed
-   */
-  @FXML
-  private void error(String message) {
-    errorMsg.setText(message);
-  }
 
   /**
    * Clears the error message displayed on the UI.
@@ -170,15 +170,16 @@ public class AppControllerPadel {
     errorMsg.setText("");
   }
 
-  /**
-   * Sets the error message for creating games.
-   *
-   * @param message the error message to be displayed
-   */
-  @FXML
-  private void errorCreateGames(String message) {
-    errorCreateGamesMsg.setText(message);
-  }
+    /**
+     * Sets the error message for creating games.
+     *
+     * @param message the error message to be displayed
+     */
+    @FXML
+    private void errorCreateGames(String message){
+        errorCreateGamesMsg.visibleProperty().set(true);
+        errorCreateGamesMsg.setText(message);
+    }
 
   /**
    * This method refreshes the error message displayed on the UI for creating
