@@ -7,6 +7,7 @@ The springboot module contains the Restserver and the REST-API for the Padel App
 The restserver utilizes a simple springboot application with a controller for api endpoints and service that processes api requests.
 It includes endpoints for sending a scoreboard to the server, retrieving the leaderboard from the server and initializing the server. No special configuration of the springboot server has been done and it utilizes the default 8080 port. for its endpoints.
 
+The REST-Server actively utilizes the FileManagerJson class for serializing from and to Leaderboard instances and saving them to file for persistant storage of a leaderboard instance that gets updated by clients using server's endpoints.
 
 ## Usage
 
