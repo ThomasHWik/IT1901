@@ -1,0 +1,24 @@
+@startuml sequenceDiagram
+
+title Sequence Diagram
+!define List java.util.List !define ArrayList java.util.ArrayList
+
+group Player registration
+user -> ui: push the "AddPlayer" button
+ui -> core: AddPlayer(Player player)
+
+
+end
+
+group Update wins
+
+end
+
+group Update Scoreboard and Leaderboard
+
+end
+
+
+
+
+@enduml

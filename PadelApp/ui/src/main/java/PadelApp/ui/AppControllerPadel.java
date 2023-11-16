@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import PadelApp.core.Player;
-import PadelApp.core.RoundSelector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -43,7 +43,12 @@ public class AppControllerPadel {
     private Button AddPlayer, CreateGame;
 
     @FXML 
-    private Label errorMsg, errorCreateGamesMsg;
+    private Label errorMsg, errorCreateGamesMsg, NumberOfPlayers;
+
+    @FXML
+    private Slider courtCount;
+
+    private int NOP;
 
 
     /**
@@ -55,6 +60,10 @@ public class AppControllerPadel {
     void AddPlayer(ActionEvent event) throws IOException {
         //try catch to check if the input is valid
         try {
+            if(playerlist.size()==10){
+                errorCreateGames("There can not be more then 10 players");
+                return;
+            }
             Player player= new Player(addName.getText(), StringToInt(addAge.getText()), StringToInt(addTlfNr.getText()));
             playerlist.add(player);
             refreshErrorMsg();
@@ -95,12 +104,23 @@ public class AppControllerPadel {
      */
     @FXML
     void CreateGame(ActionEvent event) throws IOException {
-
+        if (players.getText().trim().isEmpty()){
+            errorCreateGames("Must add players to create a game");
+            return;
+        }
+        if (InputRounds.getText()== "" ||InputRounds.getText().trim().isEmpty()){
+            errorCreateGames("Must choose number of rounds between 1-10");
+            return;
+        }
         int chosenRounds = Integer.parseInt(InputRounds.getText());
         
         refreshErrorCreateGamesMsg();
         if (playerlist.size() % 2 != 0){
             errorCreateGames("Must be even number of players");
+            return;
+        }
+        if (chosenRounds<1 || chosenRounds>10){
+            errorCreateGames("Must choose number of rounds between 1-10");
             return;
         }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("games.fxml"));
@@ -109,9 +129,20 @@ public class AppControllerPadel {
             stage.setScene(new Scene(root));
             AppControllerGames games = (AppControllerGames)loader.getController();
             games.setPlayerList(playerlist);
-            games.CreateGame();
-            games.roundSelector(chosenRounds);
-            
+            games.CreateGame(setcourts());
+            games.roundSelector(chosenRounds);     
+    }
+
+    /**
+     * Gets the number of wanted double courts.
+     * @return the integer value of the courtCount.
+     */
+    private int setcourts(){
+        int value = (int) courtCount.getValue();
+        if(playerlist.size()<8 && value ==2)return 1;
+        if(playerlist.size()<4 && value>0)return 0;
+        return value;
+
     }
    
     /**
