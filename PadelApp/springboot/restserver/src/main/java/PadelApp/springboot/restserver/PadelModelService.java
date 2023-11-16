@@ -70,9 +70,9 @@ public class PadelModelService {
    */
   public boolean addToLeaderboard(Scoreboard scoreboard) {
     Leaderboard leaderboard = FileManagerJson.getLeaderboard(currentFilename);
-        if (leaderboard == null) {
-            leaderboard = new Leaderboard();
-        }
+    if (leaderboard == null) {
+      leaderboard = new Leaderboard();
+    }
     try {
       leaderboard.addScoreboard(scoreboard); // Add the new scoreboard
       saveLeaderboard(leaderboard);
@@ -83,12 +83,12 @@ public class PadelModelService {
     return true;
   }
 
-    /**
-     * Initializes the PadelModelService by creating a new Leaderboard object and
-     * saving it.
-     */
-    public void initialize() {
-        Leaderboard leaderboard = new Leaderboard();
-        saveLeaderboard(leaderboard);
-    }
+  /**
+   * Initializes the PadelModelService by creating a new Leaderboard object and
+   * saving it.
+   */
+  public void initialize() {
+    Leaderboard leaderboard = new Leaderboard();
+    saveLeaderboard(leaderboard);
+  }
 }
